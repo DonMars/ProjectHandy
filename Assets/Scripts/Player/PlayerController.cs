@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     public float runSpeed;
 
+    bool isIdle = true;
+    bool isRunning = false;
+    bool isWalking = false;
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask groundLayer;
@@ -32,6 +36,19 @@ public class PlayerController : MonoBehaviour
     public float maxSlopeAngle;
     RaycastHit slopeHit;
     bool exitingSlope;
+
+    [Header("Stamina")]
+    public bool useStamina = true;
+    public float maxStamina = 100;
+    public float staminaUseMultiplier = 5;
+    public float timeBeforeStaminaRegenStarts = 3;
+    public float depletedStaminaRegenTime = 6;
+    public float staminaValueIncrement = 2;
+    public float staminaTimeIncrement = 0.1f;
+    public float currentStamina;
+    Coroutine regeneratingStamina;
+    public static Action<float> OnStaminaChange;
+    public float originalStaminaRegenTime;
 
 
     public Transform orientation;
@@ -62,12 +79,18 @@ public class PlayerController : MonoBehaviour
         mainCamera = FindObjectOfType<Camera>();
 
         playerRb.freezeRotation = true;
+
+        currentStamina = maxStamina;
+        originalStaminaRegenTime = timeBeforeStaminaRegenStarts;
     }
 
     void Start()
     {
         // Hide and Lock cursor
         GameManager.Instance.HideAndLockCursor();
+
+        // Set Stamina
+        OnStaminaChange?.Invoke(currentStamina);
     }
 
     void Update()
@@ -91,6 +114,9 @@ public class PlayerController : MonoBehaviour
         {
             movementState = MovementState.running;
             movementSpeed = runSpeed;
+            isIdle = false;
+            isWalking = false;
+            isRunning = true;
         }
 
         // State - Walking
@@ -98,18 +124,27 @@ public class PlayerController : MonoBehaviour
         {
             movementState = MovementState.walking;
             movementSpeed = walkSpeed;
+            isIdle = false;
+            isRunning = false;
+            isWalking = true;
         }
 
         // State - Idle
         else if (isGrounded && (Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0))
         {
             movementState = MovementState.idle;
+            isWalking = false;
+            isRunning = false;
+            isIdle = true;
         }
 
         // State - Air
         else
         {
             movementState = MovementState.air;
+            isWalking = false;
+            isRunning = false;
+            isIdle = false;
         }
     }
 
@@ -151,6 +186,10 @@ public class PlayerController : MonoBehaviour
 
         // Turn Gravity off on slopes
         playerRb.useGravity = !OnSlope();
+
+        // Using Stamina
+        if (useStamina)
+            HandleStamina();
     }
     private void GroundCheck()
     {
@@ -219,5 +258,64 @@ public class PlayerController : MonoBehaviour
     {
         jumpReady = true;
         exitingSlope = false;
+    }
+
+    private void HandleStamina()
+    {
+        if (isRunning && movementDirection != Vector3.zero)
+        {
+            if (regeneratingStamina != null)
+            {
+                StopCoroutine(regeneratingStamina);
+                regeneratingStamina = null;
+            }
+
+            currentStamina -= staminaUseMultiplier * Time.deltaTime;
+
+            if (currentStamina <= 0)
+            {
+                canRun = false;
+            }
+
+            if (currentStamina < 10)
+            {
+                timeBeforeStaminaRegenStarts = depletedStaminaRegenTime;
+            }
+
+            if (currentStamina > 10)
+            {
+                timeBeforeStaminaRegenStarts = originalStaminaRegenTime;
+            }
+
+            OnStaminaChange?.Invoke(currentStamina);
+        }
+
+        if (!isRunning && currentStamina < maxStamina && regeneratingStamina == null)
+        {
+            regeneratingStamina = StartCoroutine(RegenerateStamina());
+        }
+    }
+
+    private IEnumerator RegenerateStamina()
+    {
+        yield return new WaitForSeconds(timeBeforeStaminaRegenStarts);
+        WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
+
+        while (currentStamina < maxStamina)
+        {
+            if (currentStamina > 0)
+                canRun = true;
+
+            currentStamina += staminaValueIncrement;
+
+            if (currentStamina > maxStamina)
+                currentStamina = maxStamina;
+
+            OnStaminaChange?.Invoke(currentStamina);
+
+            yield return timeToWait;
+        }
+
+        regeneratingStamina = null;
     }
 }
