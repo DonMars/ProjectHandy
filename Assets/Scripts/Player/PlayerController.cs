@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode runKey = KeyCode.LeftShift;
+    public KeyCode grabKey = KeyCode.Mouse0;
 
     [Header("Movement")]
     public bool canMove = true;
@@ -26,6 +29,12 @@ public class PlayerController : MonoBehaviour
     bool isIdle = true;
     bool isRunning = false;
     bool isWalking = false;
+
+    [Header("Grab Ability")]
+    public bool canGrab = true;
+    public bool grabSwitch = false;
+    public bool isGrabbing = false;
+    public float grabbingSpeed;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -50,15 +59,15 @@ public class PlayerController : MonoBehaviour
     public static Action<float> OnStaminaChange;
     public float originalStaminaRegenTime;
 
-
     public Transform orientation;
 
     float horizontalInput;
     float verticalInput;
 
     Vector3 movementDirection;
+    Vector3 movementOrientation;
 
-    Rigidbody playerRb;
+    public Rigidbody playerRb;
     Camera mainCamera;
 
     public MovementState movementState;
@@ -152,6 +161,9 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if (Mathf.Abs(verticalInput) > 0.1f || Mathf.Abs(horizontalInput) > 0.1f)
+            movementOrientation = (orientation.forward * verticalInput + orientation.right * horizontalInput).normalized;
 
         // Jump
         if (Input.GetKey(jumpKey) && canJump && jumpReady && isGrounded)
