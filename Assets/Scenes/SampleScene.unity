@@ -4349,7 +4349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445343491}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.29539433, y: -0.029968156, z: 0.014468272, w: 0.9547957}
+  m_LocalRotation: {x: -0.2953944, y: -0.029968156, z: 0.0144682685, w: 0.9547957}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13315,6 +13315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1741581546}
+  - component: {fileID: 1741581547}
   m_Layer: 3
   m_Name: Pisos
   m_TagString: Untagged
@@ -13475,6 +13476,27 @@ Transform:
   - {fileID: 543624659}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1741581547
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741581545}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 28.364182, y: 1.1707884, z: 14.007662}
+  m_Center: {x: 11.807888, y: 0.5049028, z: 5.0984917}
 --- !u!1001 &1749934026
 PrefabInstance:
   m_ObjectHideFlags: 0
