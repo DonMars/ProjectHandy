@@ -19,6 +19,8 @@ MonoBehaviour:
     - 5006b024578212c45af9c1f7d4bd040d
     - 72e12d8d262728d4ebd39b5dc2350883
     - 709f11a7f3c4041caa4ef136ea32d874
+    - 3a810fe49c5c41641a339e1f3e17cb75
+    - a9fea2c2caace3f4ab2c0c5ec4d3ba85
     values:
     - colorIndex: 0
       iconNameOrGuid: cs Script Icon
@@ -30,3 +32,7 @@ MonoBehaviour:
       iconNameOrGuid: SceneAsset Icon
     - colorIndex: 0
       iconNameOrGuid: Settings Icon
+    - colorIndex: 0
+      iconNameOrGuid: PrefabModel Icon
+    - colorIndex: 0
+      iconNameOrGuid: Prefab Icon
