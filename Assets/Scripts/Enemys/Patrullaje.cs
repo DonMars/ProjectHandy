@@ -16,8 +16,8 @@ public class Patrullaje : MonoBehaviour
 
     [SerializeField] private Transform minPos;
     [SerializeField] private Transform maxPos;
-    private Vector3 ZonaMin;
-    private Vector3 ZonaMax;
+    public Vector3 ZonaMin;
+    public Vector3 ZonaMax;
     private Vector3 posicionAleatoria;
 
     private Animator Animator;

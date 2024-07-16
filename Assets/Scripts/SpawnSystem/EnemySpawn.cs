@@ -64,6 +64,9 @@ public class EnemySpawn : MonoBehaviour
             {
                 GameObject object1 = Instantiate(preFabs[0],PosicionAleatoria(),Quaternion.identity);
                 object1.transform.SetParent(parentSpawn);
+                //Patrullaje patrullaje = object1.GetComponent<Patrullaje>();
+                //patrullaje.ZonaMax= ZonaMax;
+                //patrullaje.ZonaMin= ZonaMin;
                 
                 
             }
@@ -71,6 +74,9 @@ public class EnemySpawn : MonoBehaviour
             {
                 GameObject object1 = Instantiate(preFabs[1], PosicionAleatoria(), Quaternion.identity);
                 object1.transform.SetParent(parentSpawn);
+                //Patrullaje patrullaje = object1.GetComponent<Patrullaje>();
+                //patrullaje.ZonaMax = ZonaMax;
+                //patrullaje.ZonaMin = ZonaMin;
 
             }
             yield return new WaitForSeconds(spawnRate);
