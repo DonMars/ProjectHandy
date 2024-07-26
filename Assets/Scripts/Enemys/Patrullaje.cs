@@ -35,14 +35,15 @@ public class Patrullaje : MonoBehaviour
         Animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
 
-        //Animator.SetBool(animacionWalkName,animacionWalk);
-        //Animator.SetBool(animacionAccionRandomName,animacionAccionRandom);
         
+
 
     }
     private void Update()
     {
         AnimacionesWalk();
+        Animator.SetBool(animacionWalkName, animacionWalk);
+        Animator.SetBool(animacionAccionRandomName, animacionAccionRandom);
     }
 
     #region Patrllaje
@@ -102,8 +103,8 @@ public class Patrullaje : MonoBehaviour
     #region Randoms
     private void IncializarVectores()
     {
-        ZonaMin = minPos.position;
-        ZonaMax = maxPos.position;
+        //ZonaMin = minPos.position;
+        //ZonaMax = maxPos.position;
     }
     Vector3 PosicionAleatoria()
     {
