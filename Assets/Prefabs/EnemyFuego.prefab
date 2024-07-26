@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2890854333986569128}
   - component: {fileID: 5474716568601323261}
   - component: {fileID: 2751006796956517069}
+  - component: {fileID: 2861762631983205614}
   m_Layer: 0
   m_Name: EnemyFuego
   m_TagString: Untagged
@@ -200,7 +201,22 @@ MonoBehaviour:
   patrullando: 0
   minPos: {fileID: 0}
   maxPos: {fileID: 0}
+  ZonaMin: {x: 0, y: 0, z: 0}
+  ZonaMax: {x: 0, y: 0, z: 0}
   animacionWalk: 0
   animacionWalkName: 
   animacionAccionRandom: 0
   animacionAccionRandomName: 
+--- !u!114 &2861762631983205614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055517041874362579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3305730ffd4a3c4c8bb0cf7c9ecdf37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpSpeed: 25

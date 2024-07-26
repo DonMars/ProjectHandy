@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [Header("Grab Ability")]
     public bool canGrab = true;
     public bool grabSwitch = false;
-    public bool isGrabbing = false;
+    public bool isGrabbing = false; // Detecta cuando estás cargando algo
     public float grabbingSpeed;
 
     [Header("Ground Check")]

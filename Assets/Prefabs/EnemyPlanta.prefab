@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7572254246705056020}
   - component: {fileID: 3473751255265342126}
   - component: {fileID: 8146981251925055380}
+  - component: {fileID: -1645736267119484977}
   m_Layer: 0
   m_Name: EnemyPlanta
   m_TagString: Untagged
@@ -177,6 +178,8 @@ MonoBehaviour:
   patrullando: 0
   minPos: {fileID: 0}
   maxPos: {fileID: 0}
+  ZonaMin: {x: 0, y: 0, z: 0}
+  ZonaMax: {x: 0, y: 0, z: 0}
   animacionWalk: 0
   animacionWalkName: 
   animacionAccionRandom: 0
@@ -202,3 +205,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   radio: 6.57
+--- !u!114 &-1645736267119484977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581615610176235937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3305730ffd4a3c4c8bb0cf7c9ecdf37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpSpeed: 25
