@@ -6,6 +6,10 @@ using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Life")]
+    public int healthPoints;
+    public int maxHealthPoints = 4;
+
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode runKey = KeyCode.LeftShift;
@@ -109,11 +113,29 @@ public class PlayerController : MonoBehaviour
         SpeedControl();
         StateHandler();
         HandleDrag();
+        HandleHealth();
     }
 
     void FixedUpdate()
     {
         MovePlayer();
+    }
+
+    void HandleHealth()
+    {
+        if (healthPoints > maxHealthPoints)
+            healthPoints = maxHealthPoints;
+
+        if (healthPoints <= 0)
+        {
+            healthPoints = 0;
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+        Debug.Log("Mr. Handy is DEAD! Game Over");
     }
 
     void StateHandler()
