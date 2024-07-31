@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool jumpReady = true;
+    public AudioSource jumpSound;
 
     public bool canRun = true;
     public float walkSpeed;
@@ -191,6 +193,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(jumpKey) && canJump && jumpReady && isGrounded)
         {
             jumpReady = false;
+            jumpSound.pitch = Random.Range(1.2f, 1.6f);
+            jumpSound.Play();
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
         }

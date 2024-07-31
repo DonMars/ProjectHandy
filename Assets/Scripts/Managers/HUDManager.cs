@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class HUDManager : MonoBehaviour
@@ -11,17 +12,21 @@ public class HUDManager : MonoBehaviour
     public GameObject staminaWheel;
     public GameObject staminaWheelOverlay;
 
-    public GameObject HealthGauge1;
-    public GameObject HealthGauge2;
-    public GameObject HealthGauge3;
-    public GameObject HealthGauge4;
-    public GameObject HealthGauge5;
+    public GameObject healthGauge1;
+    public GameObject healthGauge2;
+    public GameObject healthGauge3;
+    public GameObject healthGauge4;
+    public GameObject healthGauge5;
+
+    public Slider forceGaugeSlider;
+    GrabMechanic grabMechanicScript;
 
     //public TextMeshProUGUI staminaCounter;
 
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
+        grabMechanicScript = FindObjectOfType<GrabMechanic>();
     }
 
     void Start()
@@ -30,16 +35,16 @@ public class HUDManager : MonoBehaviour
         staminaUseWheel.SetActive(false);
         staminaWheelOverlay.SetActive(false);
 
-        HealthGauge1.SetActive(false);
-        HealthGauge2.SetActive(false);
-        HealthGauge3.SetActive(false);
-        HealthGauge4.SetActive(false);
-        HealthGauge5.SetActive(false);
+        healthGauge1.SetActive(false);
+        healthGauge2.SetActive(false);
+        healthGauge3.SetActive(false);
+        healthGauge4.SetActive(false);
+        healthGauge5.SetActive(false);
     }
 
     void Update()
     {
-        //staminaCounter.text = "Stamina: " + playerController.currentStamina.ToString();
+        // Stamina Manager
 
         if (playerController.currentStamina < playerController.maxStamina)
         {
@@ -54,45 +59,57 @@ public class HUDManager : MonoBehaviour
             staminaWheelOverlay.SetActive(false);
         }
 
+        // Life Gauge Manager
+
         if (playerController.healthPoints == 4)
         {
-            HealthGauge1.SetActive(true);
-            HealthGauge2.SetActive(false);
-            HealthGauge3.SetActive(false);
-            HealthGauge4.SetActive(false);
-            HealthGauge5.SetActive(false);
+            healthGauge1.SetActive(true);
+            healthGauge2.SetActive(false);
+            healthGauge3.SetActive(false);
+            healthGauge4.SetActive(false);
+            healthGauge5.SetActive(false);
         }
         else if (playerController.healthPoints == 3)
         {
-            HealthGauge1.SetActive(false);
-            HealthGauge2.SetActive(true);
-            HealthGauge3.SetActive(false);
-            HealthGauge4.SetActive(false);
-            HealthGauge5.SetActive(false);
+            healthGauge1.SetActive(false);
+            healthGauge2.SetActive(true);
+            healthGauge3.SetActive(false);
+            healthGauge4.SetActive(false);
+            healthGauge5.SetActive(false);
         }
         else if (playerController.healthPoints == 2)
         {
-            HealthGauge1.SetActive(false);
-            HealthGauge2.SetActive(false);
-            HealthGauge3.SetActive(true);
-            HealthGauge4.SetActive(false);
-            HealthGauge5.SetActive(false);
+            healthGauge1.SetActive(false);
+            healthGauge2.SetActive(false);
+            healthGauge3.SetActive(true);
+            healthGauge4.SetActive(false);
+            healthGauge5.SetActive(false);
         }
         else if (playerController.healthPoints == 1)
         {
-            HealthGauge1.SetActive(false);
-            HealthGauge2.SetActive(false);
-            HealthGauge3.SetActive(false);
-            HealthGauge4.SetActive(true);
-            HealthGauge5.SetActive(false);
+            healthGauge1.SetActive(false);
+            healthGauge2.SetActive(false);
+            healthGauge3.SetActive(false);
+            healthGauge4.SetActive(true);
+            healthGauge5.SetActive(false);
         }
         else if (playerController.healthPoints <= 0)
         {
-            HealthGauge1.SetActive(false);
-            HealthGauge2.SetActive(false);
-            HealthGauge3.SetActive(false);
-            HealthGauge4.SetActive(false);
-            HealthGauge5.SetActive(true);
+            healthGauge1.SetActive(false);
+            healthGauge2.SetActive(false);
+            healthGauge3.SetActive(false);
+            healthGauge4.SetActive(false);
+            healthGauge5.SetActive(true);
+        }
+
+        // Throw Force Gauge Manager
+        if (grabMechanicScript.chargeTime > 0)
+        {
+            forceGaugeSlider.value = grabMechanicScript.chargeTime / grabMechanicScript.maxChargeTime;
+        }
+        else if (grabMechanicScript.chargeTime <= 0)
+        {
+            forceGaugeSlider.value = 0;
         }
     }
 }

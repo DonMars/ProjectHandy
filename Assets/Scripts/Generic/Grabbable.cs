@@ -9,7 +9,7 @@ public class Grabbable : MonoBehaviour
     Rigidbody playerRb;
 
     Rigidbody rb;
-    Transform grabPoint;
+    public Transform grabPoint;
     Collider objectCollider;
 
     private void Awake()
@@ -29,23 +29,26 @@ public class Grabbable : MonoBehaviour
         //objectCollider.enabled = false;
     }
 
-    public void Drop()
-    {
-        this.grabPoint = null;
-        rb.isKinematic = false;
-        transform.parent = null;
-        rb.AddForce(player.playerRb.velocity * 5f, ForceMode.VelocityChange);
-        //rb.useGravity = true;
-        //objectCollider.enabled = true;
-    }
+    //public void Drop()
+    //{
+    //    this.grabPoint = null;
+    //    rb.isKinematic = false;
+    //    transform.parent = null;
+    //    rb.AddForce(player.playerRb.velocity * 5f, ForceMode.VelocityChange);
 
-    public void Throw()
-    {
-        this.grabPoint = null;
-        rb.isKinematic = false;
-        transform.parent = null;
-        rb.AddForce(player.playerRb.velocity * 5f, ForceMode.VelocityChange);
-    }
+    //    //rb.useGravity = true;
+    //    //objectCollider.enabled = true;
+    //}
+
+    //public void Throw()
+    //{
+    //    this.grabPoint = null;
+    //    rb.isKinematic = false;
+    //    transform.parent = null;
+
+    //    rb.AddForce(player.playerRb.velocity * 5f, ForceMode.VelocityChange);
+    //    rb.AddForce(grabPoint.forward, ForceMode.VelocityChange);
+    //}
 
     private void FixedUpdate()
     {
