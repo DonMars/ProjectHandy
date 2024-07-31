@@ -26,6 +26,7 @@ public class GrabMechanic : MonoBehaviour
                     grabbable.Grab(grabPoint);
                     player.isGrabbing = true;
                     holdStartTime = Time.time;
+                    
                 }
             }
             else // If carrying, drop
@@ -42,6 +43,7 @@ public class GrabMechanic : MonoBehaviour
             grabbable.Throw();
             grabbable = null;
             player.isGrabbing = false;
+            
         }
     }
 }

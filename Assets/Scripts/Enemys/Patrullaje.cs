@@ -42,8 +42,8 @@ public class Patrullaje : MonoBehaviour
     private void Update()
     {
         AnimacionesWalk();
-        Animator.SetBool(animacionWalkName, animacionWalk);
-        Animator.SetBool(animacionAccionRandomName, animacionAccionRandom);
+        //Animator.SetBool(animacionWalkName, animacionWalk);
+        //Animator.SetBool(animacionAccionRandomName, animacionAccionRandom);
     }
 
     #region Patrllaje
