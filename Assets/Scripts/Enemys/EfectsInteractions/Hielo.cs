@@ -13,9 +13,9 @@ public class Hielo : MonoBehaviour
     [SerializeField] private Transform PositionSpawn;
     
 
-    public void efectoCillision()
+    public void efectoCillision(Vector3 positionContact)
     {
-        Instantiate(hieloObject,this.transform.position,this.transform.rotation);
+        Instantiate(hieloObject,positionContact,this.transform.rotation);
         //Destroy(gameObject);
     }
     private void Update()

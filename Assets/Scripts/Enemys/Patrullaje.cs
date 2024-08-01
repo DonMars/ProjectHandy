@@ -20,19 +20,22 @@ public class Patrullaje : MonoBehaviour
     public Vector3 ZonaMax;
     private Vector3 posicionAleatoria;
 
-    private Animator Animator;
+    //private Animator Animator;
 
-    [SerializeField] private bool animacionWalk;
+    [SerializeField] private bool activateAnimacionWalk;
     [SerializeField] private string animacionWalkName;
-    [SerializeField] private bool animacionAccionRandom;
+    [SerializeField] private bool activateAnimacionRandom;
     [SerializeField] private string animacionAccionRandomName;
-   
+    public bool activateAnimacionArrojado;
+    public string animacionAccionArrojadoName;
+
+
     private Rigidbody rb;
     void Start()
     {
         IncializarVectores();
         StartCoroutine(Patroll());
-        Animator = GetComponent<Animator>();
+        //Animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
 
         
@@ -61,12 +64,12 @@ public class Patrullaje : MonoBehaviour
         {
             if(agent.velocity.magnitude == 0)
             {
-                animacionAccionRandom = true;
+                activateAnimacionRandom = true;
             }
             //animacionAccionRandom = true;
             yield return new WaitForSeconds(5);
             Debug.Log("esperó");
-            animacionAccionRandom = false;
+            activateAnimacionRandom = false;
         }
         
 
@@ -129,11 +132,11 @@ public class Patrullaje : MonoBehaviour
         
         if( agent.velocity.magnitude == 0)
         {
-            animacionWalk = false;
+            activateAnimacionWalk = false;
         }
         else
         {
-            animacionWalk = true;
+            activateAnimacionWalk = true;
         }
     }
 }

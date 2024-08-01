@@ -60,8 +60,14 @@ public class GrabMechanic : MonoBehaviour
                     holdStartTime = Time.time;
 
                     Debug.Log("GRABBING");
+                    if(grabbable.GetComponent<Efect>() != null)
+                    {
+                        grabbable.GetComponent<Efect>().enMano = true;
+                    }
+                    
                 }
             }
+
         }
         else if (Input.GetKeyDown(player.grabKey) && player.isGrabbing)
         {
@@ -80,6 +86,12 @@ public class GrabMechanic : MonoBehaviour
         if (Input.GetKeyUp(player.grabKey) && isCharging)
         {
             Debug.Log("THROWING");
+
+            if(grabbable.GetComponent<Efect>() != null)
+            {
+                grabbable.GetComponent<Efect>().enMano = false;
+                grabbable.GetComponent<Efect>().Arrojado = true;
+            }
 
             other.TryGetComponent(out grabbable);
 
