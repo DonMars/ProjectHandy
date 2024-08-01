@@ -15,7 +15,7 @@ public class ActionEsconder : MonoBehaviour
     
     //public float Cont;
     
-    private Animator animator;
+    //private Animator animator;
     [SerializeField]private bool animacionCabar;
     [SerializeField]private string animacionCabarName;
 
@@ -28,8 +28,8 @@ public class ActionEsconder : MonoBehaviour
     {
         //audioListener = gameObject.GetComponent<AudioListener>();
         patrullaje = GetComponent<Patrullaje>();
-        animator = GetComponent<Animator>();
-        //animator.SetBool(animacionCabarName,animacionCabar);
+        //animator = GetComponent<Animator>();
+
 
     }
 
@@ -37,6 +37,7 @@ public class ActionEsconder : MonoBehaviour
     void Update()
     {
 
+        //Animaciones();
         detectPlayer = Physics.CheckSphere(this.transform.position, radio, playerLayerMask);
         
         if (detectPlayer)
@@ -66,10 +67,10 @@ public class ActionEsconder : MonoBehaviour
         }
 
     }
-    public void Animaciones()
-    {
-
-    }
+    //public void Animaciones()
+    //{
+    //    animator.SetBool(animacionCabarName,animacionCabar);
+    //}
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;

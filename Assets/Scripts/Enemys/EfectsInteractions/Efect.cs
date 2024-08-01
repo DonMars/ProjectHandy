@@ -16,6 +16,13 @@ public class Efect : MonoBehaviour
     [SerializeField] private bool efectoHielo;
     [SerializeField] private bool efectoNormal;
 
+    private Animator animator;
+
+    [SerializeField] private bool animacionEnMano;
+    [SerializeField] private string animacionEnManoName;
+    [SerializeField] private bool animacionArrojado;
+    [SerializeField] private string animacionArrojadoName;
+
     private void OnCollisionEnter(Collision collision)
     {
         //animator = collision.gameObject.GetComponent<Animator>();
@@ -30,8 +37,9 @@ public class Efect : MonoBehaviour
                 }
                 if (efectoHielo == true)
                 {
-                    transform contacto = collision.GetContact();
-                    collision.gameObject.GetComponent<Hielo>().efectoCillision();
+                    ContactPoint contacto = collision.GetContact(0);
+                    
+                    collision.gameObject.GetComponent<Hielo>().efectoCillision(contacto.point);
                     Destroy(gameObject);
                 }
 
@@ -54,18 +62,36 @@ public class Efect : MonoBehaviour
                 }
 
             }
+            animacionArrojado = false;
 
         }
+    }
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
         DesactivarScrips();
+        animacionesControl();
+    }
+    private void animacionesControl()
+    {
+        animator.SetBool(animacionEnManoName, animacionEnMano);
+        animator.SetBool(animacionArrojadoName, animacionArrojado);
+
+        if(Arrojado)
+        {
+            animacionArrojado = true;
+            animacionEnMano= false;
+        }
     }
    
     private void DesactivarScrips()
     {
         if(enMano == true)
         {
+            animacionEnMano = true;
             if(GetComponent<ActionAtack>()!=null)
             {
                 GetComponent<ActionAtack>().enabled = false;
@@ -81,6 +107,8 @@ public class Efect : MonoBehaviour
             Destroy(GetComponent<Patrullaje>());
 
             GetComponent<NavMeshAgent>().enabled = false;
+
+            GetComponent<Patrullaje>().activateAnimacionArrojado = true;
             //GetComponent<CapsuleCollider>().enabled = false;
 
 

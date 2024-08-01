@@ -7,7 +7,7 @@ using UnityEngine.VFX;
 public class ActionAtack : MonoBehaviour
 {
     private Patrullaje patrullaje;
-    public Transform player;
+    private Transform player;
     public NavMeshAgent agent;
     //private AudioListener audioListener;
     public bool detectPlayer;
@@ -24,8 +24,8 @@ public class ActionAtack : MonoBehaviour
 
     public Vector3 ultimatePosition;
 
-    
-    private Animator animator;
+
+    //private Animator animator;
     [SerializeField] private bool animacionAtack;
     [SerializeField] private string animacionAtackName;
 
@@ -36,8 +36,8 @@ public class ActionAtack : MonoBehaviour
     {
         //audioListener = gameObject.GetComponent<AudioListener>();
         patrullaje = FindAnyObjectByType<Patrullaje>();
-        animator= GetComponent<Animator>();
-        //animator.SetBool(animacionAtackName, animacionAtack);
+        //animator= GetComponent<Animator>();
+        
         agent = GetComponent<NavMeshAgent>();
         player = FindAnyObjectByType<PlayerController>().transform;
     }
@@ -45,14 +45,20 @@ public class ActionAtack : MonoBehaviour
     // Update is called once per frame
     private bool Atacando;
     private bool Entra;
+    private bool Conin;
+    private float Contt;
+    [SerializeField] private float forcePush;
+    private bool Atack;
     void Update()
     {
-        
+        //animator.SetBool(animacionAtackName, animacionAtack);
+
         detectPlayer = Physics.CheckSphere(this.transform.position, radio, playerLayerMask);
         if (detectPlayer == false)
         {
 
             Cont += Time.deltaTime;
+            Contt = 0;
         }
         
         if (detectPlayer == true)
@@ -61,8 +67,18 @@ public class ActionAtack : MonoBehaviour
             //SFXManaguer.instance.PlaySound("SountTerror");
             animacionAtack= true;
             patrullaje.playerDetect = true;
-            ultimatePosition = player.position;
-            agent.SetDestination(ultimatePosition);
+            transform.LookAt(player.position);
+            if(Conin)
+            {
+                Contt += Time.deltaTime;
+            }
+            if(Cont >= 5)
+            {
+                Contt = 0;
+                animacionAtack = true;
+                GetComponent<Rigidbody>().AddForce(transform.forward*forcePush,ForceMode.Impulse);
+                Atack= true;
+            }
             Cont = 0;
             
 
@@ -83,13 +99,15 @@ public class ActionAtack : MonoBehaviour
         }
 
     }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.transform.tag == "Player")
-    //    {
-            
-    //    }
-    //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Player" && Atack == true)
+        {
+            collision.transform.GetComponent<PlayerController>().healthPoints--;
+        }
+        
+        
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
