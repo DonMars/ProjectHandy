@@ -11,7 +11,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 8422665151652851206}
-    m_Position: {x: 269.48822, y: 92.26773, z: 0}
+    m_Position: {x: 260, y: 90, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -3668354612274228530}
@@ -19,7 +19,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 280, y: -70, z: 0}
-  m_EntryPosition: {x: 120, y: 200, z: 0}
+  m_EntryPosition: {x: 270, y: 210, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 8422665151652851206}
@@ -54,7 +54,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fire
+  m_Name: Reaction
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Idle
@@ -96,7 +96,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -6513007797826863579, guid: c528493c637ad4f48bdbb44700f7d011,
+  m_Motion: {fileID: -1297859563057510434, guid: 6a0982dbc8c85544dbcc7fa3426d50f0,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
