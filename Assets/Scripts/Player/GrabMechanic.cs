@@ -150,7 +150,7 @@ public class GrabMechanic : MonoBehaviour
         Debug.Log(chargeTime);
 
         // TrajectoryProjection line velocity
-        Vector3 lineVelocity = (grabPoint.forward + throwDirection).normalized * Mathf.Min(chargeTime * throwForce, maxChargeTime);
+        Vector3 lineVelocity = (grabPoint.forward + throwDirection).normalized * Mathf.Min(chargeTime * throwForce, maxChargeTime * 100f);
         ShowTrajectory(grabPoint.position + grabPoint.forward, lineVelocity);
     }
 
