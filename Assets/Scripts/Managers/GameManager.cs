@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public int goldenPoop = 0;
+
     void Awake()
     {
         if (Instance == null)
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        goldenPoop = 0;
     }
 
     void Update()
