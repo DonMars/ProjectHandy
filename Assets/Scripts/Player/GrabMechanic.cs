@@ -10,11 +10,17 @@ public class GrabMechanic : MonoBehaviour
     public float maxChargeTime = 3f;
     bool isCharging;
     Vector3 throwDirection = new Vector3(0,1,0);
-    
+
+    [Header("Leap Mechanic")]
+    bool isLeaping = false;
+
     public Transform grabPoint;
+    bool canThrow = false;
     PlayerController player;
+    Rigidbody playerRb;
     Grabbable grabbable;
     Rigidbody grabbableRb;
+    bool grabbing = false;
 
     public LineRenderer trajectoryProjection;
 
@@ -27,9 +33,12 @@ public class GrabMechanic : MonoBehaviour
     public AudioSource throwSFX2;
     public AudioSource throwSFX3;
 
+    Grabbable grabbableLocal;
+
     void Awake()
     {
         player = GetComponentInParent<PlayerController>();
+        playerRb = GetComponentInParent<Rigidbody>();
     }
 
     private void Start()
@@ -48,55 +57,70 @@ public class GrabMechanic : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing)
+        if (grabbing && player.canGrab && !player.isGrabbing && !player.isRunning || isLeaping)
         {
+            grabbing = false;
+
             if (grabbable == null) // If not grabbing, try to grab
             {
                 if (other.TryGetComponent(out grabbable))
                 {
+                    grabbableLocal = other.GetComponent<Grabbable>();
                     grabbableRb = grabbable.GetComponent<Rigidbody>();
                     grabbable.Grab(grabPoint);
                     player.isGrabbing = true;
                     holdStartTime = Time.time;
 
                     Debug.Log("GRABBING");
-                    if(grabbable.GetComponent<Efect>() != null)
+
+                    if (grabbable.GetComponent<Efect>() != null)
                     {
                         grabbable.GetComponent<Efect>().enMano = true;
                     }
-                    
+
+                    StartCoroutine("ThrowCooldown");
                 }
             }
-
         }
-        else if (Input.GetKeyDown(player.grabKey) && player.isGrabbing)
+
+        if (isCharging)
         {
-            chargingThrowSFX.Play();
-
-            isCharging = true;
-            chargeTime = 0;
-            chargeTime += Time.deltaTime;
-            Debug.Log(chargeTime);
-            Debug.Log("CHARGING");
-
-            // TrajectoryProjection
-            trajectoryProjection.enabled = true;
+            ChargeThrow();
         }
-        
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing && !player.isRunning || isLeaping)
+        {
+            grabbing = true;
+        }
+        // Leap Ability
+        if (Input.GetKeyDown(player.grabKey) && player.canGrab && player.isRunning && !player.isGrabbing && (player.movementSpeed == player.runSpeed))
+        {
+            playerRb.AddForce((transform.forward + new Vector3(0, 0.2f, 0)) * 35f, ForceMode.Impulse);
+            player.currentStamina -= 20;
+
+            isLeaping = true;
+            player.enabled = false;
+            StartCoroutine(LeapRecover());
+        }
+
+        // Throw
         if (Input.GetKeyUp(player.grabKey) && isCharging)
-        {
+            {
             Debug.Log("THROWING");
 
-            if(grabbable.GetComponent<Efect>() != null)
+            if (grabbableLocal.GetComponent<Efect>() != null)
             {
-                grabbable.GetComponent<Efect>().enMano = false;
-                grabbable.GetComponent<Efect>().Arrojado = true;
+                grabbableLocal.GetComponent<Efect>().enMano = false;
+                grabbableLocal.GetComponent<Efect>().Arrojado = true;
             }
 
-            other.TryGetComponent(out grabbable);
+            grabbableLocal.particles.Play();
 
             grabbableRb.isKinematic = false;
-            grabbableRb.AddForce((grabPoint.forward + new Vector3 (0,1,0)) * throwForce * chargeTime, ForceMode.Impulse);
+            grabbableRb.AddForce((grabPoint.forward + new Vector3(0, 1, 0)) * throwForce * chargeTime, ForceMode.Impulse);
 
             // Throw SFX
             int chance = Random.Range(1, 4);
@@ -112,9 +136,9 @@ public class GrabMechanic : MonoBehaviour
             {
                 throwSFX3.Play();
             }
-            
-            grabbable.grabPoint = null;
-            grabbable.transform.parent = null;
+
+            grabbableLocal.grabPoint = null;
+            grabbableLocal.transform.parent = null;
 
             Debug.Log("THREW");
 
@@ -127,13 +151,37 @@ public class GrabMechanic : MonoBehaviour
             trajectoryProjection.enabled = false;
 
             float holdDownTime = Time.time - holdStartTime;
+            grabbableLocal = null;
             grabbable = null;
             player.isGrabbing = false;
+            canThrow = false;
         }
-
-        if (isCharging)
+        // Cancel Throw
+        else if (Input.GetKeyDown(player.cancelGrabKey) && isCharging)
         {
-            ChargeThrow();
+            chargingThrowSFX.Stop();
+            chargeTime = 0;
+            isCharging = false;
+            maxForceSignal.SetActive(false);
+
+            // Hide TrajectoryProjection
+            trajectoryProjection.enabled = false;
+
+            float holdDownTime = Time.time - holdStartTime;
+        }
+        // Charge Throw
+        else if (Input.GetKeyDown(player.grabKey) && player.isGrabbing && canThrow)
+        {
+            chargingThrowSFX.Play();
+
+            isCharging = true;
+            chargeTime = 0;
+            chargeTime += Time.deltaTime;
+            Debug.Log(chargeTime);
+            Debug.Log("CHARGING");
+
+            // TrajectoryProjection
+            trajectoryProjection.enabled = true;
         }
     }
 
@@ -166,5 +214,18 @@ public class GrabMechanic : MonoBehaviour
         }
 
         trajectoryProjection.SetPositions(points);
+    }
+
+    private IEnumerator ThrowCooldown()
+    {
+        yield return new WaitForSeconds(.25f);
+        canThrow = true;
+    }
+
+    private IEnumerator LeapRecover()
+    {
+        yield return new WaitForSeconds(1f);
+        isLeaping = false;
+        player.enabled = true;
     }
 }

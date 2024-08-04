@@ -11,6 +11,7 @@ public class HUDManager : MonoBehaviour
     public GameObject staminaUseWheel;
     public GameObject staminaWheel;
     public GameObject staminaWheelOverlay;
+    public GameObject staminaWheelOverlay2;
 
     public GameObject healthGauge1;
     public GameObject healthGauge2;
@@ -20,6 +21,14 @@ public class HUDManager : MonoBehaviour
 
     public Slider forceGaugeSlider;
     GrabMechanic grabMechanicScript;
+
+    public Slider treasureGauge;
+    public Slider treasureGauge2;
+    public float treasureMaxAmmount;
+    public Animator treasureGaugeAnim;
+
+    public TextMeshProUGUI treasureCounter;
+    public TextMeshProUGUI treasureCounterOutline;
 
     //public TextMeshProUGUI staminaCounter;
 
@@ -34,6 +43,7 @@ public class HUDManager : MonoBehaviour
         staminaWheel.SetActive(false);
         staminaUseWheel.SetActive(false);
         staminaWheelOverlay.SetActive(false);
+        staminaWheelOverlay2.SetActive(false);
 
         healthGauge1.SetActive(false);
         healthGauge2.SetActive(false);
@@ -51,12 +61,14 @@ public class HUDManager : MonoBehaviour
             staminaWheel.SetActive(true);
             staminaUseWheel.SetActive(true);
             staminaWheelOverlay.SetActive(true);
+            staminaWheelOverlay2.SetActive(true);
         }
         else if (playerController.currentStamina == playerController.maxStamina)
         {
             staminaWheel.SetActive(false);
             staminaUseWheel.SetActive(false);
             staminaWheelOverlay.SetActive(false);
+            staminaWheelOverlay2.SetActive(false);
         }
 
         // Life Gauge Manager
@@ -111,5 +123,18 @@ public class HUDManager : MonoBehaviour
         {
             forceGaugeSlider.value = 0;
         }
+
+        // Treasure Gauge Manager
+        treasureGauge.value = GameManager.Instance.goldenPoop / treasureMaxAmmount;
+        treasureGauge2.value = GameManager.Instance.goldenPoop / treasureMaxAmmount;
+        // Treasure Counter Manager
+        treasureCounter.text = GameManager.Instance.goldenPoop.ToString() + (" / ") + treasureMaxAmmount;
+        treasureCounterOutline.text = GameManager.Instance.goldenPoop.ToString() + (" / ") + treasureMaxAmmount;
+    }
+
+    public void TreasureCollect()
+    {
+        treasureGaugeAnim.ResetTrigger("isCollected");
+        treasureGaugeAnim.SetTrigger("isCollected");
     }
 }

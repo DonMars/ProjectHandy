@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public int goldenPoop = 0;
+    public float goldenPoop = 0;
 
     void Awake()
     {

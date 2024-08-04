@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
@@ -10,11 +11,14 @@ public class PlayerController : MonoBehaviour
     [Header("Life")]
     public int healthPoints;
     public int maxHealthPoints = 4;
+    public bool canBeDamaged = true;
+    public SkinnedMeshRenderer handMeshRenderer;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode runKey = KeyCode.LeftShift;
     public KeyCode grabKey = KeyCode.Mouse0;
+    public KeyCode cancelGrabKey = KeyCode.Mouse1;
 
     [Header("Movement")]
     public bool canMove = true;
@@ -31,10 +35,11 @@ public class PlayerController : MonoBehaviour
     public bool canRun = true;
     public float walkSpeed;
     public float runSpeed;
+    public float carryingSpeedDivider;
 
-    bool isIdle = true;
-    bool isRunning = false;
-    bool isWalking = false;
+    public bool isIdle = true;
+    public bool isRunning = false;
+    public bool isWalking = false;
 
     [Header("Grab Ability")]
     public bool canGrab = true;
@@ -78,13 +83,19 @@ public class PlayerController : MonoBehaviour
 
     public MovementState movementState;
 
+    public ParticleSystem dustParticles;
+    public ParticleSystem dustParticlesRunning;
+    public ParticleSystem dustParticlesLanding;
+    public ParticleSystem hurtGFX;
+    public AudioSource hurtSFX1;
+    public AudioSource hurtSFX2;
+    public Animator staminaUseAnimation;
+
     public enum MovementState
     {
         idle,
         walking,
         running,
-        carrying,
-        throwing,
         air
     }
 
@@ -187,7 +198,14 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         if (Mathf.Abs(verticalInput) > 0.1f || Mathf.Abs(horizontalInput) > 0.1f)
+        {
             movementOrientation = (orientation.forward * verticalInput + orientation.right * horizontalInput).normalized;
+
+            if (isGrounded && !isRunning)
+                dustParticles.Play();
+            else if (isGrounded && isRunning)
+                dustParticlesRunning.Play();
+        }
 
         // Jump
         if (Input.GetKey(jumpKey) && canJump && jumpReady && isGrounded)
@@ -195,6 +213,7 @@ public class PlayerController : MonoBehaviour
             jumpReady = false;
             jumpSound.pitch = Random.Range(1.2f, 1.6f);
             jumpSound.Play();
+            dustParticlesLanding.Play();
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
         }
@@ -215,12 +234,26 @@ public class PlayerController : MonoBehaviour
         }
 
         // On ground
+        else if (canMove && isGrounded && isGrabbing)
+        {
+            playerRb.AddForce(movementDirection.normalized * (movementSpeed / carryingSpeedDivider) * 10f, ForceMode.Force);
+        }
         else if (canMove && isGrounded)
+        {
             playerRb.AddForce(movementDirection.normalized * movementSpeed * 10f, ForceMode.Force);
+        }
 
         // In air
+        else if (canMove && !isGrounded && isGrabbing)
+        {
+            playerRb.AddForce(movementDirection.normalized * (movementSpeed / carryingSpeedDivider) * 10f * airMultiplier, ForceMode.Force);
+        }
         else if (canMove && !isGrounded)
+        {
             playerRb.AddForce(movementDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Force);
+
+
+        }
 
         // Turn Gravity off on slopes
         playerRb.useGravity = !OnSlope();
@@ -232,7 +265,9 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         // Ground Check
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
+        //isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
+        isGrounded = Physics.Raycast(transform.position + new Vector3(-.2f,0,0), Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
+        isGrounded = Physics.Raycast(transform.position + new Vector3(.2f,0,0), Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
     }
 
     bool OnSlope()
@@ -289,7 +324,11 @@ public class PlayerController : MonoBehaviour
         // Reset y velocity
         playerRb.velocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
 
-        playerRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        // Perform Jump
+        if (isGrabbing)
+            playerRb.AddForce(transform.up * (jumpForce - (carryingSpeedDivider * 2)), ForceMode.Impulse);
+        else
+            playerRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
     void ResetJump()
@@ -302,6 +341,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isRunning && movementDirection != Vector3.zero)
         {
+            staminaUseAnimation.SetBool("staminaUse", true);
+
             if (regeneratingStamina != null)
             {
                 StopCoroutine(regeneratingStamina);
@@ -330,6 +371,7 @@ public class PlayerController : MonoBehaviour
 
         if (!isRunning && currentStamina < maxStamina && regeneratingStamina == null)
         {
+            staminaUseAnimation.SetBool("staminaUse", false);
             regeneratingStamina = StartCoroutine(RegenerateStamina());
         }
     }
@@ -355,5 +397,85 @@ public class PlayerController : MonoBehaviour
         }
 
         regeneratingStamina = null;
+    }
+
+    public void ApplyDamage()
+    {
+        if (canBeDamaged && healthPoints > 0)
+        {
+            healthPoints--;
+            hurtGFX.Play();
+
+            int chance = Random.Range(1, 3);
+
+            if (chance == 1)
+            {
+                hurtSFX1.pitch = Random.Range(.8f, 1);
+                hurtSFX1.Play();
+            }
+            else if (chance == 2)
+            {
+                hurtSFX2.pitch = Random.Range(.8f, 1);
+                hurtSFX2.Play();
+            }
+        }
+        else if (canBeDamaged && healthPoints <= 0)
+        {
+            healthPoints = 0;
+            GameOver();
+        }
+
+        canBeDamaged = false;
+
+        StartCoroutine(DamageCooldown());
+    }
+
+    public IEnumerator DamageCooldown()
+    {
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.025f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.025f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.025f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.025f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.025f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.025f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.025f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.025f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.05f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.05f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.05f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.05f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.05f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.08f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.08f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.08f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.09f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.11f);
+        handMeshRenderer.enabled = true;
+        yield return new WaitForSeconds(0.13f);
+        handMeshRenderer.enabled = false;
+        yield return new WaitForSeconds(0.05f);
+        handMeshRenderer.enabled = true;
+
+        canBeDamaged = true;
     }
 }

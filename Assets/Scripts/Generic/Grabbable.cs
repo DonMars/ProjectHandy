@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ParticleSystem))]
+
 public class Grabbable : MonoBehaviour
 {
     public float lerpSpeed;
     PlayerController player;
     Rigidbody playerRb;
+    public ParticleSystem particles;
 
     Rigidbody rb;
     public Transform grabPoint;

@@ -5,13 +5,20 @@ using UnityEngine;
 public class DamageOnContact : MonoBehaviour
 {
     bool damageSwitch = true;
+    PlayerController playerController;
+
+
+    private void Start()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (damageSwitch)
+        if (damageSwitch && playerController.canBeDamaged && other.CompareTag("Player"))
         {
             damageSwitch = false;
-            other.GetComponent<PlayerController>().healthPoints -= 1;
+            FindAnyObjectByType<PlayerController>().ApplyDamage();
         }
     }
 

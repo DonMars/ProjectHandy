@@ -30,5 +30,4 @@ public class StaminaWheel : MonoBehaviour
         if (staminaWheel.value <= 0)
             staminaUseWheel.value = 0;
     }
-
 }
