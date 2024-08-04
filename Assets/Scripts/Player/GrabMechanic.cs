@@ -162,7 +162,9 @@ public class GrabMechanic : MonoBehaviour
             chargingThrowSFX.Stop();
             chargeTime = 0;
             isCharging = false;
-            maxForceSignal.SetActive(false);
+
+            if (maxForceSignal.activeInHierarchy)
+                maxForceSignal.SetActive(false);
 
             // Hide TrajectoryProjection
             trajectoryProjection.enabled = false;
