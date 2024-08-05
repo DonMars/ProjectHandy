@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using VFolders.Libs;
 
 public class GoldenPoopCollectable : MonoBehaviour
 {
@@ -64,6 +63,6 @@ public class GoldenPoopCollectable : MonoBehaviour
     IEnumerator Destroy()
     {
         yield return new WaitForSeconds(2f);
-        this.gameObject.Destroy();
+        Destroy(this.gameObject);
     }
 }

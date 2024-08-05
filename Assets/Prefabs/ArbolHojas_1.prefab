@@ -198,6 +198,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7399c9f97d1613e4cb2b32fc7d570bef, type: 2}
+    - target: {fileID: 6735571219391120344, guid: e0a60c25c13c746408f21d1155444b36,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0846
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735571219391120344, guid: e0a60c25c13c746408f21d1155444b36,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.6833
+      objectReference: {fileID: 0}
     - target: {fileID: 6772292673792552178, guid: e0a60c25c13c746408f21d1155444b36,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -237,24 +247,24 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e0a60c25c13c746408f21d1155444b36,
+    - targetCorrespondingSourceObject: {fileID: -6922450035542596991, guid: e0a60c25c13c746408f21d1155444b36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7911465171893018150}
+      addedObject: {fileID: 2037021732520099975}
   m_SourcePrefab: {fileID: 100100000, guid: e0a60c25c13c746408f21d1155444b36, type: 3}
---- !u!1 &7576728252926007429 stripped
+--- !u!1 &8793876117380974421 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0a60c25c13c746408f21d1155444b36,
+  m_CorrespondingSourceObject: {fileID: -6922450035542596991, guid: e0a60c25c13c746408f21d1155444b36,
     type: 3}
   m_PrefabInstance: {fileID: 7342164687743559124}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &7911465171893018150
+--- !u!64 &2037021732520099975
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576728252926007429}
+  m_GameObject: {fileID: 8793876117380974421}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -269,4 +279,4 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 6121564988181882117, guid: e0a60c25c13c746408f21d1155444b36, type: 3}

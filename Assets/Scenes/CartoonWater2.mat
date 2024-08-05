@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CartoonWater2
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: -6465566751694194690, guid: c8a1fe3e14eb08243931c625db28c1fa,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -114,7 +115,7 @@ Material:
     - _ZWrite: 1
     - _alpha_cliping: 0
     m_Colors:
-    - _BaseColor: {r: 0.08018869, g: 0.8401285, b: 1, a: 1}
+    - _BaseColor: {r: 0.08018869, g: 0.8401285, b: 1, a: 0}
     - _Color: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RippleColor: {r: 0.3820755, g: 0.8005406, b: 1, a: 0}
