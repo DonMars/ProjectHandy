@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class ActionEsconder : MonoBehaviour
 {
     private Patrullaje patrullaje;
-    public Transform player;
+    //public Transform player;
     public NavMeshAgent agent;
     //private AudioListener audioListener;
     public bool detectPlayer;
@@ -16,7 +16,7 @@ public class ActionEsconder : MonoBehaviour
     //public float Cont;
     
     //private Animator animator;
-    [SerializeField]private bool animacionCabar;
+    [SerializeField]private bool animacionEsconder;
     [SerializeField]private string animacionCabarName;
 
     public LayerMask playerLayerMask;
@@ -45,7 +45,7 @@ public class ActionEsconder : MonoBehaviour
 
             //SFXManaguer.instance.PlaySound("SountTerror");
             patrullaje.playerDetect = true;
-            animacionCabar = true;
+            animacionEsconder = true;
             
             //Cont = 0;
 
@@ -55,7 +55,7 @@ public class ActionEsconder : MonoBehaviour
         {
             //SFXManaguer.instance.PlayStop("SountTerror");
 
-            animacionCabar = false;
+            animacionEsconder = false;
 
             patrullaje.playerDetect = false;
 

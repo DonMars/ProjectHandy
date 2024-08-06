@@ -15,8 +15,9 @@ public class Efect : MonoBehaviour
     [SerializeField] private bool efectofuego;
     [SerializeField] private bool efectoHielo;
     [SerializeField] private bool efectoNormal;
+    [SerializeField] private bool efectoRoca;
 
-    private Animator animator;
+    //private Animator animator;
 
     [SerializeField] private bool animacionEnMano;
     [SerializeField] private string animacionEnManoName;
@@ -42,9 +43,16 @@ public class Efect : MonoBehaviour
                     collision.gameObject.GetComponent<Hielo>().efectoCillision(contacto.point);
                     Destroy(gameObject);
                 }
+                if (efectoRoca == true)
+                {
+                    collision.gameObject.GetComponent<botton>().move = true;
+                    
+                    
+                }
 
             }
-            
+            Arrojado = false;
+
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -66,10 +74,10 @@ public class Efect : MonoBehaviour
 
         }
     }
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    //private void Start()
+    //{
+    //    animator = GetComponent<Animator>();
+    //}
     private void Update()
     {
         DesactivarScrips();
@@ -77,13 +85,14 @@ public class Efect : MonoBehaviour
     }
     private void animacionesControl()
     {
-        animator.SetBool(animacionEnManoName, animacionEnMano);
-        animator.SetBool(animacionArrojadoName, animacionArrojado);
+        //animator.SetBool(animacionEnManoName, animacionEnMano);
+        //animator.SetBool(animacionArrojadoName, animacionArrojado);
 
         if(Arrojado)
         {
             animacionArrojado = true;
             animacionEnMano= false;
+            this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
         }
     }
    
@@ -100,15 +109,13 @@ public class Efect : MonoBehaviour
             {
                 GetComponent<ActionEsconder>().enabled = false;
             }
-            //if (GetComponent<NavMeshAgent>() != null)
-            //{
+            this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
-            //}
             Destroy(GetComponent<Patrullaje>());
 
             GetComponent<NavMeshAgent>().enabled = false;
 
-            GetComponent<Patrullaje>().activateAnimacionArrojado = true;
+            //animacionArrojado = true;
             //GetComponent<CapsuleCollider>().enabled = false;
 
 
