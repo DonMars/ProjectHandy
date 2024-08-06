@@ -128,13 +128,13 @@ public class PlayerController : MonoBehaviour
         MovementInput();
         SpeedControl();
         StateHandler();
-        HandleDrag();
         HandleHealth();
     }
 
     void FixedUpdate()
     {
         MovePlayer();
+        HandleDrag();
     }
 
     void HandleHealth()
