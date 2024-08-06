@@ -91,6 +91,9 @@ public class PlayerController : MonoBehaviour
     public AudioSource hurtSFX2;
     public Animator staminaUseAnimation;
 
+    [Header("Animator")]
+    public Animator animator;
+
     public enum MovementState
     {
         idle,
@@ -171,6 +174,8 @@ public class PlayerController : MonoBehaviour
             isIdle = false;
             isRunning = false;
             isWalking = true;
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", true);
         }
 
         // State - Idle
@@ -180,6 +185,8 @@ public class PlayerController : MonoBehaviour
             isWalking = false;
             isRunning = false;
             isIdle = true;
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isWalking", false);
         }
 
         // State - Air
