@@ -23,7 +23,16 @@ public class Efect : MonoBehaviour
     [SerializeField] private string animacionEnManoName;
     [SerializeField] private bool animacionArrojado;
     [SerializeField] private string animacionArrojadoName;
+    private Rigidbody rb;
 
+    [SerializeField] private bool iniciarCont;
+    [SerializeField] private bool sinColision;
+    private float cont;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         //animator = collision.gameObject.GetComponent<Animator>();
@@ -36,13 +45,7 @@ public class Efect : MonoBehaviour
                     collision.gameObject.GetComponent<Quemar>().efectoCillision();
                     Destroy(gameObject);
                 }
-                if (efectoHielo == true)
-                {
-                    ContactPoint contacto = collision.GetContact(0);
-                    
-                    collision.gameObject.GetComponent<Hielo>().efectoCillision(contacto.point);
-                    Destroy(gameObject);
-                }
+                
                 if (efectoRoca == true)
                 {
                     collision.gameObject.GetComponent<botton>().move = true;
@@ -51,9 +54,14 @@ public class Efect : MonoBehaviour
                 }
 
             }
-            Arrojado = false;
+            iniciarCont = true;
+            
 
         }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        sinColision= false;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -61,8 +69,14 @@ public class Efect : MonoBehaviour
         {
             if (other.transform.tag == "Interactuable")
             {
-                
-                
+                if (efectoHielo == true)
+                {
+                    Vector3 contacto = other.ClosestPoint(transform.position);
+
+                    other.gameObject.GetComponent<Hielo>().efectoCillision(contacto);
+                    Destroy(gameObject);
+                }
+
                 if (efectoNormal == true)
                 {
                     other.gameObject.GetComponent<Normal>().move = true;
@@ -73,6 +87,7 @@ public class Efect : MonoBehaviour
             animacionArrojado = false;
 
         }
+        
     }
     //private void Start()
     //{
@@ -82,6 +97,26 @@ public class Efect : MonoBehaviour
     {
         DesactivarScrips();
         animacionesControl();
+        //if (rb.velocity.magnitude == 0 && Arrojado == true)
+        //{
+        //    Arrojado = false;
+        //}
+        if(iniciarCont)
+        {
+            cont += Time.deltaTime;
+        }
+        if(cont >= 0.5 && sinColision == false)
+        {
+            Arrojado = false;
+            iniciarCont= false;
+            cont= 0;
+        }
+        if(sinColision== true)
+        {
+            cont = 0;
+            iniciarCont= false;
+        }
+
     }
     private void animacionesControl()
     {
@@ -92,7 +127,11 @@ public class Efect : MonoBehaviour
         {
             animacionArrojado = true;
             animacionEnMano= false;
-            this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+            //this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        }
+        if(Arrojado == false)
+        {
+            animacionArrojado= false;
         }
     }
    
@@ -109,7 +148,7 @@ public class Efect : MonoBehaviour
             {
                 GetComponent<ActionEsconder>().enabled = false;
             }
-            this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            //this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
             Destroy(GetComponent<Patrullaje>());
 

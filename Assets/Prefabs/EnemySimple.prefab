@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 25
-  particles: {fileID: 0}
+  particles: {fileID: 6072610627525517031}
   grabPoint: {fileID: 0}
 --- !u!114 &7871029008392753640
 MonoBehaviour:

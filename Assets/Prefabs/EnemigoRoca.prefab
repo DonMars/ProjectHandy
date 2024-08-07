@@ -10,6 +10,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6d8f19998d8ba0f478c9f6eb96d4106b,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6d8f19998d8ba0f478c9f6eb96d4106b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6d8f19998d8ba0f478c9f6eb96d4106b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6d8f19998d8ba0f478c9f6eb96d4106b,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.51
       objectReference: {fileID: 0}
@@ -134,10 +149,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8913002
-  m_Height: 1.5637994
+  m_Radius: 0.7959047
+  m_Height: 1.7320266
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.000000029802322}
+  m_Center: {x: 0.010464489, y: 0.02528727, z: 0}
 --- !u!114 &8469425082632106325
 MonoBehaviour:
   m_ObjectHideFlags: 0

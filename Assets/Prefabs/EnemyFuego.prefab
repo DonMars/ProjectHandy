@@ -258,13 +258,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 466801561368732155}
+  - component: {fileID: 2296186282132146851}
+  - component: {fileID: 5474716568601323261}
+  - component: {fileID: 1865471079513068334}
+  - component: {fileID: 2751006796956517069}
   - component: {fileID: 9030490572016638144}
   - component: {fileID: 3514552573113585635}
   - component: {fileID: 2890854333986569128}
-  - component: {fileID: 5474716568601323261}
-  - component: {fileID: 2751006796956517069}
-  - component: {fileID: 2296186282132146851}
-  - component: {fileID: 1865471079513068334}
   - component: {fileID: 4246858097345712890}
   - component: {fileID: 6686337439308464819}
   m_Layer: 0
@@ -284,13 +284,99 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.76, y: 1.52, z: 2.99}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2600188851384948702}
   - {fileID: 2856853575770697811}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2296186282132146851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055517041874362579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d299685363a6cc47a43cec21ec67159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Arrojado: 0
+  enMano: 0
+  Golpea: 0
+  efectofuego: 1
+  efectoHielo: 0
+  efectoNormal: 0
+  efectoRoca: 0
+  animacionEnMano: 0
+  animacionEnManoName: 
+  animacionArrojado: 0
+  animacionArrojadoName: 
+--- !u!114 &5474716568601323261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055517041874362579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3c946c5f7370b4f817433588001440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 3514552573113585635}
+  detectPlayer: 0
+  Cont: 0
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  radio: 7.12
+  ultimatePosition: {x: 0, y: 0, z: 0}
+  animacionAtack: 0
+  animacionAtackName: 
+  forcePush: 10
+--- !u!114 &1865471079513068334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055517041874362579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3305730ffd4a3c4c8bb0cf7c9ecdf37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpSpeed: 0.05
+  particles: {fileID: 6686337439308464819}
+  grabPoint: {fileID: 0}
+--- !u!114 &2751006796956517069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055517041874362579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27ea1e80fd4afd43aeaae16d33462f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 3514552573113585635}
+  playerDetect: 0
+  patrullando: 0
+  minPos: {fileID: 0}
+  maxPos: {fileID: 0}
+  ZonaMin: {x: 0, y: 0, z: 0}
+  ZonaMax: {x: 0, y: 0, z: 0}
+  activateAnimacionWalk: 0
+  animacionWalkName: Run
+  activateAnimacionRandom: 0
+  animacionAccionRandomName: Random
+  activateAnimacionArrojado: 0
+  animacionAccionArrojadoName: 
 --- !u!136 &9030490572016638144
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -310,10 +396,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.4345491
-  m_Height: 3.1317165
+  m_Radius: 0.85321563
+  m_Height: 1.7100787
   m_Direction: 1
-  m_Center: {x: 0.004119158, y: -0.060451865, z: -0.01825285}
+  m_Center: {x: 0.004119192, y: -0.7074055, z: 0.0055319923}
 --- !u!195 &3514552573113585635
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -363,92 +449,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5474716568601323261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4055517041874362579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc3c946c5f7370b4f817433588001440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 3514552573113585635}
-  detectPlayer: 0
-  Cont: 0
-  playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  radio: 7.12
-  ultimatePosition: {x: 0, y: 0, z: 0}
-  animacionAtack: 0
-  animacionAtackName: 
-  forcePush: 10
---- !u!114 &2751006796956517069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4055517041874362579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27ea1e80fd4afd43aeaae16d33462f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 3514552573113585635}
-  playerDetect: 0
-  patrullando: 0
-  minPos: {fileID: 0}
-  maxPos: {fileID: 0}
-  ZonaMin: {x: 0, y: 0, z: 0}
-  ZonaMax: {x: 0, y: 0, z: 0}
-  activateAnimacionWalk: 0
-  animacionWalkName: Run
-  activateAnimacionRandom: 0
-  animacionAccionRandomName: Random
-  activateAnimacionArrojado: 0
-  animacionAccionArrojadoName: 
---- !u!114 &2296186282132146851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4055517041874362579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d299685363a6cc47a43cec21ec67159, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Arrojado: 0
-  enMano: 0
-  Golpea: 0
-  efectofuego: 1
-  efectoHielo: 0
-  efectoNormal: 0
-  efectoRoca: 0
-  animacionEnMano: 0
-  animacionEnManoName: 
-  animacionArrojado: 0
-  animacionArrojadoName: 
---- !u!114 &1865471079513068334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4055517041874362579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3305730ffd4a3c4c8bb0cf7c9ecdf37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lerpSpeed: 0.05
-  particles: {fileID: 0}
-  grabPoint: {fileID: 0}
 --- !u!95 &4246858097345712890
 Animator:
   serializedVersion: 5

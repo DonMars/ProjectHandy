@@ -36,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.76, y: 1.52, z: 2.99}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6166787722765032047}
@@ -111,10 +111,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.69872904
-  m_Height: 1.7318718
+  m_Radius: 0.7373525
+  m_Height: 1.5839372
   m_Direction: 1
-  m_Center: {x: 0.04168129, y: -0.13406408, z: 0}
+  m_Center: {x: 0.0030578673, y: -0.14301643, z: 0}
 --- !u!195 &262079736958158763
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -232,6 +232,8 @@ MonoBehaviour:
   animacionEnManoName: 
   animacionArrojado: 0
   animacionArrojadoName: 
+  iniciarCont: 0
+  sinColision: 0
 --- !u!114 &4588136391913259215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 0.58
-  particles: {fileID: 0}
+  particles: {fileID: 8209177592481402001}
   grabPoint: {fileID: 0}
 --- !u!198 &8209177592481402001
 ParticleSystem:
