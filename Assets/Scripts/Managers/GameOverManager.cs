@@ -5,15 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public string nivel = "nivel2";
+    public string menu = "main menu";
+    
     public void Continue()
     {
-        
+        SceneManager.LoadScene(nivel);
     }
 
-    // Update is called once per frame
     public void MainMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene(menu);
     }
 }
