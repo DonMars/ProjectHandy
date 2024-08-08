@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject bestiarioMenu;
+    [SerializeField] GameObject controlesMenu;
     [SerializeField] GameObject fluffInfo;
     [SerializeField] GameObject fluffRockInfo;
     [SerializeField] GameObject fluffFireInfo;
@@ -52,11 +53,18 @@ public class PauseMenu : MonoBehaviour
         bestiarioMenu.SetActive(true);
         Time.timeScale = 0;
     }
+    public void Controles()
+    {
+        controlesMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
 
     public void Resumebesti()
     {
         DeactivateAllCards();
         pauseMenu.SetActive(false);
+        bestiarioMenu.SetActive(false);
+        controlesMenu.SetActive(false);
 
         Time.timeScale = 0;
     }
@@ -65,6 +73,7 @@ public class PauseMenu : MonoBehaviour
     {
         DeactivateAllCards();
         bestiarioMenu.SetActive(false);
+        controlesMenu.SetActive(false);
 
 
         Time.timeScale = 0;
