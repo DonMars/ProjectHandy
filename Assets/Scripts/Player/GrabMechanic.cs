@@ -12,7 +12,7 @@ public class GrabMechanic : MonoBehaviour
     Vector3 throwDirection = new Vector3(0,1,0);
 
     [Header("Leap Mechanic")]
-    bool isLeaping = false;
+    public bool isLeaping = false;
 
     public Transform grabPoint;
     bool canThrow = false;
@@ -20,7 +20,7 @@ public class GrabMechanic : MonoBehaviour
     Rigidbody playerRb;
     Grabbable grabbable;
     Rigidbody grabbableRb;
-    bool grabbing = false;
+    public bool grabbing = false;
 
     public LineRenderer trajectoryProjection;
 

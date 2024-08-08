@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     public bool grabSwitch = false;
     public bool isGrabbing = false; // Detecta cuando estás cargando algo
     public float grabbingSpeed;
+    GrabMechanic grabMechanic;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -94,6 +95,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Animator")]
     public Animator animator;
+    bool playerDies = false;
 
     public enum MovementState
     {
@@ -107,6 +109,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
+        grabMechanic = FindObjectOfType<GrabMechanic>();
 
         playerRb.freezeRotation = true;
 
@@ -130,6 +133,7 @@ public class PlayerController : MonoBehaviour
         SpeedControl();
         StateHandler();
         HandleHealth();
+        AnimationHandler();
     }
 
     void FixedUpdate()
@@ -152,21 +156,29 @@ public class PlayerController : MonoBehaviour
 
     void GameOver()
     {
-        animator.SetTrigger("playerDies");
+        playerDies = true;
         Debug.Log("Mr. Handy is DEAD! Game Over");
     }
 
-    void StateHandler()
+    void AnimationHandler()
     {
         animator.SetBool("isIdle", isIdle);
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isWalking", isWalking);
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isGrabbing", isGrabbing);
-        
 
+        if (playerDies)
+        {
+            animator.ResetTrigger("playerDies");
+            animator.SetTrigger("playerDies");
+        }
+    }
+
+    void StateHandler()
+    {
         // State - Running
-        if (isGrounded && canRun && Input.GetKey(runKey))
+        if (isGrounded && canRun && Input.GetKey(runKey) && ((Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0) || (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") < 0)))
         {
             movementState = MovementState.running;
             movementSpeed = runSpeed;
