@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Bestiario : MonoBehaviour
 {
-    public void Home()
+
+    public GameObject[] entries;
+
+    public void EnableEntry(int id)
     {
-        SceneManager.LoadScene("Main Menu");
-        Time.timeScale = 1;
+        for (int i = 0; i < entries.Length; i++)
+        {
+            entries[i].SetActive(false);
+        }
+        entries[id].SetActive(true);    
     }
 }
