@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour
         fluffRockInfo.SetActive(false);
         fluffInfo.SetActive(false);
         handyInfo.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 
     public void ResumePause()
@@ -66,8 +66,12 @@ public class PauseMenu : MonoBehaviour
         fluffRockInfo.SetActive(false);
         fluffInfo.SetActive(false);
         handyInfo.SetActive(false);
+        fluffBombInfo.SetActive(false);
+        fluffMacetaInfo.SetActive(false);
+        fluffPlantInfo.SetActive(false);
 
-        Time.timeScale = 1;
+
+        Time.timeScale = 0;
     }
 
     public void fluffer()
@@ -77,7 +81,10 @@ public class PauseMenu : MonoBehaviour
         fluffIceInfo.SetActive(false);
         fluffFireInfo.SetActive(false);
         handyInfo.SetActive(false);
-        Time.timeScale = 1;
+        fluffBombInfo.SetActive(false);
+        fluffMacetaInfo.SetActive(false);
+        fluffPlantInfo.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void flufferRock()
@@ -87,7 +94,10 @@ public class PauseMenu : MonoBehaviour
         fluffIceInfo.SetActive(false);
         fluffFireInfo.SetActive(false);
         handyInfo.SetActive(false);
-        Time.timeScale = 1;
+        fluffBombInfo.SetActive(false);
+        fluffMacetaInfo.SetActive(false);
+        fluffPlantInfo.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void flufferIce()
@@ -97,7 +107,10 @@ public class PauseMenu : MonoBehaviour
         fluffInfo.SetActive(false);
         fluffFireInfo.SetActive(false);
         handyInfo.SetActive(false);
-        Time.timeScale = 1;
+        fluffBombInfo.SetActive(false);
+        fluffMacetaInfo.SetActive(false);
+        fluffPlantInfo.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void flufferFire()
@@ -107,7 +120,10 @@ public class PauseMenu : MonoBehaviour
         fluffRockInfo.SetActive(false);
         fluffInfo.SetActive(false);
         handyInfo.SetActive(false);
-        Time.timeScale = 1;
+        fluffBombInfo.SetActive(false);
+        fluffMacetaInfo.SetActive(false);
+        fluffPlantInfo.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void handy()
@@ -117,7 +133,10 @@ public class PauseMenu : MonoBehaviour
         fluffRockInfo.SetActive(false);
         fluffFireInfo.SetActive(false);
         fluffInfo.SetActive(false);
-        Time.timeScale = 1;
+        fluffBombInfo.SetActive(false);
+        fluffMacetaInfo.SetActive(false);
+        fluffPlantInfo.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void flufferBomb()
@@ -130,7 +149,7 @@ public class PauseMenu : MonoBehaviour
         fluffInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 
     public void flufferPlant()
@@ -143,7 +162,7 @@ public class PauseMenu : MonoBehaviour
         fluffInfo.SetActive(false);
         fluffBombInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 
     public void flufferMaceta()
@@ -156,7 +175,7 @@ public class PauseMenu : MonoBehaviour
         fluffInfo.SetActive(false);
         fluffBombInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
     public void Map()
     {
