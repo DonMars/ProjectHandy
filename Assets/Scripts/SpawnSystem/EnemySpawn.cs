@@ -29,15 +29,20 @@ public class EnemySpawn : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && contCollider <= 0)
+        if (other.transform.tag == "Player")
         {
             contCollider++;
             StartCoroutine(Spawn());
         }
-        else if(other.transform.tag == "Player" && contCollider > 0)
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "Player")
         {
             StartCoroutine(EliminarPersonajes());
-            contCollider = 0;
+            
         }
     }
     private void IncializarVectores()
@@ -94,6 +99,30 @@ public class EnemySpawn : MonoBehaviour
     {
         int num = Random.Range(1, 10);
         return num;
+    }
+
+    public void InstanceEnemy()
+    {
+        
+        if (ProbabilidadPrimerEnemigo >= RandomNum())
+        {
+            GameObject object1 = Instantiate(preFabs[0], PosicionAleatoria(), Quaternion.identity);
+            object1.transform.SetParent(parentSpawn);
+            Patrullaje patrullaje = object1.GetComponent<Patrullaje>();
+            patrullaje.ZonaMax = ZonaMax;
+            patrullaje.ZonaMin = ZonaMin;
+
+
+        }
+        else
+        {
+            GameObject object1 = Instantiate(preFabs[1], PosicionAleatoria(), Quaternion.identity);
+            object1.transform.SetParent(parentSpawn);
+            Patrullaje patrullaje = object1.GetComponent<Patrullaje>();
+            patrullaje.ZonaMax = ZonaMax;
+            patrullaje.ZonaMin = ZonaMin;
+
+        }
     }
 
 }
