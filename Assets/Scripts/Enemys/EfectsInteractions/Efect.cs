@@ -174,4 +174,9 @@ public class Efect : MonoBehaviour
 
 
     }
+
+    private void OnTransformParentChanged()
+    {
+        
+    }
 }
