@@ -31,13 +31,14 @@ public class PlayerController : MonoBehaviour
     public float airMultiplier;
     bool jumpReady = true;
     public AudioSource jumpSound;
+    public bool isJumping = false;
 
     public bool canRun = true;
     public float walkSpeed;
     public float runSpeed;
     public float carryingSpeedDivider;
 
-    public bool isIdle = true;
+    public bool isIdle = true;  
     public bool isRunning = false;
     public bool isWalking = false;
 
@@ -151,11 +152,19 @@ public class PlayerController : MonoBehaviour
 
     void GameOver()
     {
+        animator.SetTrigger("playerDies");
         Debug.Log("Mr. Handy is DEAD! Game Over");
     }
 
     void StateHandler()
     {
+        animator.SetBool("isIdle", isIdle);
+        animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isGrabbing", isGrabbing);
+        
+
         // State - Running
         if (isGrounded && canRun && Input.GetKey(runKey))
         {
@@ -174,8 +183,6 @@ public class PlayerController : MonoBehaviour
             isIdle = false;
             isRunning = false;
             isWalking = true;
-            animator.SetBool("isIdle", false);
-            animator.SetBool("isWalking", true);
         }
 
         // State - Idle
@@ -185,8 +192,6 @@ public class PlayerController : MonoBehaviour
             isWalking = false;
             isRunning = false;
             isIdle = true;
-            animator.SetBool("isIdle", true);
-            animator.SetBool("isWalking", false);
         }
 
         // State - Air
@@ -218,9 +223,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(jumpKey) && canJump && jumpReady && isGrounded)
         {
             jumpReady = false;
+
             jumpSound.pitch = Random.Range(1.2f, 1.6f);
             jumpSound.Play();
+
+            animator.ResetTrigger("isJumping");
+            animator.SetTrigger("isJumping");
             dustParticlesLanding.Play();
+
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
         }
@@ -327,6 +337,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         exitingSlope = true;
+        isJumping = true;
 
         // Reset y velocity
         playerRb.velocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);

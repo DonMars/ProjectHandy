@@ -35,6 +35,8 @@ public class GrabMechanic : MonoBehaviour
 
     Grabbable grabbableLocal;
 
+    public Animator playerAnimator;
+
     void Awake()
     {
         player = GetComponentInParent<PlayerController>();

@@ -221,11 +221,13 @@ MonoBehaviour:
   efectofuego: 0
   efectoHielo: 0
   efectoNormal: 1
-  efectoRoca: 0
+  efectoRoca: 1
   animacionEnMano: 0
   animacionEnManoName: 
   animacionArrojado: 0
   animacionArrojadoName: 
+  iniciarCont: 0
+  sinColision: 0
 --- !u!198 &6072610627525517031
 ParticleSystem:
   m_ObjectHideFlags: 0
