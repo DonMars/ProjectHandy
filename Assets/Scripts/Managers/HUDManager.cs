@@ -147,7 +147,7 @@ public class HUDManager : MonoBehaviour
 
         if (goldenPoopValue >= 1)
         {
-            BestiaryManager.Instance.UnlockBestiaryEntry();
+            PauseMenu.Instance.UnlockBestiaryEntry();
         }
     }
 }
