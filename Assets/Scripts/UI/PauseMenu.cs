@@ -28,11 +28,12 @@ public class PauseMenu : MonoBehaviour
     {
         
         pauseMenu.SetActive(true);
+
         Time.timeScale = 0;
     }
     public void Home()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Main Menu Redux");
         Time.timeScale = 1;
     }
     public void Resume()
@@ -54,41 +55,16 @@ public class PauseMenu : MonoBehaviour
 
     public void Resumebesti()
     {
-        bestiarioMenu.SetActive(false);
+        DeactivateAllCards();
         pauseMenu.SetActive(false);
-        fluffFireInfo.SetActive(false);
-        fluffIceInfo.SetActive(false);
-        fluffRockInfo.SetActive(false);
-        fluffInfo.SetActive(false);
-        handyInfo.SetActive(false);
-        fluffBombInfo.SetActive(false);
-        fluffMacetaInfo.SetActive(false);
-        fluffPlantInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
-        
+
         Time.timeScale = 0;
     }
 
     public void ResumePause()
     {
+        DeactivateAllCards();
         bestiarioMenu.SetActive(false);
-        fluffFireInfo.SetActive(false);
-        fluffIceInfo.SetActive(false);
-        fluffRockInfo.SetActive(false);
-        fluffInfo.SetActive(false);
-        handyInfo.SetActive(false);
-        fluffBombInfo.SetActive(false);
-        fluffMacetaInfo.SetActive(false);
-        fluffPlantInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
 
 
         Time.timeScale = 0;
@@ -96,149 +72,85 @@ public class PauseMenu : MonoBehaviour
 
     public void fluffer()
     {
+        DeactivateAllCards();
         fluffInfo.SetActive(true);
-        fluffRockInfo.SetActive(false);
-        fluffIceInfo.SetActive(false);
-        fluffFireInfo.SetActive(false);
-        handyInfo.SetActive(false);
-        fluffBombInfo.SetActive(false);
-        fluffMacetaInfo.SetActive(false);
-        fluffPlantInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
-        UnlockBestiaryEntry();
+        if (GameManager.Instance.goldenPoop >= 1)
+        {
+            DeactivateAllCards();
+            fluffCard.SetActive(true); // Desbloquea la primera tarjeta
+        }
         Time.timeScale = 0;
     }
 
     public void flufferRock()
     {
+        DeactivateAllCards();
         fluffRockInfo.SetActive(true);
-        fluffInfo.SetActive(false);
-        fluffIceInfo.SetActive(false);
-        fluffFireInfo.SetActive(false);
-        handyInfo.SetActive(false);
-        fluffBombInfo.SetActive(false);
-        fluffMacetaInfo.SetActive(false);
-        fluffPlantInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
-        Time.timeScale = 0;
-    }
-
-    public void flufferIce()
-    {
-        fluffIceInfo.SetActive(true);
-        fluffRockInfo.SetActive(false);
-        fluffInfo.SetActive(false);
-        fluffFireInfo.SetActive(false);
-        handyInfo.SetActive(false);
-        fluffBombInfo.SetActive(false);
-        fluffMacetaInfo.SetActive(false);
-        fluffPlantInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
-
+        if (GameManager.Instance.goldenPoop >= 2)
+        {
+            DeactivateAllCards();
+            fluffRockCard.SetActive(true); // Desbloquea la segunda tarjeta
+        }
         Time.timeScale = 0;
     }
 
     public void flufferFire()
     {
+
+        DeactivateAllCards();
         fluffFireInfo.SetActive(true);
-        fluffIceInfo.SetActive(false);
-        fluffRockInfo.SetActive(false);
-        fluffInfo.SetActive(false);
-        handyInfo.SetActive(false);
-        fluffBombInfo.SetActive(false);
-        fluffMacetaInfo.SetActive(false);
-        fluffPlantInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
+        if (GameManager.Instance.goldenPoop >= 3)
+        {
+            DeactivateAllCards();
+            fluffFireCard.SetActive(true); // Desbloquea la segunda tarjeta
+        }
+        Time.timeScale = 0;
+    }
+    public void flufferIce()
+    {
+        DeactivateAllCards();
+        fluffIceInfo.SetActive(true);
+        if (GameManager.Instance.goldenPoop >= 4)
+        {
+            DeactivateAllCards();
+            fluffIceCard.SetActive(true); // Desbloquea la segunda tarjeta
+        }
 
         Time.timeScale = 0;
     }
 
+
     public void handy()
     {
+        DeactivateAllCards();
         handyInfo.SetActive(true);
-        fluffIceInfo.SetActive(false);
-        fluffRockInfo.SetActive(false);
-        fluffFireInfo.SetActive(false);
-        fluffInfo.SetActive(false);
-        fluffBombInfo.SetActive(false);
-        fluffMacetaInfo.SetActive(false);
-        fluffPlantInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
+        if (GameManager.Instance.goldenPoop >= 5)
+        {
+            DeactivateAllCards();
+            handyCard.SetActive(true); // Desbloquea la segunda tarjeta
+        }
 
         Time.timeScale = 0;
     }
 
     public void flufferBomb()
     {
+        DeactivateAllCards();
         fluffBombInfo.SetActive(true);
-        handyInfo.SetActive(false);
-        fluffIceInfo.SetActive(false);
-        fluffRockInfo.SetActive(false);
-        fluffFireInfo.SetActive(false);
-        fluffInfo.SetActive(false);
-        fluffPlantInfo.SetActive(false);
-        fluffMacetaInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
         Time.timeScale = 0;
     }
 
     public void flufferPlant()
     {
+        DeactivateAllCards();
         fluffPlantInfo.SetActive(true);
-        handyInfo.SetActive(false);
-        fluffIceInfo.SetActive(false);
-        fluffRockInfo.SetActive(false);
-        fluffFireInfo.SetActive(false);
-        fluffInfo.SetActive(false);
-        fluffBombInfo.SetActive(false);
-        fluffMacetaInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
         Time.timeScale = 0;
     }
 
     public void flufferMaceta()
     {
+        DeactivateAllCards();
         fluffMacetaInfo.SetActive(true);
-        handyInfo.SetActive(false);
-        fluffIceInfo.SetActive(false);
-        fluffRockInfo.SetActive(false);
-        fluffFireInfo.SetActive(false);
-        fluffInfo.SetActive(false);
-        fluffBombInfo.SetActive(false);
-        fluffPlantInfo.SetActive(false);
-        fluffCard.SetActive(false);
-        fluffRockCard.SetActive(false);
-        fluffFireCard.SetActive(false);
-        fluffIceCard.SetActive(false);
-        handyCard.SetActive(false);
         Time.timeScale = 0;
     }
     public void Map()
@@ -255,35 +167,42 @@ public class PauseMenu : MonoBehaviour
         // Activa las tarjetas e información basadas en la cantidad de recolectables
         if (GameManager.Instance.goldenPoop >= 1)
         {
-            fluffCard.SetActive(true);
-            fluffInfo.SetActive(false);
-            fluffRockInfo.SetActive(false);
-            fluffIceInfo.SetActive(false);
-            fluffFireInfo.SetActive(false);
-            handyInfo.SetActive(false);
-            fluffBombInfo.SetActive(false);
-            fluffMacetaInfo.SetActive(false);
-            fluffPlantInfo.SetActive(false);
-            fluffRockCard.SetActive(false);
-            fluffFireCard.SetActive(false);
-            fluffIceCard.SetActive(false);
-            handyCard.SetActive(false);
+            fluffCard.SetActive(true); // Desbloquea la primera tarjeta
         }
         if (GameManager.Instance.goldenPoop >= 2)
         {
-
+            fluffRockCard.SetActive(true); // Desbloquea la segunda tarjeta
         }
         if (GameManager.Instance.goldenPoop >= 3)
         {
-
+            fluffFireCard.SetActive(true); // Desbloquea la tercera tarjeta
         }
         if (GameManager.Instance.goldenPoop >= 4)
         {
-  
+            fluffIceCard.SetActive(true); // Desbloquea la cuarta tarjeta
         }
         if (GameManager.Instance.goldenPoop >= 5)
         {
-
+            handyCard.SetActive(true); // Desbloquea la quinta tarjeta
         }
     }
+
+    private void DeactivateAllCards()
+    {
+        // Apaga todas las tarjetas antes de activar la seleccionada
+        fluffRockInfo.SetActive(false);
+        fluffInfo.SetActive(false);
+        fluffIceInfo.SetActive(false);
+        fluffFireInfo.SetActive(false);
+        handyInfo.SetActive(false);
+        fluffBombInfo.SetActive(false);
+        fluffMacetaInfo.SetActive(false);
+        fluffPlantInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
+    }
+
 }
