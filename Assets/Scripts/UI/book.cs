@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class book : MonoBehaviour
@@ -81,5 +82,10 @@ public class book : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("Main Menu REDUX");
     }
 }

@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void Bestiario()
     {
-        SceneManager.LoadSceneAsync("Bestiario");
+        SceneManager.LoadSceneAsync("Galeria");
     }
 
     public void Quit()
