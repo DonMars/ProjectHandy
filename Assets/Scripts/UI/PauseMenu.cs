@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static PauseMenu Instance;
 
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject bestiarioMenu;
@@ -16,6 +17,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject fluffPlantInfo;
     [SerializeField] GameObject fluffBombInfo;
     [SerializeField] GameObject fluffMacetaInfo;
+    [SerializeField] GameObject fluffCard;
+    [SerializeField] GameObject fluffRockCard;
+    [SerializeField] GameObject fluffFireCard;
+    [SerializeField] GameObject fluffIceCard;
+    [SerializeField] GameObject handyCard;
 
 
     public void Pause()
@@ -55,6 +61,15 @@ public class PauseMenu : MonoBehaviour
         fluffRockInfo.SetActive(false);
         fluffInfo.SetActive(false);
         handyInfo.SetActive(false);
+        fluffBombInfo.SetActive(false);
+        fluffMacetaInfo.SetActive(false);
+        fluffPlantInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
+        
         Time.timeScale = 0;
     }
 
@@ -69,6 +84,11 @@ public class PauseMenu : MonoBehaviour
         fluffBombInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
 
 
         Time.timeScale = 0;
@@ -84,6 +104,12 @@ public class PauseMenu : MonoBehaviour
         fluffBombInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
+        UnlockBestiaryEntry();
         Time.timeScale = 0;
     }
 
@@ -97,6 +123,11 @@ public class PauseMenu : MonoBehaviour
         fluffBombInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -110,6 +141,12 @@ public class PauseMenu : MonoBehaviour
         fluffBombInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
+
         Time.timeScale = 0;
     }
 
@@ -123,6 +160,12 @@ public class PauseMenu : MonoBehaviour
         fluffBombInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
+
         Time.timeScale = 0;
     }
 
@@ -136,6 +179,12 @@ public class PauseMenu : MonoBehaviour
         fluffBombInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
+
         Time.timeScale = 0;
     }
 
@@ -149,6 +198,11 @@ public class PauseMenu : MonoBehaviour
         fluffInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -162,6 +216,11 @@ public class PauseMenu : MonoBehaviour
         fluffInfo.SetActive(false);
         fluffBombInfo.SetActive(false);
         fluffMacetaInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -175,6 +234,11 @@ public class PauseMenu : MonoBehaviour
         fluffInfo.SetActive(false);
         fluffBombInfo.SetActive(false);
         fluffPlantInfo.SetActive(false);
+        fluffCard.SetActive(false);
+        fluffRockCard.SetActive(false);
+        fluffFireCard.SetActive(false);
+        fluffIceCard.SetActive(false);
+        handyCard.SetActive(false);
         Time.timeScale = 0;
     }
     public void Map()
@@ -185,4 +249,41 @@ public class PauseMenu : MonoBehaviour
 
     }
 
+    public void UnlockBestiaryEntry()
+    {
+
+        // Activa las tarjetas e información basadas en la cantidad de recolectables
+        if (GameManager.Instance.goldenPoop >= 1)
+        {
+            fluffCard.SetActive(true);
+            fluffInfo.SetActive(false);
+            fluffRockInfo.SetActive(false);
+            fluffIceInfo.SetActive(false);
+            fluffFireInfo.SetActive(false);
+            handyInfo.SetActive(false);
+            fluffBombInfo.SetActive(false);
+            fluffMacetaInfo.SetActive(false);
+            fluffPlantInfo.SetActive(false);
+            fluffRockCard.SetActive(false);
+            fluffFireCard.SetActive(false);
+            fluffIceCard.SetActive(false);
+            handyCard.SetActive(false);
+        }
+        if (GameManager.Instance.goldenPoop >= 2)
+        {
+
+        }
+        if (GameManager.Instance.goldenPoop >= 3)
+        {
+
+        }
+        if (GameManager.Instance.goldenPoop >= 4)
+        {
+  
+        }
+        if (GameManager.Instance.goldenPoop >= 5)
+        {
+
+        }
+    }
 }

@@ -130,11 +130,24 @@ public class HUDManager : MonoBehaviour
         // Treasure Counter Manager
         treasureCounter.text = GameManager.Instance.goldenPoop.ToString() + (" / ") + treasureMaxAmmount;
         treasureCounterOutline.text = GameManager.Instance.goldenPoop.ToString() + (" / ") + treasureMaxAmmount;
+
+        CheckBestiaryUnlock();
     }
+
 
     public void TreasureCollect()
     {
         treasureGaugeAnim.ResetTrigger("isCollected");
         treasureGaugeAnim.SetTrigger("isCollected");
+    }
+
+    public void CheckBestiaryUnlock()
+    {
+        float goldenPoopValue = GameManager.Instance.goldenPoop;
+
+        if (goldenPoopValue >= 1)
+        {
+            BestiaryManager.Instance.UnlockBestiaryEntry();
+        }
     }
 }
