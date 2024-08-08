@@ -65,6 +65,9 @@ public class GrabMechanic : MonoBehaviour
 
             if (grabbable == null) // If not grabbing, try to grab
             {
+                playerAnimator.SetTrigger("grabAttempt");
+                playerAnimator.ResetTrigger("grabAttempt");
+
                 if (other.TryGetComponent(out grabbable))
                 {
                     grabbableLocal = other.GetComponent<Grabbable>();
@@ -96,12 +99,16 @@ public class GrabMechanic : MonoBehaviour
         if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing && !player.isRunning || isLeaping)
         {
             grabbing = true;
+            
         }
         // Leap Ability
         if (Input.GetKeyDown(player.grabKey) && player.canGrab && player.isRunning && !player.isGrabbing && (player.movementSpeed == player.runSpeed))
         {
             playerRb.AddForce((transform.forward + new Vector3(0, 0.2f, 0)) * 35f, ForceMode.Impulse);
             player.currentStamina -= 20;
+
+            playerAnimator.SetTrigger("grabAttempt");
+            playerAnimator.ResetTrigger("grabAttempt");
 
             isLeaping = true;
             player.enabled = false;
@@ -228,7 +235,7 @@ public class GrabMechanic : MonoBehaviour
 
     private IEnumerator LeapRecover()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.7f);
         isLeaping = false;
         player.enabled = true;
     }

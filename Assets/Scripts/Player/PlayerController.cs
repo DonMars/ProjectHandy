@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public int healthPoints;
     public int maxHealthPoints = 4;
     public bool canBeDamaged = true;
-    public SkinnedMeshRenderer handMeshRenderer;
+    public MeshRenderer handMeshRenderer;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
     [Header("Animator")]
     public Animator animator;
     bool playerDies = false;
+    bool deathSwitch = false;
 
     public enum MovementState
     {
@@ -168,8 +169,9 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isGrabbing", isGrabbing);
 
-        if (playerDies)
+        if (playerDies && !deathSwitch)
         {
+            deathSwitch = true;
             animator.ResetTrigger("playerDies");
             animator.SetTrigger("playerDies");
         }
