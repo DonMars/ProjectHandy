@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1176700325219398760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.24, y: 0.108, z: 0.023}
+  m_LocalPosition: {x: 0.98, y: 0.108, z: -1.257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 3895874253488155342}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.06, y: 0.135, z: 0.4022}
+  m_LocalPosition: {x: 26.14, y: 0.197, z: 1.028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71,8 +71,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131214200735034351}
+  - component: {fileID: 1376235880019250501}
   m_Layer: 0
-  m_Name: ParenteSpawn
+  m_Name: SpawnZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +88,58 @@ Transform:
   m_GameObject: {fileID: 5927148844620952300}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 218534763105855035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1376235880019250501
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927148844620952300}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 26.326525, y: 5.114178, z: 48.830444}
+  m_Center: {x: 0.17169476, y: 2.057089, z: -0.09915924}
+--- !u!1 &6649899796055633809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7381382066815487372}
+  m_Layer: 0
+  m_Name: PadreObjetos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7381382066815487372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649899796055633809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -147,8 +200,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 156.42122, y: 0.9999999, z: 2.700847}
+  m_Center: {x: -16.888872, y: 0, z: 0.4039393}
 --- !u!114 &1002763401600519945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,16 +214,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd5922f21aef3c4ab21213d08143c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preFabs:
-  - {fileID: 4055517041874362579, guid: bf37649e09425884c91f42f08f119724, type: 3}
-  - {fileID: 4055517041874362579, guid: bf37649e09425884c91f42f08f119724, type: 3}
-  ProbabilidadPrimerEnemigo: 2
-  cantidadEnemigos: 5
-  spawnRate: 0
-  minPos: {fileID: 5851101009514993014}
-  maxPos: {fileID: 5799290476506067242}
-  contCollider: 0
-  parentSpawn: {fileID: 1131214200735034351}
+  objectToSpawn1: {fileID: 2836275004272113642, guid: 28c6fa38c13173f43b54f08dbf9ccaeb,
+    type: 3}
+  objectToSpawn2: {fileID: 2836275004272113642, guid: 28c6fa38c13173f43b54f08dbf9ccaeb,
+    type: 3}
+  probabilidadEnemDeDies: 5
+  numberOfObjects: 10
+  spawnRadius: 21.12
+  spawnArea: {fileID: 1376235880019250501}
+  padreObjetos: {fileID: 7381382066815487372}
 --- !u!1 &8975711758534592060
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,5 +254,6 @@ Transform:
   m_Children:
   - {fileID: 5721808093396421516}
   - {fileID: 1131214200735034351}
+  - {fileID: 7381382066815487372}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
