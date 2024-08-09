@@ -29,6 +29,8 @@ public class Efect : MonoBehaviour
     [SerializeField] private bool sinColision;
     private float cont;
 
+    public bool choco;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -54,14 +56,15 @@ public class Efect : MonoBehaviour
                 }
 
             }
+            sinColision = false;
             iniciarCont = true;
-            
+            animacionArrojado = false;
 
         }
     }
     private void OnCollisionExit(Collision collision)
     {
-        sinColision= false;
+        sinColision = true;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -84,7 +87,7 @@ public class Efect : MonoBehaviour
                 }
 
             }
-            animacionArrojado = false;
+            
 
         }
         
@@ -93,6 +96,7 @@ public class Efect : MonoBehaviour
     //{
     //    animator = GetComponent<Animator>();
     //}
+
     private void Update()
     {
         DesactivarScrips();
@@ -110,6 +114,7 @@ public class Efect : MonoBehaviour
             Arrojado = false;
             iniciarCont= false;
             cont= 0;
+            choco = true;
         }
         if(sinColision== true)
         {
@@ -127,9 +132,28 @@ public class Efect : MonoBehaviour
         {
             animacionArrojado = true;
             animacionEnMano= false;
-            //this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+            
+
         }
-        if(Arrojado == false)
+        if(choco && enMano == false)
+        {
+            GetComponent<NavMeshAgent>().enabled = true;
+            //this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+            if (GetComponent<ActionAtack>() != null)
+            {
+                GetComponent<ActionAtack>().enabled = true;
+                GetComponent<ActionAtack>().ReAsignarAgent();
+            }
+            if (GetComponent<ActionEsconder>() != null)
+            {
+                GetComponent<ActionEsconder>().enabled = true;
+                GetComponent<ActionAtack>().ReAsignarAgent();
+            }
+            //this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+
+            GetComponent<EnemyBehavior>().enabled = true;
+        }
+        if (Arrojado == false)
         {
             animacionArrojado= false;
         }
@@ -150,9 +174,10 @@ public class Efect : MonoBehaviour
             }
             //this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
-            Destroy(GetComponent<Patrullaje>());
+            GetComponent<EnemyBehavior>().enabled = false;
 
             GetComponent<NavMeshAgent>().enabled = false;
+            choco = false;
 
             //animacionArrojado = true;
             //GetComponent<CapsuleCollider>().enabled = false;

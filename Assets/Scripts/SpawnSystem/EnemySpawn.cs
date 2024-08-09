@@ -1,128 +1,109 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Serialization;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject[] preFabs = new GameObject[2];
+    
 
-    [SerializeField] private int ProbabilidadPrimerEnemigo;
-    [SerializeField] private int cantidadEnemigos;
-    [SerializeField] private int spawnRate;
+    public GameObject objectToSpawn1;  // Primer prefab del objeto a instanciar
+    public GameObject objectToSpawn2;  // Segundo prefab del objeto a instanciar
+    public float probabilidadEnemDeDies;
+    public int numberOfObjects = 10;   // Número de objetos a instanciar
+    public float spawnRadius = 10f;    // Radio en el que se instanciarán los objetos
 
-    [SerializeField] private Transform minPos;
-    [SerializeField] private Transform maxPos;
-    private Vector3 ZonaMin;
-    private Vector3 ZonaMax;
-    private Vector3 posicionAleatoria;
+    private NavMeshTriangulation navMeshData;
+    
 
-    [SerializeField]private int contCollider;
+    public BoxCollider spawnArea;
+    public Transform padreObjetos;
+    
 
-    [SerializeField] private Transform parentSpawn;
-
-    private void Start()
+    void Start()
     {
-        IncializarVectores();
-        //StartCoroutine(Spawn());
+        // Obtener los datos del NavMesh
+        navMeshData = NavMesh.CalculateTriangulation();
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        // Verificar si el objeto que entró en el collider es el jugador
+        if (other.CompareTag("Player"))
         {
-            contCollider++;
-            StartCoroutine(Spawn());
-        }
-        
-    }
+            for (int i = 0; i < numberOfObjects; i++)
+            {
+                // Elegir aleatoriamente cuál prefab instanciar
+                GameObject selectedPrefab = GetRandomPrefab();
 
+                // Obtener una posición random sobre el NavMesh
+                Vector3 randomPosition = GetRandomPointOnNavMesh();
+
+                // Instanciar el prefab seleccionado
+                Instantiate(selectedPrefab, randomPosition, Quaternion.identity, padreObjetos);
+                
+            }
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "Player")
-        {
-            StartCoroutine(EliminarPersonajes());
-            
-        }
-    }
-    private void IncializarVectores()
-    {
-        ZonaMin = minPos.position;
-        ZonaMax = maxPos.position;
-    }
-    Vector3 PosicionAleatoria()
-    {
-        float posX = Random.Range(ZonaMin.x, ZonaMax.x);
-        float posy = Random.Range(ZonaMin.y, ZonaMax.y);
-        float posz = Random.Range(ZonaMin.z, ZonaMax.z);
-
-        return posicionAleatoria = new Vector3(posX, posy, posz);
-
-    }
-
-    private IEnumerator Spawn()
-    {
-        for (int i = 0; i < cantidadEnemigos; i++)
-        {
-            if (ProbabilidadPrimerEnemigo >= RandomNum())
-            {
-                GameObject object1 = Instantiate(preFabs[0],PosicionAleatoria(),Quaternion.identity);
-                object1.transform.SetParent(parentSpawn);
-                Patrullaje patrullaje = object1.GetComponent<Patrullaje>();
-                patrullaje.ZonaMax = ZonaMax;
-                patrullaje.ZonaMin = ZonaMin;
-
-
-            }
-            else
-            {
-                GameObject object1 = Instantiate(preFabs[1], PosicionAleatoria(), Quaternion.identity);
-                object1.transform.SetParent(parentSpawn);
-                Patrullaje patrullaje = object1.GetComponent<Patrullaje>();
-                patrullaje.ZonaMax = ZonaMax;
-                patrullaje.ZonaMin = ZonaMin;
-
-            }
-            yield return new WaitForSeconds(spawnRate);
-        }
-    }
-    private IEnumerator EliminarPersonajes()
-    {
-        foreach(Transform child in parentSpawn)
-        {
-            Destroy(child.gameObject);
-        }
-
-        yield return new WaitForSeconds(spawnRate);
-    }
-    private int RandomNum() // Lo unico que hace es darte un random
-    {
-        int num = Random.Range(1, 10);
-        return num;
-    }
-
-    public void InstanceEnemy()
-    {
         
-        if (ProbabilidadPrimerEnemigo >= RandomNum())
+       if(other.CompareTag("Player"))
+       {
+            foreach(Transform child in padreObjetos)
+            {
+                Destroy(child.gameObject);
+            }
+       }
+       
+    }
+
+    GameObject GetRandomPrefab()
+    {
+        // Seleccionar uno de los dos prefabs de manera aleatoria
+        if (probabilidadEnemDeDies >= randomNum())
         {
-            GameObject object1 = Instantiate(preFabs[0], PosicionAleatoria(), Quaternion.identity);
-            object1.transform.SetParent(parentSpawn);
-            Patrullaje patrullaje = object1.GetComponent<Patrullaje>();
-            patrullaje.ZonaMax = ZonaMax;
-            patrullaje.ZonaMin = ZonaMin;
+            return objectToSpawn1;
 
 
         }
         else
         {
-            GameObject object1 = Instantiate(preFabs[1], PosicionAleatoria(), Quaternion.identity);
-            object1.transform.SetParent(parentSpawn);
-            Patrullaje patrullaje = object1.GetComponent<Patrullaje>();
-            patrullaje.ZonaMax = ZonaMax;
-            patrullaje.ZonaMin = ZonaMin;
+            return objectToSpawn1;
 
         }
+        
     }
+
+    Vector3 GetRandomPointOnNavMesh()
+    {
+        Vector3 randomPoint = new Vector3(Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x), spawnArea.bounds.center.y, Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z));
+
+        NavMeshHit hit;
+        if(NavMesh.SamplePosition(randomPoint, out hit, 0.1f, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+        return randomPoint;
+    }
+
+    private float randomNum()
+    {
+        return Random.Range(1,10);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (spawnArea != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(spawnArea.bounds.center, spawnArea.bounds.size);
+        }
+    }
+
+
 
 }

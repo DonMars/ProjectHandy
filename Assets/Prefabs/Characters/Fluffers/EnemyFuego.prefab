@@ -258,10 +258,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4631309679742512444}
+  - component: {fileID: 6232255373982915680}
   - component: {fileID: 8480602312744781220}
   - component: {fileID: 7032057415912979317}
   - component: {fileID: 2873200907861784378}
-  - component: {fileID: 8050663392760463970}
   - component: {fileID: 5293892009531721487}
   - component: {fileID: 2408520878523610919}
   - component: {fileID: 1365917820309952747}
@@ -290,6 +290,34 @@ Transform:
   - {fileID: 3375429988121904918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6232255373982915680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836275004272113642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a6ff3a3c98d0e489a3148519697d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomSpeedMin: 2
+  randomSpeedMax: 5
+  detectionRadius: 7
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  aware: 0
+  patrolRangeMin: 100
+  patrolRangeMax: 200
+  patrolWaitTimeMin: 3
+  patrolWaitTimeMax: 6
+  centrePoint: {fileID: 3375429988121904918}
+  dealsOnCollisionDamage: 0
+  collisionDamageRate: 6
+  collisionDamageMin: 1
+  collisionDamageMax: 2
 --- !u!114 &8480602312744781220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +343,7 @@ MonoBehaviour:
   animacionArrojadoName: 
   iniciarCont: 0
   sinColision: 0
+  choco: 0
 --- !u!114 &7032057415912979317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +366,7 @@ MonoBehaviour:
   ultimatePosition: {x: 0, y: 0, z: 0}
   animacionAtack: 0
   animacionAtackName: 
+  Contt: 0
   forcePush: 10
 --- !u!114 &2873200907861784378
 MonoBehaviour:
@@ -353,31 +383,6 @@ MonoBehaviour:
   lerpSpeed: 0.05
   particles: {fileID: 44864435714889484}
   grabPoint: {fileID: 0}
---- !u!114 &8050663392760463970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2836275004272113642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27ea1e80fd4afd43aeaae16d33462f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 2408520878523610919}
-  playerDetect: 0
-  patrullando: 0
-  minPos: {fileID: 0}
-  maxPos: {fileID: 0}
-  ZonaMin: {x: 0, y: 0, z: 0}
-  ZonaMax: {x: 0, y: 0, z: 0}
-  activateAnimacionWalk: 0
-  animacionWalkName: Run
-  activateAnimacionRandom: 0
-  animacionAccionRandomName: Random
-  activateAnimacionArrojado: 0
-  animacionAccionArrojadoName: 
 --- !u!136 &5293892009531721487
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -397,10 +402,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.85321563
-  m_Height: 1.7100787
+  m_Radius: 0.8532157
+  m_Height: 2.0650516
   m_Direction: 1
-  m_Center: {x: 0.004119192, y: -0.7074055, z: 0.0055319923}
+  m_Center: {x: 0.0041192025, y: -0.5299192, z: 0.0055319816}
 --- !u!195 &2408520878523610919
 NavMeshAgent:
   m_ObjectHideFlags: 0

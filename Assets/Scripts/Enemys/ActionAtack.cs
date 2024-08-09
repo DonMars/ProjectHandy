@@ -45,19 +45,19 @@ public class ActionAtack : MonoBehaviour
     // Update is called once per frame
     private bool Atacando;
     private bool Entra;
-    private bool Conin;
-    private float Contt;
+    //private bool Conin;
+    [SerializeField] private float Contt;
     [SerializeField] private float forcePush;
     private bool Atack;
     void Update()
     {
         //animator.SetBool(animacionAtackName, animacionAtack);
 
-        detectPlayer = Physics.CheckSphere(this.transform.position, radio, playerLayerMask);
+        
         if (detectPlayer == false)
         {
 
-            Cont += Time.deltaTime;
+            //Cont += Time.deltaTime;
             Contt = 0;
         }
         
@@ -65,39 +65,44 @@ public class ActionAtack : MonoBehaviour
         {
 
             //SFXManaguer.instance.PlaySound("SountTerror");
-            animacionAtack= true;
-            patrullaje.playerDetect = true;
+            
+            //patrullaje.playerDetect = true;
             transform.LookAt(player.position);
-            if(Conin)
-            {
-                Contt += Time.deltaTime;
-            }
-            if(Cont >= 5)
+
+            Contt += Time.deltaTime;
+            
+
+            if (Contt >= 4)
             {
                 Contt = 0;
                 animacionAtack = true;
                 GetComponent<Rigidbody>().AddForce(transform.forward*forcePush,ForceMode.Impulse);
-                Atack= true;
+                Atack = true;
             }
-            Cont = 0;
+            
             
 
         }
 
-        else if ((detectPlayer == false && Vector3.Distance(transform.position, ultimatePosition) <= 3) || (detectPlayer == false && Cont >= 5f))
-        {
-            //SFXManaguer.instance.PlayStop("SountTerror");
-            Entra = true;
-            Atacando = false;
-            patrullaje.playerDetect = false;
-            animacionAtack= false;
-            if (patrullaje.patrullando == false)
-            {
-                patrullaje.StartPatroll();
-            }
+        //else if ((detectPlayer == false && Vector3.Distance(transform.position, ultimatePosition) <= 3) || (detectPlayer == false && Cont >= 5f))
+        //{
+        //    //SFXManaguer.instance.PlayStop("SountTerror");
+        //    Entra = true;
+        //    Atacando = false;
+        //    patrullaje.playerDetect = false;
+        //    animacionAtack= false;
+        //    if (patrullaje.patrullando == false)
+        //    {
+        //        patrullaje.StartPatroll();
+        //    }
 
-        }
+        //}
 
+    }
+
+    public void ReAsignarAgent()
+    {
+        agent = GetComponent<NavMeshAgent>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -108,10 +113,10 @@ public class ActionAtack : MonoBehaviour
         
         
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(this.transform.position, radio);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawWireSphere(this.transform.position, radio);
+    //}
     
 }
