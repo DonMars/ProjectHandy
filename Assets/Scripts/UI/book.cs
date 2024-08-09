@@ -86,6 +86,6 @@ public class book : MonoBehaviour
 
     public void Home()
     {
-        SceneManager.LoadScene("Main Menu REDUX");
+        SceneManager.LoadScene("MainMenu Final REDUX");
     }
 }
