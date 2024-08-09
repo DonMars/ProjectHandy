@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private void Awake()
+    {
+        GameManager.Instance.ShowAndUnlockCursor();
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync("Nivel Final 3");
