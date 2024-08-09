@@ -204,11 +204,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   aware: 0
-  patrolRangeMin: 100
-  patrolRangeMax: 600
+  patrolRangeMin: 12.4
+  patrolRangeMax: 41.1
   patrolWaitTimeMin: 3
   patrolWaitTimeMax: 6
-  centrePoint: {fileID: 0}
+  centrePoint: {fileID: 1720863481089680766}
   dealsOnCollisionDamage: 0
   collisionDamageRate: 6
   collisionDamageMin: 1

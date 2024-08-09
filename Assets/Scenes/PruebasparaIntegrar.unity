@@ -642,7 +642,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18976871}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.2600572, y: -0.029415408, z: 0.0155613115, w: 0.96501964}
+  m_LocalRotation: {x: -0.2600573, y: -0.029415416, z: 0.0155613115, w: 0.96501964}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29788,6 +29788,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1002763401600519945, guid: e9dc076bc654d9b46af637c0944dbeca,
+        type: 3}
+      propertyPath: objectToSpawn2
+      value: 
+      objectReference: {fileID: 2006924287636638838, guid: 43de12036fac4b746b5214c6b54f5bec,
+        type: 3}
+    - target: {fileID: 1002763401600519945, guid: e9dc076bc654d9b46af637c0944dbeca,
+        type: 3}
+      propertyPath: probabilidadEnemDeDies
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8975711758534592060, guid: e9dc076bc654d9b46af637c0944dbeca,
         type: 3}
       propertyPath: m_Name
@@ -46377,7 +46388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969779691}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.21492262, y: -0.028660286, z: 0.016911676, w: 0.976064}
+  m_LocalRotation: {x: -0.21492262, y: -0.028660329, z: 0.016911702, w: 0.976064}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

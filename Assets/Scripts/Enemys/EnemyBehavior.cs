@@ -79,7 +79,7 @@ public class EnemyBehavior : MonoBehaviour
         if (aware)
         {
             
-            
+            agent.isStopped = true;
 
             if(GetComponent<ActionAtack>() != null)
             {
@@ -102,6 +102,7 @@ public class EnemyBehavior : MonoBehaviour
         //Patrolling
         if (agent.remainingDistance <= agent.stoppingDistance || !aware || !patrolSwitch)
         {
+            //agent.isStopped = false;
             if (GetComponent<ActionAtack>() != null)
             {
                 GetComponent<ActionAtack>().detectPlayer = false;

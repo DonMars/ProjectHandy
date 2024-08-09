@@ -294,7 +294,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d8f19998d8ba0f478c9f6eb96d4106b,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8794976186166994947}
+      addedObject: {fileID: 2052852259948035447}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d8f19998d8ba0f478c9f6eb96d4106b,
         type: 3}
       insertIndex: -1
@@ -359,7 +359,7 @@ CapsuleCollider:
   m_Height: 1.7320266
   m_Direction: 1
   m_Center: {x: 0.010464489, y: 0.02528727, z: 0}
---- !u!114 &8794976186166994947
+--- !u!114 &2052852259948035447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,22 +368,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8753387058758677505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27ea1e80fd4afd43aeaae16d33462f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a6ff3a3c98d0e489a3148519697d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 3305792781789033282}
-  playerDetect: 0
-  patrullando: 0
-  minPos: {fileID: 0}
-  maxPos: {fileID: 0}
-  ZonaMin: {x: 0, y: 0, z: 0}
-  ZonaMax: {x: 0, y: 0, z: 0}
-  activateAnimacionWalk: 0
-  animacionWalkName: 
-  activateAnimacionRandom: 0
-  animacionAccionRandomName: 
-  activateAnimacionArrojado: 0
-  animacionAccionArrojadoName: 
+  randomSpeedMin: 3
+  randomSpeedMax: 6
+  detectionRadius: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  aware: 0
+  patrolRangeMin: 20
+  patrolRangeMax: 40
+  patrolWaitTimeMin: 5
+  patrolWaitTimeMax: 6
+  centrePoint: {fileID: 0}
+  dealsOnCollisionDamage: 0
+  collisionDamageRate: 6
+  collisionDamageMin: 1
+  collisionDamageMax: 2
 --- !u!114 &3089586923234013834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +447,7 @@ MonoBehaviour:
   animacionArrojadoName: 
   iniciarCont: 0
   sinColision: 0
+  choco: 0
 --- !u!195 &3305792781789033282
 NavMeshAgent:
   m_ObjectHideFlags: 0

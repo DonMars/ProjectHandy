@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 8489356852475133578}
   - component: {fileID: 9163502292436875036}
   - component: {fileID: 2882960223459623976}
-  - component: {fileID: 5876084193329218506}
   - component: {fileID: -2929717955386419552}
   - component: {fileID: 7871029008392753640}
   - component: {fileID: 6072610627525517031}
+  - component: {fileID: 7226071235505636451}
   m_Layer: 0
   m_Name: EnemySimple
   m_TagString: Untagged
@@ -111,10 +111,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7433944
-  m_Height: 1.5979004
+  m_Radius: 0.8198902
+  m_Height: 1.8607962
   m_Direction: 1
-  m_Center: {x: 0, y: -0.29084778, z: 0.0027983189}
+  m_Center: {x: 0.07649571, y: -0.15939981, z: 0.002798289}
 --- !u!195 &9163502292436875036
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -164,31 +164,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5876084193329218506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4965695933590004506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27ea1e80fd4afd43aeaae16d33462f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 9163502292436875036}
-  playerDetect: 0
-  patrullando: 0
-  minPos: {fileID: 0}
-  maxPos: {fileID: 0}
-  ZonaMin: {x: 0, y: 0, z: 0}
-  ZonaMax: {x: 0, y: 0, z: 0}
-  activateAnimacionWalk: 0
-  animacionWalkName: 
-  activateAnimacionRandom: 0
-  animacionAccionRandomName: 
-  activateAnimacionArrojado: 0
-  animacionAccionArrojadoName: 
 --- !u!114 &-2929717955386419552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +204,7 @@ MonoBehaviour:
   animacionArrojadoName: 
   iniciarCont: 0
   sinColision: 0
+  choco: 0
 --- !u!198 &6072610627525517031
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4952,6 +4928,34 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &7226071235505636451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965695933590004506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a6ff3a3c98d0e489a3148519697d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomSpeedMin: 3
+  randomSpeedMax: 6
+  detectionRadius: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  aware: 0
+  patrolRangeMin: 20
+  patrolRangeMax: 40
+  patrolWaitTimeMin: 6
+  patrolWaitTimeMax: 8
+  centrePoint: {fileID: 160587526450885361}
+  dealsOnCollisionDamage: 0
+  collisionDamageRate: 6
+  collisionDamageMin: 1
+  collisionDamageMax: 2
 --- !u!1001 &4340688190293747739
 PrefabInstance:
   m_ObjectHideFlags: 0

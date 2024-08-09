@@ -82,7 +82,7 @@ public class EnemySpawn : MonoBehaviour
         }
         else
         {
-            return objectToSpawn1;
+            return objectToSpawn2;
 
         }
         
