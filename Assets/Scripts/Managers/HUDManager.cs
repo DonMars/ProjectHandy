@@ -144,10 +144,5 @@ public class HUDManager : MonoBehaviour
     public void CheckBestiaryUnlock()
     {
         float goldenPoopValue = GameManager.Instance.goldenPoop;
-
-        if (goldenPoopValue >= 1)
-        {
-            PauseMenu.Instance.UnlockBestiaryEntry();
-        }
     }
 }
