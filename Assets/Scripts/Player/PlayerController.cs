@@ -1,13 +1,18 @@
+using Cinemachine.Examples;
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float delayBeforeLoading = 3f;
+
     [Header("Life")]
     public int healthPoints;
     public int maxHealthPoints = 4;
@@ -77,6 +82,7 @@ public class PlayerController : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+
     Vector3 movementDirection;
     Vector3 movementOrientation;
 
@@ -94,7 +100,7 @@ public class PlayerController : MonoBehaviour
     public Animator staminaUseAnimation;
 
     [Header("Animator")]
-    //public Animator animator;
+    public Animator animator;
     bool playerDies = false;
     bool deathSwitch = false;
 
@@ -159,21 +165,32 @@ public class PlayerController : MonoBehaviour
     {
         playerDies = true;
         Debug.Log("Mr. Handy is DEAD! Game Over");
+
+        StartCoroutine(LoadGameOverScene());
     }
+
+    private IEnumerator LoadGameOverScene()
+    {
+        yield return new WaitForSeconds(delayBeforeLoading); // Espera el tiempo especificado en el inspector
+
+        SceneManager.LoadScene("GameOver");
+    }
+
+
 
     void AnimationHandler()
     {
-        //animator.SetBool("isIdle", isIdle);
-        //animator.SetBool("isRunning", isRunning);
-        //animator.SetBool("isWalking", isWalking);
-        //animator.SetBool("isGrounded", isGrounded);
-        //animator.SetBool("isGrabbing", isGrabbing);
+        animator.SetBool("isIdle", isIdle);
+        animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isGrabbing", isGrabbing);
 
         if (playerDies && !deathSwitch)
         {
             deathSwitch = true;
-            //animator.ResetTrigger("playerDies");
-            //animator.SetTrigger("playerDies");
+            animator.ResetTrigger("playerDies");
+            animator.SetTrigger("playerDies");
         }
     }
 
@@ -241,8 +258,8 @@ public class PlayerController : MonoBehaviour
             jumpSound.pitch = Random.Range(1.2f, 1.6f);
             jumpSound.Play();
 
-            //animator.ResetTrigger("isJumping");
-            //animator.SetTrigger("isJumping");
+            animator.ResetTrigger("isJumping");
+            animator.SetTrigger("isJumping");
             dustParticlesLanding.Play();
 
             Jump();
@@ -296,7 +313,7 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         // Ground Check
-        //isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
         isGrounded = Physics.Raycast(transform.position + new Vector3(-.2f,0,0), Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
         isGrounded = Physics.Raycast(transform.position + new Vector3(.2f,0,0), Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
     }

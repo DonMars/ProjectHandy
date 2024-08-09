@@ -7,7 +7,13 @@ public class GameOverManager : MonoBehaviour
 {
     public string nivel = "nivel2";
     public string menu = "main menu";
-    
+
+    private void Start()
+    {
+        // Mostrar el cursor del mouse y desbloquearlo
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void Continue()
     {
         SceneManager.LoadScene(nivel);
