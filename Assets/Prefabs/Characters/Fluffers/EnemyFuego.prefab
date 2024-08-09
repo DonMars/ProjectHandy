@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3305730ffd4a3c4c8bb0cf7c9ecdf37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 0.05
+  lerpSpeed: 5
   particles: {fileID: 44864435714889484}
   grabPoint: {fileID: 0}
 --- !u!136 &5293892009531721487
