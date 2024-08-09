@@ -17435,6 +17435,7 @@ MonoBehaviour:
   maxHealthPoints: 4
   canBeDamaged: 1
   handMeshRenderer: {fileID: 5136562234220305402}
+  handFaceMeshRenderer: {fileID: 183247581786865272}
   jumpKey: 32
   runKey: 304
   grabKey: 323

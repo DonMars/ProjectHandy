@@ -103,9 +103,9 @@ Material:
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RippleDensity: 317.5
-    - _RippleSlimness: 3.3
-    - _RippleSpeed: -0.3
+    - _RippleDensity: 249.01
+    - _RippleSlimness: 17.27
+    - _RippleSpeed: -1.5
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
