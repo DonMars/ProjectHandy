@@ -35,7 +35,7 @@ public class GrabMechanic : MonoBehaviour
 
     Grabbable grabbableLocal;
 
-    public Animator playerAnimator;
+    //public Animator playerAnimator;
 
     void Awake()
     {
@@ -65,8 +65,8 @@ public class GrabMechanic : MonoBehaviour
 
             if (grabbable == null) // If not grabbing, try to grab
             {
-                playerAnimator.SetTrigger("grabAttempt");
-                playerAnimator.ResetTrigger("grabAttempt");
+                //playerAnimator.SetTrigger("grabAttempt");
+                //playerAnimator.ResetTrigger("grabAttempt");
 
                 if (other.TryGetComponent(out grabbable))
                 {
@@ -107,8 +107,8 @@ public class GrabMechanic : MonoBehaviour
             playerRb.AddForce((transform.forward + new Vector3(0, 0.2f, 0)) * 35f, ForceMode.Impulse);
             player.currentStamina -= 20;
 
-            playerAnimator.SetTrigger("grabAttempt");
-            playerAnimator.ResetTrigger("grabAttempt");
+            //playerAnimator.SetTrigger("grabAttempt");
+            //playerAnimator.ResetTrigger("grabAttempt");
 
             isLeaping = true;
             player.enabled = false;

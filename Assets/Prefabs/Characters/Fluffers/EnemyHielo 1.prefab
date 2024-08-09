@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7124352549652578705}
   - component: {fileID: 1635336996807062207}
   - component: {fileID: 1923136466633534691}
-  - component: {fileID: 5003585453148845230}
   - component: {fileID: 4234775314491797433}
+  - component: {fileID: 5003596118223338095}
   - component: {fileID: 8404997106303098024}
   - component: {fileID: 3906258268897996267}
   - component: {fileID: 6200919379831358887}
@@ -165,31 +165,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5003585453148845230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006924287636638838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27ea1e80fd4afd43aeaae16d33462f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 1635336996807062207}
-  playerDetect: 0
-  patrullando: 0
-  minPos: {fileID: 0}
-  maxPos: {fileID: 0}
-  ZonaMin: {x: 0, y: 0, z: 0}
-  ZonaMax: {x: 0, y: 0, z: 0}
-  activateAnimacionWalk: 0
-  animacionWalkName: 
-  activateAnimacionRandom: 0
-  animacionAccionRandomName: 
-  activateAnimacionArrojado: 0
-  animacionAccionArrojadoName: 
 --- !u!114 &4234775314491797433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +185,34 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   radio: 6.57
+--- !u!114 &5003596118223338095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006924287636638838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a6ff3a3c98d0e489a3148519697d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomSpeedMin: 3
+  randomSpeedMax: 6
+  detectionRadius: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  aware: 0
+  patrolRangeMin: 100
+  patrolRangeMax: 600
+  patrolWaitTimeMin: 3
+  patrolWaitTimeMax: 6
+  centrePoint: {fileID: 0}
+  dealsOnCollisionDamage: 0
+  collisionDamageRate: 6
+  collisionDamageMin: 1
+  collisionDamageMax: 2
 --- !u!114 &8404997106303098024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +238,7 @@ MonoBehaviour:
   animacionArrojadoName: 
   iniciarCont: 0
   sinColision: 0
+  choco: 0
 --- !u!114 &3906258268897996267
 MonoBehaviour:
   m_ObjectHideFlags: 0

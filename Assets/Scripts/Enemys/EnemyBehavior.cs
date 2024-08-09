@@ -78,10 +78,17 @@ public class EnemyBehavior : MonoBehaviour
 
         if (aware)
         {
+            
+            
+
             if(GetComponent<ActionAtack>() != null)
             {
                 GetComponent<ActionAtack>().detectPlayer = true;
                
+            }
+            if(GetComponent<ActionEsconder>() != null)
+            {
+                GetComponent<ActionEsconder>().detectPlayer = true;
             }
 
 
@@ -93,12 +100,16 @@ public class EnemyBehavior : MonoBehaviour
         }
 
         //Patrolling
-        if (agent.remainingDistance <= agent.stoppingDistance && !aware && !patrolSwitch)
+        if (agent.remainingDistance <= agent.stoppingDistance || !aware || !patrolSwitch)
         {
             if (GetComponent<ActionAtack>() != null)
             {
                 GetComponent<ActionAtack>().detectPlayer = false;
 
+            }
+            if(GetComponent<ActionEsconder>() != null)
+            {
+                GetComponent<ActionEsconder>().detectPlayer = false;
             }
             Vector3 point;
             patrolRange = Random.Range(patrolRangeMin, patrolRangeMax);

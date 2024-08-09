@@ -1,13 +1,18 @@
+using Cinemachine.Examples;
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float delayBeforeLoading = 3f;
+
     [Header("Life")]
     public int healthPoints;
     public int maxHealthPoints = 4;
@@ -76,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
+
 
     Vector3 movementDirection;
     Vector3 movementOrientation;
@@ -159,7 +165,18 @@ public class PlayerController : MonoBehaviour
     {
         playerDies = true;
         Debug.Log("Mr. Handy is DEAD! Game Over");
+
+        StartCoroutine(LoadGameOverScene());
     }
+
+    private IEnumerator LoadGameOverScene()
+    {
+        yield return new WaitForSeconds(delayBeforeLoading); // Espera el tiempo especificado en el inspector
+
+        SceneManager.LoadScene("GameOver");
+    }
+
+
 
     void AnimationHandler()
     {
@@ -296,7 +313,7 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         // Ground Check
-        //isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
         isGrounded = Physics.Raycast(transform.position + new Vector3(-.2f,0,0), Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
         isGrounded = Physics.Raycast(transform.position + new Vector3(.2f,0,0), Vector3.down, playerHeight * 0.5f + 0.35f, groundLayer);
     }

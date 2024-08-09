@@ -6,16 +6,19 @@ using UnityEngine;
 public class Quemar : MonoBehaviour
 {
 
-    private Animator animator;
+    //private Animator animator;
     [SerializeField] private string nameAnim;
+    [SerializeField] private ParticleSystem particles;
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     public void efectoCillision()
     {
-        animator.Play(nameAnim);
+        //animator.Play(nameAnim);
+        particles.Play();
+        Debug.Log("Partículas activadas");
         Destroy(this.gameObject, 3f);
     }
 }

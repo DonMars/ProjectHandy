@@ -218,11 +218,12 @@ MonoBehaviour:
     type: 3}
   objectToSpawn2: {fileID: 2836275004272113642, guid: 28c6fa38c13173f43b54f08dbf9ccaeb,
     type: 3}
-  probabilidadEnemDeDies: 5
-  numberOfObjects: 10
+  probabilidadEnemDeDies: 3
+  numberOfObjects: 5
   spawnRadius: 21.12
   spawnArea: {fileID: 1376235880019250501}
   padreObjetos: {fileID: 7381382066815487372}
+  spawnRate: 0
 --- !u!1 &8975711758534592060
 GameObject:
   m_ObjectHideFlags: 0
