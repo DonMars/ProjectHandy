@@ -27,7 +27,7 @@ public class ActionEsconder : MonoBehaviour
     void Start()
     {
         //audioListener = gameObject.GetComponent<AudioListener>();
-        patrullaje = GetComponent<Patrullaje>();
+        //patrullaje = GetComponent<Patrullaje>();
         //animator = GetComponent<Animator>();
 
 
@@ -38,13 +38,12 @@ public class ActionEsconder : MonoBehaviour
     {
 
         //Animaciones();
-        detectPlayer = Physics.CheckSphere(this.transform.position, radio, playerLayerMask);
         
         if (detectPlayer)
         {
 
             //SFXManaguer.instance.PlaySound("SountTerror");
-            patrullaje.playerDetect = true;
+            
             animacionEsconder = true;
             
             //Cont = 0;
@@ -57,12 +56,12 @@ public class ActionEsconder : MonoBehaviour
 
             animacionEsconder = false;
 
-            patrullaje.playerDetect = false;
+            
 
-            if (patrullaje.patrullando == false)
-            {
-                patrullaje.StartPatroll();
-            }
+            //if (patrullaje.patrullando == false)
+            //{
+            //    patrullaje.StartPatroll();
+            //}
 
         }
 

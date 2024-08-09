@@ -21,6 +21,7 @@ public class EnemySpawn : MonoBehaviour
 
     public BoxCollider spawnArea;
     public Transform padreObjetos;
+    public float spawnRate;
     
 
     void Start()
@@ -34,19 +35,28 @@ public class EnemySpawn : MonoBehaviour
         // Verificar si el objeto que entró en el collider es el jugador
         if (other.CompareTag("Player"))
         {
-            for (int i = 0; i < numberOfObjects; i++)
-            {
-                // Elegir aleatoriamente cuál prefab instanciar
-                GameObject selectedPrefab = GetRandomPrefab();
-
-                // Obtener una posición random sobre el NavMesh
-                Vector3 randomPosition = GetRandomPointOnNavMesh();
-
-                // Instanciar el prefab seleccionado
-                Instantiate(selectedPrefab, randomPosition, Quaternion.identity, padreObjetos);
-                
-            }
+            
+            StartCoroutine(RateVoid());
         }
+    }
+    IEnumerator RateVoid()
+    {
+
+        for (int i = 0; i < numberOfObjects; i++)
+        {
+            // Elegir aleatoriamente cuál prefab instanciar
+            GameObject selectedPrefab = GetRandomPrefab();
+
+            // Obtener una posición random sobre el NavMesh
+            Vector3 randomPosition = GetRandomPointOnNavMesh();
+
+            // Instanciar el prefab seleccionado
+            Instantiate(selectedPrefab, randomPosition, Quaternion.identity, padreObjetos);
+            yield return new WaitForSeconds(spawnRate);
+
+        }
+        
+        
     }
     private void OnTriggerExit(Collider other)
     {

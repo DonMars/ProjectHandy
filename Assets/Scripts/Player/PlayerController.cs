@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
     public Animator staminaUseAnimation;
 
     [Header("Animator")]
-    public Animator animator;
+    //public Animator animator;
     bool playerDies = false;
     bool deathSwitch = false;
 
@@ -163,17 +163,17 @@ public class PlayerController : MonoBehaviour
 
     void AnimationHandler()
     {
-        animator.SetBool("isIdle", isIdle);
-        animator.SetBool("isRunning", isRunning);
-        animator.SetBool("isWalking", isWalking);
-        animator.SetBool("isGrounded", isGrounded);
-        animator.SetBool("isGrabbing", isGrabbing);
+        //animator.SetBool("isIdle", isIdle);
+        //animator.SetBool("isRunning", isRunning);
+        //animator.SetBool("isWalking", isWalking);
+        //animator.SetBool("isGrounded", isGrounded);
+        //animator.SetBool("isGrabbing", isGrabbing);
 
         if (playerDies && !deathSwitch)
         {
             deathSwitch = true;
-            animator.ResetTrigger("playerDies");
-            animator.SetTrigger("playerDies");
+            //animator.ResetTrigger("playerDies");
+            //animator.SetTrigger("playerDies");
         }
     }
 
@@ -241,8 +241,8 @@ public class PlayerController : MonoBehaviour
             jumpSound.pitch = Random.Range(1.2f, 1.6f);
             jumpSound.Play();
 
-            animator.ResetTrigger("isJumping");
-            animator.SetTrigger("isJumping");
+            //animator.ResetTrigger("isJumping");
+            //animator.SetTrigger("isJumping");
             dustParticlesLanding.Play();
 
             Jump();
