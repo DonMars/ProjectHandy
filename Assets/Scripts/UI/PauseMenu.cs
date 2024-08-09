@@ -34,7 +34,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Home()
     {
-        SceneManager.LoadScene("Main Menu Redux");
+        SceneManager.LoadScene("MainMenu Final Redux");
         Time.timeScale = 1;
     }
     public void Resume()
@@ -83,7 +83,7 @@ public class PauseMenu : MonoBehaviour
     {
         DeactivateAllCards();
         fluffInfo.SetActive(true);
-        if (GameManager.Instance.goldenPoop >= 1)
+        if (GameManager.Instance.goldenPoop >= 10)
         {
             DeactivateAllCards();
             fluffCard.SetActive(true); // Desbloquea la primera tarjeta
@@ -95,7 +95,7 @@ public class PauseMenu : MonoBehaviour
     {
         DeactivateAllCards();
         fluffRockInfo.SetActive(true);
-        if (GameManager.Instance.goldenPoop >= 2)
+        if (GameManager.Instance.goldenPoop >= 20)
         {
             DeactivateAllCards();
             fluffRockCard.SetActive(true); // Desbloquea la segunda tarjeta
@@ -108,7 +108,7 @@ public class PauseMenu : MonoBehaviour
 
         DeactivateAllCards();
         fluffFireInfo.SetActive(true);
-        if (GameManager.Instance.goldenPoop >= 3)
+        if (GameManager.Instance.goldenPoop >= 30)
         {
             DeactivateAllCards();
             fluffFireCard.SetActive(true); // Desbloquea la segunda tarjeta
@@ -119,7 +119,7 @@ public class PauseMenu : MonoBehaviour
     {
         DeactivateAllCards();
         fluffIceInfo.SetActive(true);
-        if (GameManager.Instance.goldenPoop >= 4)
+        if (GameManager.Instance.goldenPoop >= 40)
         {
             DeactivateAllCards();
             fluffIceCard.SetActive(true); // Desbloquea la segunda tarjeta
@@ -133,7 +133,7 @@ public class PauseMenu : MonoBehaviour
     {
         DeactivateAllCards();
         handyInfo.SetActive(true);
-        if (GameManager.Instance.goldenPoop >= 5)
+        if (GameManager.Instance.goldenPoop >= 50)
         {
             DeactivateAllCards();
             handyCard.SetActive(true); // Desbloquea la segunda tarjeta

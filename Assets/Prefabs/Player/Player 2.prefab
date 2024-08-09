@@ -5352,7 +5352,6 @@ MonoBehaviour:
   throwSFX1: {fileID: 2816126768453101628}
   throwSFX2: {fileID: 5975225289686925375}
   throwSFX3: {fileID: 3174921379613153241}
-  playerAnimator: {fileID: 4813023775058101844}
 --- !u!82 &4972369634309294959
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17431,21 +17430,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64cb1d1bea0552a47a418025d35ae354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayBeforeLoading: 3
   healthPoints: 4
   maxHealthPoints: 4
   canBeDamaged: 1
-  handMeshRenderer: {fileID: 183247581786865272}
+  handMeshRenderer: {fileID: 5136562234220305402}
   jumpKey: 32
   runKey: 304
   grabKey: 323
   cancelGrabKey: 324
   canMove: 1
   movementSpeed: 2.2
-  groundDrag: 4.85
+  groundDrag: 4.9
   canJump: 1
   jumpForce: 8.65
   jumpCooldown: 0.2
-  airMultiplier: 0.24
+  airMultiplier: 0.5
   jumpSound: {fileID: 4188644384314804993}
   isJumping: 0
   canRun: 1

@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     public int healthPoints;
     public int maxHealthPoints = 4;
     public bool canBeDamaged = true;
-    public MeshRenderer handMeshRenderer;
+    public SkinnedMeshRenderer handMeshRenderer;
+    public MeshRenderer handFaceMeshRenderer;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -164,6 +165,7 @@ public class PlayerController : MonoBehaviour
     void GameOver()
     {
         playerDies = true;
+        this.enabled = false;
         Debug.Log("Mr. Handy is DEAD! Game Over");
 
         StartCoroutine(LoadGameOverScene());
@@ -482,47 +484,69 @@ public class PlayerController : MonoBehaviour
     public IEnumerator DamageCooldown()
     {
         handMeshRenderer.enabled = false;
+        handFaceMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.025f);
         handMeshRenderer.enabled = true;
+        handFaceMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.025f);
+        handFaceMeshRenderer.enabled = false;
         handMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.025f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.025f);
+        handFaceMeshRenderer.enabled = false;
         handMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.025f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.025f);
+        handFaceMeshRenderer.enabled = false;
         handMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.025f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.025f);
+        handFaceMeshRenderer.enabled = false;
         handMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.05f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.05f);
+        handFaceMeshRenderer.enabled = false;
         handMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.05f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.05f);
+        handFaceMeshRenderer.enabled = false;
         handMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.05f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.08f);
+        handFaceMeshRenderer.enabled = false;
         handMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.08f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.08f);
+        handFaceMeshRenderer.enabled = false;
         handMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.09f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.1f);
+        handFaceMeshRenderer.enabled = false;
         handMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.11f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
         yield return new WaitForSeconds(0.13f);
         handMeshRenderer.enabled = false;
+        handFaceMeshRenderer.enabled = false;
         yield return new WaitForSeconds(0.05f);
+        handFaceMeshRenderer.enabled = true;
         handMeshRenderer.enabled = true;
 
         canBeDamaged = true;

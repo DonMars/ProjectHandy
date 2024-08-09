@@ -151,7 +151,7 @@ public class Efect : MonoBehaviour
             }
             //this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
-            GetComponent<EnemyBehavior>().enabled = true;
+            GetComponent<EnemyBehavior>().enabled = true; 
         }
         if (Arrojado == false)
         {

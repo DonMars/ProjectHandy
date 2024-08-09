@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync("Nivel 2 Test");
+        SceneManager.LoadSceneAsync("Nivel Final 3");
     }
 
     public void Bestiario()
