@@ -4940,16 +4940,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a6ff3a3c98d0e489a3148519697d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomSpeedMin: 3
-  randomSpeedMax: 6
-  detectionRadius: 5
+  randomSpeedMin: 2
+  randomSpeedMax: 5
+  detectionRadius: 7
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   aware: 0
-  patrolRangeMin: 20
-  patrolRangeMax: 40
-  patrolWaitTimeMin: 6
+  patrolRangeMin: 3
+  patrolRangeMax: 7
+  patrolWaitTimeMin: 2
   patrolWaitTimeMax: 8
   centrePoint: {fileID: 160587526450885361}
   dealsOnCollisionDamage: 0

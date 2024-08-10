@@ -9796,7 +9796,7 @@ GameObject:
   - component: {fileID: 8090000552938861263}
   - component: {fileID: 5872848406608041300}
   - component: {fileID: 5488985698661690409}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalPoop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -35,6 +35,8 @@ public class GrabMechanic : MonoBehaviour
 
     Grabbable grabbableLocal;
 
+    public Animator playerAnimator;
+
     //public Animator playerAnimator;
 
     void Awake()
@@ -62,6 +64,9 @@ public class GrabMechanic : MonoBehaviour
         if (grabbing && player.canGrab && !player.isGrabbing && !player.isRunning || isLeaping)
         {
             grabbing = false;
+
+            playerAnimator.SetTrigger("grabAttempt");
+            playerAnimator.ResetTrigger("grabAttempt");
 
             if (grabbable == null) // If not grabbing, try to grab
             {

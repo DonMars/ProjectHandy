@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3177439115124783526}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Position2Puerta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,6 +39,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8807689398152442118}
     m_Modifications:
+    - target: {fileID: 111603911652884676, guid: 9004e39d44337ed48bccfe8984d736c4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 858176328696415466, guid: 9004e39d44337ed48bccfe8984d736c4,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -119,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwuitchNormal
       objectReference: {fileID: 0}
+    - target: {fileID: 6120936491964092000, guid: 9004e39d44337ed48bccfe8984d736c4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2434555559387775222, guid: 9004e39d44337ed48bccfe8984d736c4, type: 3}
     - {fileID: 3076425314390181678, guid: 9004e39d44337ed48bccfe8984d736c4, type: 3}
@@ -140,6 +150,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 331429542205680567, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4989584830215994038, guid: 95667d967f4bdf540ad76440e5ea4849,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -205,10 +220,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5530594274619116503, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5653495667071639564, guid: 95667d967f4bdf540ad76440e5ea4849,
         type: 3}
       propertyPath: m_Name
       value: InteractuableAro Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653495667071639564, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798864826542018750, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269379669571675199, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -317,6 +352,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AroFluffer
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fa9b9171908925643b744bc11e0126dc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

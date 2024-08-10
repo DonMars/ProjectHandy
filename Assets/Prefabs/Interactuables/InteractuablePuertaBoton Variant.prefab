@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6635070827251142330}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NextPositionBoton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5798602029485013049}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NextPositionSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4161268954546890430}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BotonSwhitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 4195232875357693410}
   - component: {fileID: 8653406005077050638}
   - component: {fileID: 5218442541389806965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Botoncollider
   m_TagString: Interactuable
   m_Icon: {fileID: 0}
@@ -300,6 +300,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 331429542205680567, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4989584830215994038, guid: 95667d967f4bdf540ad76440e5ea4849,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -365,10 +370,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5530594274619116503, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5653495667071639564, guid: 95667d967f4bdf540ad76440e5ea4849,
         type: 3}
       propertyPath: m_Name
       value: InteractuablePuertaBoton Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653495667071639564, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798864826542018750, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269379669571675199, guid: 95667d967f4bdf540ad76440e5ea4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -64,5 +64,5 @@ Material:
     - _distortion_Speed: 1.16
     m_Colors:
     - _Color: {r: 14.928529, g: 0.8196055, b: 0, a: 0.6117647}
-    - _vertical_Mak_Rnague: {r: 0, g: 1.02, b: 0, a: 0}
+    - _vertical_Mak_Rnague: {r: 0, g: 0.69, b: 0, a: 0}
   m_BuildTextureStacks: []

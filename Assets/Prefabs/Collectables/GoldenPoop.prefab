@@ -9796,7 +9796,7 @@ GameObject:
   - component: {fileID: 6123679817295208394}
   - component: {fileID: 1041076337712906425}
   - component: {fileID: 4594138555480000040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoldenPoop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
