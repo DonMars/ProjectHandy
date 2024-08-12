@@ -5327,7 +5327,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.72
+  m_Radius: 0.8424771
   m_Center: {x: 0, y: 0, z: 1.34}
 --- !u!114 &2571137032078514884
 MonoBehaviour:
@@ -5352,6 +5352,7 @@ MonoBehaviour:
   throwSFX1: {fileID: 2816126768453101628}
   throwSFX2: {fileID: 5975225289686925375}
   throwSFX3: {fileID: 3174921379613153241}
+  playerAnimator: {fileID: 0}
 --- !u!82 &4972369634309294959
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17340,6 +17341,7 @@ GameObject:
   - component: {fileID: 4188644384314804993}
   - component: {fileID: 7685904404052534603}
   - component: {fileID: 5140058544819027755}
+  - component: {fileID: 1631475896147502448}
   m_Layer: 6
   m_Name: Player 2
   m_TagString: Player
@@ -17434,7 +17436,7 @@ MonoBehaviour:
   healthPoints: 4
   maxHealthPoints: 4
   canBeDamaged: 1
-  handMeshRenderer: {fileID: 5136562234220305402}
+  handMeshRenderer: {fileID: 5228611812615162057}
   handFaceMeshRenderer: {fileID: 183247581786865272}
   jumpKey: 32
   runKey: 304
@@ -17485,6 +17487,7 @@ MonoBehaviour:
   hurtSFX2: {fileID: 5140058544819027755}
   staminaUseAnimation: {fileID: 0}
   animator: {fileID: 4813023775058101844}
+  colliderAnimator: {fileID: 1631475896147502448}
 --- !u!82 &4188644384314804993
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17773,6 +17776,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1631475896147502448
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097337466528363732}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ac8251a09e524e4badd4ca991a5ba5c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6118773561334124316
 GameObject:
   m_ObjectHideFlags: 0

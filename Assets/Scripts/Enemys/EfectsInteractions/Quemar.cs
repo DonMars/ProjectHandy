@@ -20,6 +20,6 @@ public class Quemar : MonoBehaviour
         animator.Play(nameAnim);
         particles.Play();
         Debug.Log("Partículas activadas");
-        Destroy(this.gameObject, 3f);
+        Destroy(this.gameObject, 5.2f);
     }
 }
