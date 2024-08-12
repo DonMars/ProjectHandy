@@ -277,6 +277,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemigoRoca 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6d8f19998d8ba0f478c9f6eb96d4106b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5754084199372789682, guid: 6d8f19998d8ba0f478c9f6eb96d4106b, type: 3}
     - {fileID: -7511558181221131132, guid: 6d8f19998d8ba0f478c9f6eb96d4106b, type: 3}
@@ -383,10 +388,9 @@ MonoBehaviour:
   patrolWaitTimeMin: 5
   patrolWaitTimeMax: 6
   centrePoint: {fileID: 0}
-  dealsOnCollisionDamage: 0
-  collisionDamageRate: 6
-  collisionDamageMin: 1
-  collisionDamageMax: 2
+  animator: {fileID: 0}
+  patrolAnimation: Patrolling
+  alertAnimation: Alert
 --- !u!114 &3089586923234013834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,14 +403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97666d13e7b22ab46a452467d91caf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 3305792781789033282}
   detectPlayer: 0
   animacionEsconder: 0
   animacionCabarName: 
-  playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  radio: 0
 --- !u!114 &8956423316597683447
 MonoBehaviour:
   m_ObjectHideFlags: 0

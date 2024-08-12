@@ -6,9 +6,9 @@ using UnityEngine.UIElements;
 
 public class ActionEsconder : MonoBehaviour
 {
-    private Patrullaje patrullaje;
+    //private Patrullaje patrullaje;
     //public Transform player;
-    public NavMeshAgent agent;
+    //public NavMeshAgent agent;
     //private AudioListener audioListener;
     public bool detectPlayer;
     
@@ -19,8 +19,8 @@ public class ActionEsconder : MonoBehaviour
     [SerializeField]private bool animacionEsconder;
     [SerializeField]private string animacionCabarName;
 
-    public LayerMask playerLayerMask;
-    [SerializeField] private float radio;
+    //public LayerMask playerLayerMask;
+    //[SerializeField] private float radio;
 
 
    
@@ -70,9 +70,9 @@ public class ActionEsconder : MonoBehaviour
     //{
     //    animator.SetBool(animacionCabarName,animacionCabar);
     //}
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(this.transform.position, radio);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawWireSphere(this.transform.position, radio);
+    //}
 }

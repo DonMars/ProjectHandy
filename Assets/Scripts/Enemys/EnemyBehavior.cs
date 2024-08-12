@@ -5,23 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    //public Animator spybotAnimator;
-    //public GameObject explosionVFX;
-    //public AudioSource hitSFX1;
-    //public AudioSource hitSFX2;
-    //public AudioSource hitSFX3;
-
-    [Header("Initialization")]
+     [Header("Initialization")]
     public float randomSpeedMin;
     public float randomSpeedMax;
-
 
     [Header("Detection")]
     public float detectionRadius = 5;
     public LayerMask playerLayer;
     [SerializeField] private bool aware;
-    bool enemyCall = false;
-    bool calledSwitch = false;
     Transform player;
     Vector3 target;
 
@@ -34,110 +25,89 @@ public class EnemyBehavior : MonoBehaviour
     NavMeshAgent agent;
     float patrolRange;
     bool patrolSwitch = false;
-    
-    [Header("Collision Damage")]
-    public bool dealsOnCollisionDamage = false;
-    public int collisionDamageRate = 6;
-    public int collisionDamageMin = 1;
-    public int collisionDamageMax = 2;
-    int collisionDamage;
 
-    Rigidbody rb;
-    //EnemyHealth enemyHealth;
+    [Header("Animations")]
+    public Animator animator; // Referencia al Animator del enemigo
+    public string patrolAnimation = "Patrolling"; // Nombre del trigger de la animación de patrullaje
+    public string alertAnimation = "Alert"; // Nombre del trigger de la animación de alerta
 
     void Start()
     {
-        if(GetComponent<NavMeshAgent>() != null)
+        if (GetComponent<NavMeshAgent>() != null)
         {
             agent = GetComponent<NavMeshAgent>();
         }
-        if(GetComponent<Rigidbody>() != null)
-        {
-            rb = GetComponent<Rigidbody>();
-        }
-
-
-        //enemyHealth = GetComponent<EnemyHealth>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         agent.speed = Random.Range(randomSpeedMin, randomSpeedMax);
+        SetAnimationState("Patrolling"); // Empezamos en patrullaje
     }
 
     void Update()
     {
-        // Player Detect
+        //if (GetComponent<NavMeshAgent>() != null)
+        //{
+        //    agent = GetComponent<NavMeshAgent>();
+        //}
+        // Detección del Jugador
         if (Physics.CheckSphere(transform.position, detectionRadius, playerLayer))
         {
             aware = true;
         }
         else
         {
-            aware= false;
+            aware = false;
         }
-            
 
         if (aware)
         {
-            
+            // El enemigo ha detectado al jugador
             agent.isStopped = true;
-
+            SetAnimationState("Alert"); // Cambia a la animación de alerta
+            // Aquí podrías añadir la lógica para que el enemigo ejecute otro script para atacar o seguir al jugador
             if(GetComponent<ActionAtack>() != null)
             {
                 GetComponent<ActionAtack>().detectPlayer = true;
-               
             }
-            if(GetComponent<ActionEsconder>() != null)
+            if (GetComponent<ActionEsconder>() != null)
             {
                 GetComponent<ActionEsconder>().detectPlayer = true;
             }
 
 
-            //enemyCall = true;
-            //target = player.position;
-            //agent.SetDestination(target);
-            ////spybotAnimator.SetBool("isWalking", true);
-            //rb.velocity = Vector3.zero;
         }
-
-        //Patrolling
-        if (/*agent.remainingDistance <= agent.stoppingDistance*/ /*||*/ !aware || !patrolSwitch)
+        else
         {
-            //agent.isStopped = false;
+            // El enemigo no detecta al jugador, continua patrullando
             if (GetComponent<ActionAtack>() != null)
             {
                 GetComponent<ActionAtack>().detectPlayer = false;
-
             }
-            if(GetComponent<ActionEsconder>() != null)
+            if (GetComponent<ActionEsconder>() != null)
             {
                 GetComponent<ActionEsconder>().detectPlayer = false;
             }
-            Vector3 point;
-            patrolRange = Random.Range(patrolRangeMin, patrolRangeMax);
-            //spybotAnimator.SetBool("isWalking", true);
-
-            if (RandomPoint(centrePoint.position, patrolRange, out point))
+            if (!patrolSwitch)
             {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                agent.SetDestination(point);
-                StartCoroutine(PatrolWait());
-                //spybotAnimator.SetBool("isWalking", false);
-                patrolSwitch = true;
+                agent.isStopped = false;
+                SetAnimationState("Patrolling"); // Cambia a la animación de patrullaje
+                Vector3 point;
+                patrolRange = Random.Range(patrolRangeMin, patrolRangeMax);
+
+                if (RandomPoint(centrePoint.position, patrolRange, out point))
+                {
+                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                    agent.SetDestination(point);
+                    StartCoroutine(PatrolWait());
+                    patrolSwitch = true;
+                }
             }
         }
-
-        // Damage Detect
-        //if (enemyHealth.health < enemyHealth.startingHealth)
-        //{
-        //    aware = true;
-        //}
-
-
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
-        Vector3 randomPoint = center + Random.insideUnitSphere * patrolRange;
+        Vector3 randomPoint = center + Random.insideUnitSphere * range;
         NavMeshHit hit;
 
         if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
@@ -152,60 +122,16 @@ public class EnemyBehavior : MonoBehaviour
 
     IEnumerator PatrolWait()
     {
-        yield return new WaitForSeconds(Random.Range(patrolWaitTimeMin, patrolWaitTimeMax+1));
+        yield return new WaitForSeconds(Random.Range(patrolWaitTimeMin, patrolWaitTimeMax + 1));
         patrolSwitch = false;
     }
 
-
-    //public void InstantiateExplosion()
-    //{
-    //    Instantiate(explosionVFX.gameObject, transform.position, Quaternion.identity);
-    //}
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if(other.CompareTag("Enemy") && enemyCall && !calledSwitch)
-    //    {
-    //        calledSwitch = true;
-    //        other.GetComponent<EnemyBehavior>().aware = true;
-    //    }
-    //}
-
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    if(collision.collider.CompareTag("Player") && dealsOnCollisionDamage)
-    //    {
-    //        int chance = Random.Range(1, collisionDamageRate);
-
-    //        if (chance == 1)
-    //        {
-    //            int chance2 = Random.Range(1, 4);
-
-    //            if (chance2 == 1)
-    //            {
-    //                hitSFX1.pitch = Random.Range(0.9f, 1.2f);
-    //                hitSFX1.Play();
-    //            }
-    //            else if (chance2 == 2)
-    //            {
-    //                hitSFX2.pitch = Random.Range(0.9f, 1.2f);
-    //                hitSFX2.Play();
-    //            }
-    //            else if (chance2 == 3)
-    //            {
-    //                hitSFX3.pitch = Random.Range(0.8f, 1.1f);
-    //                hitSFX3.Play();
-    //            }
-
-    //            collisionDamage = Random.Range(collisionDamageMin, collisionDamageMax+1);
-    //            //FirstPersonController.OnTakeDamage(collisionDamage);
-    //        }
-    //    }
-    //}
-
-    public void ReAsignarAgent()
+    private void SetAnimationState(string state)
     {
-        agent = GetComponent<NavMeshAgent>();
+        if (animator != null)
+        {
+            animator.SetTrigger(state);
+        }
     }
 
     private void OnDrawGizmosSelected()

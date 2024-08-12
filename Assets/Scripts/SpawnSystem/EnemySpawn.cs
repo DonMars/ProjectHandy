@@ -8,112 +8,112 @@ using UnityEngine.Serialization;
 
 public class EnemySpawn : MonoBehaviour
 {
-    
+    [SerializeField] private GameObject objetoParaGenerar1;  // Primer prefab del objeto a instanciar
+    [SerializeField] private GameObject objetoParaGenerar2;  // Segundo prefab del objeto a instanciar
+    [SerializeField] private float probabilidadDeGenerar1;  // Probabilidad de generación del primer prefab
+    [SerializeField] private int numeroDeObjetos = 10;   // Número de objetos a instanciar
+    [SerializeField] private BoxCollider areaDeGeneracion; // Área dentro de la cual se generarán los objetos
+    [SerializeField] private Transform padreDeObjetos; // Transform que actuará como el padre de los objetos generados
+    [SerializeField] private float tasaDeGeneracion; // Tiempo entre la generación de cada objeto
 
-    public GameObject objectToSpawn1;  // Primer prefab del objeto a instanciar
-    public GameObject objectToSpawn2;  // Segundo prefab del objeto a instanciar
-    public float probabilidadEnemDeDies;
-    public int numberOfObjects = 10;   // Número de objetos a instanciar
-    public float spawnRadius = 10f;    // Radio en el que se instanciarán los objetos
-
-    private NavMeshTriangulation navMeshData;
-    
-
-    public BoxCollider spawnArea;
-    public Transform padreObjetos;
-    public float spawnRate;
-    
+    private NavMeshTriangulation datosDelNavMesh;
 
     void Start()
     {
-        // Obtener los datos del NavMesh
-        navMeshData = NavMesh.CalculateTriangulation();
+        // Obtener los datos del NavMesh al inicio
+        datosDelNavMesh = NavMesh.CalculateTriangulation();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider otro)
     {
-        // Verificar si el objeto que entró en el collider es el jugador
-        if (other.CompareTag("Player"))
+        if (otro.CompareTag("Player"))
         {
-            
-            StartCoroutine(RateVoid());
+            Debug.Log("Player ha entrado en el área de generación.");
+            StartCoroutine(GenerarObjetos());
         }
     }
-    IEnumerator RateVoid()
-    {
 
-        for (int i = 0; i < numberOfObjects; i++)
+    IEnumerator GenerarObjetos()
+    {
+        for (int i = 0; i < numeroDeObjetos; i++)
         {
-            // Elegir aleatoriamente cuál prefab instanciar
-            GameObject selectedPrefab = GetRandomPrefab();
+            GameObject prefabSeleccionado = ObtenerPrefabAleatorio();
+            Vector3 posicionAleatoria = ObtenerPuntoAleatorioEnNavMesh();
 
-            // Obtener una posición random sobre el NavMesh
-            Vector3 randomPosition = GetRandomPointOnNavMesh();
-
-            // Instanciar el prefab seleccionado
-            Instantiate(selectedPrefab, randomPosition, Quaternion.identity, padreObjetos);
-            yield return new WaitForSeconds(spawnRate);
-
-        }
-        
-        
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        
-       if(other.CompareTag("Player"))
-       {
-            foreach(Transform child in padreObjetos)
+            if (prefabSeleccionado != null && padreDeObjetos != null)
             {
-                Destroy(child.gameObject);
+                GameObject instancia = Instantiate(prefabSeleccionado, posicionAleatoria, Quaternion.identity, padreDeObjetos);
+
+                // Verificar y ajustar el NavMeshAgent si está presente en el prefab instanciado
+                NavMeshAgent agent = instancia.GetComponent<NavMeshAgent>();
+                if (agent != null)
+                {
+                    agent.enabled = true; // Asegúrate de que el agente esté habilitado
+                    if (!agent.isOnNavMesh)
+                    {
+                        Debug.LogWarning($"El NavMeshAgent en {instancia.name} no está en un NavMesh.");
+                    }
+                }
             }
-       }
-       
+
+            yield return new WaitForSeconds(tasaDeGeneracion);
+        }
     }
 
-    GameObject GetRandomPrefab()
+    private void OnTriggerExit(Collider otro)
     {
-        // Seleccionar uno de los dos prefabs de manera aleatoria
-        if (probabilidadEnemDeDies >= randomNum())
+        if (otro.CompareTag("Player"))
         {
-            return objectToSpawn1;
-
-
+            Debug.Log("Player ha salido del área de generación.");
+            if (padreDeObjetos != null)
+            {
+                foreach (Transform hijo in padreDeObjetos)
+                {
+                    Debug.Log($"Destruyendo objeto: {hijo.name}");
+                    Destroy(hijo.gameObject);
+                }
+            }
         }
-        else
-        {
-            return objectToSpawn2;
-
-        }
-        
     }
 
-    Vector3 GetRandomPointOnNavMesh()
+    private GameObject ObtenerPrefabAleatorio()
     {
-        Vector3 randomPoint = new Vector3(Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x), spawnArea.bounds.center.y, Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z));
+        // Seleccionar el prefab basado en la probabilidad
+        return Random.value < probabilidadDeGenerar1 ? objetoParaGenerar1 : objetoParaGenerar2;
+    }
 
+    private Vector3 ObtenerPuntoAleatorioEnNavMesh()
+    {
+        Vector3 puntoAleatorio;
         NavMeshHit hit;
-        if(NavMesh.SamplePosition(randomPoint, out hit, 0.1f, NavMesh.AllAreas))
-        {
-            return hit.position;
-        }
-        return randomPoint;
-    }
 
-    private float randomNum()
-    {
-        return Random.Range(1,10);
+        int maxIntentos = 10;
+        for (int i = 0; i < maxIntentos; i++)
+        {
+            puntoAleatorio = new Vector3(
+                Random.Range(areaDeGeneracion.bounds.min.x, areaDeGeneracion.bounds.max.x),
+                0, // Inicialmente se coloca en y=0, luego se ajusta
+                Random.Range(areaDeGeneracion.bounds.min.z, areaDeGeneracion.bounds.max.z)
+            );
+
+            if (NavMesh.SamplePosition(puntoAleatorio, out hit, 0.1f, NavMesh.AllAreas))
+            {
+                return hit.position; // hit.position ya incluye la altura correcta
+            }
+        }
+
+        // Si no se encuentra una posición válida en los intentos, retornamos la posición central del área de generación
+        Debug.LogWarning("No se pudo encontrar una posición válida en el NavMesh. Usando la posición central.");
+        return areaDeGeneracion.bounds.center;
     }
 
     private void OnDrawGizmos()
     {
-        if (spawnArea != null)
+        if (areaDeGeneracion != null)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireCube(spawnArea.bounds.center, spawnArea.bounds.size);
+            Gizmos.DrawWireCube(areaDeGeneracion.bounds.center, areaDeGeneracion.bounds.size);
         }
     }
-
-
 
 }

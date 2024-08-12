@@ -5157,7 +5157,7 @@ GameObject:
   - component: {fileID: 44864435714889484}
   m_Layer: 0
   m_Name: EnemyFuego
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5203,10 +5203,9 @@ MonoBehaviour:
   patrolWaitTimeMin: 2
   patrolWaitTimeMax: 8
   centrePoint: {fileID: 3375429988121904918}
-  dealsOnCollisionDamage: 0
-  collisionDamageRate: 6
-  collisionDamageMin: 1
-  collisionDamageMax: 2
+  animator: {fileID: 0}
+  patrolAnimation: Patrolling
+  alertAnimation: Alert
 --- !u!114 &8480602312744781220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5222,7 +5221,7 @@ MonoBehaviour:
   Arrojado: 0
   enMano: 0
   Golpea: 0
-  efectofuego: 1
+  efectoFuego: 1
   efectoHielo: 0
   efectoNormal: 0
   efectoRoca: 0
@@ -5291,10 +5290,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8532157
-  m_Height: 2.0650516
+  m_Radius: 0.8557594
+  m_Height: 2.3013947
   m_Direction: 1
-  m_Center: {x: 0.0041192025, y: -0.5299192, z: 0.0055319816}
+  m_Center: {x: 0.13243079, y: -0.41174763, z: 0.0319954}
 --- !u!195 &2408520878523610919
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -12,8 +12,8 @@ public class Efect : MonoBehaviour
     //private Animator animator;
     //[SerializeField] private string nameAnim;
 
-    [SerializeField] private bool efectofuego;
-    [SerializeField] private bool efectoHielo;
+    [SerializeField] private bool efectoFuego;
+    public bool efectoHielo;
     [SerializeField] private bool efectoNormal;
     [SerializeField] private bool efectoRoca;
 
@@ -42,17 +42,15 @@ public class Efect : MonoBehaviour
         {
             if (collision.transform.tag == "Interactuable")
             {
-                if (efectofuego == true)
+                if (efectoFuego == true && collision.gameObject.GetComponent<Quemar>() != null)
                 {
                     collision.gameObject.GetComponent<Quemar>().efectoCillision();
                     Destroy(gameObject);
                 }
                 
-                if (efectoRoca == true)
+                if (efectoRoca == true && collision.gameObject.GetComponent<botton>() != null)
                 {
                     collision.gameObject.GetComponent<botton>().move = true;
-                    
-                    
                 }
 
             }
@@ -72,7 +70,7 @@ public class Efect : MonoBehaviour
         {
             if (other.transform.tag == "Interactuable")
             {
-                if (efectoHielo == true)
+                if (efectoHielo == true && other.GetComponent<Hielo>() != null)
                 {
                     Vector3 contacto = other.ClosestPoint(transform.position);
 
@@ -80,8 +78,9 @@ public class Efect : MonoBehaviour
                     Destroy(gameObject);
                 }
 
-                if (efectoNormal == true)
+                if (efectoNormal == true && other.GetComponent<Normal>() != null)
                 {
+                    
                     other.gameObject.GetComponent<Normal>().move = true;
                     Destroy(gameObject);
                 }
@@ -186,15 +185,7 @@ public class Efect : MonoBehaviour
         }
         else
         {
-            //if (GetComponent<NavMeshAgent>() != null)
-            //{
-                
-            //}
 
-            //GetComponent<NavMeshAgent>().enabled = true;
-
-
-            //GetComponent<Patrullaje>().enabled = true;
         }
 
 

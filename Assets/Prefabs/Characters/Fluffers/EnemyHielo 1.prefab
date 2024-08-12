@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 6200919379831358887}
   m_Layer: 0
   m_Name: EnemyHielo 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,14 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97666d13e7b22ab46a452467d91caf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1635336996807062207}
   detectPlayer: 0
   animacionEsconder: 0
   animacionCabarName: 
-  playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  radio: 6.57
 --- !u!114 &5003596118223338095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,10 +204,9 @@ MonoBehaviour:
   patrolWaitTimeMin: 2
   patrolWaitTimeMax: 8
   centrePoint: {fileID: 1720863481089680766}
-  dealsOnCollisionDamage: 0
-  collisionDamageRate: 6
-  collisionDamageMin: 1
-  collisionDamageMax: 2
+  animator: {fileID: 0}
+  patrolAnimation: Patrolling
+  alertAnimation: Alert
 --- !u!114 &8404997106303098024
 MonoBehaviour:
   m_ObjectHideFlags: 0

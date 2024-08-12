@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 7226071235505636451}
   m_Layer: 0
   m_Name: EnemySimple
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4952,10 +4952,9 @@ MonoBehaviour:
   patrolWaitTimeMin: 2
   patrolWaitTimeMax: 8
   centrePoint: {fileID: 160587526450885361}
-  dealsOnCollisionDamage: 0
-  collisionDamageRate: 6
-  collisionDamageMin: 1
-  collisionDamageMax: 2
+  animator: {fileID: 0}
+  patrolAnimation: Patrolling
+  alertAnimation: Alert
 --- !u!1001 &4340688190293747739
 PrefabInstance:
   m_ObjectHideFlags: 0
