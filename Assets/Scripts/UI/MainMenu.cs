@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public string menu = "main menu";
     private void Awake()
     {
         //GameManager.Instance.ShowAndUnlockCursor();
@@ -29,5 +30,10 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void MainMe()
+    {
+        SceneManager.LoadScene(menu);
     }
 }

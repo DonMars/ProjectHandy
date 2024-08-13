@@ -14,11 +14,17 @@ public class Hielo : MonoBehaviour
     public float underwaterAngularDrag = 1f; // Resistencia a la rotación cuando está bajo el agua
     public Transform respawnPoint; // Punto de respawn específico
     public float respawnTime = 5f; // Tiempo en segundos antes de respawnear
+    public float alturaY = 5f; // Tiempo en segundos antes de respawnear
     
 
     public void efectoCillision(Vector3 positionContact)
     {
-        Instantiate(hieloObject,positionContact,this.transform.rotation);
+       
+        Vector3 pointCollision = positionContact;
+
+        Vector3 PositionInstance = pointCollision + new Vector3(0,alturaY,0);
+
+        Instantiate(hieloObject,PositionInstance,Quaternion.identity);
         //Destroy(gameObject);
     }
 
@@ -93,6 +99,11 @@ public class Hielo : MonoBehaviour
 
         // Verificar la posición final después del respawn
         Debug.Log("Respawned at: " + other.transform.position);
+
+        rb.velocity = Vector3.zero; // Detener la velocidad del objeto
+        rb.angularVelocity = Vector3.zero; // Detener la rotación del objeto
+        other.transform.position = respawnPoint.position;
+        other.transform.rotation = respawnPoint.rotation;
     }
 
 
