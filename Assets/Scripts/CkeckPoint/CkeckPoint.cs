@@ -10,7 +10,8 @@ public class CkeckPoint : MonoBehaviour
     {
         if(other.transform.tag == "Player")
         {
-            pointSpawnCheck.position = newPointSpawnCheck.position;
+            //FindAnyObjectByType<GameManager>().PointSpawn = this.transform.position;
+            //FindAnyObjectByType<GameManager>().checkPointSave = true;
         }
     }
 }

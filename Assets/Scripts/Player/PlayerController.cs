@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     public bool isRunning = false;
     public bool isWalking = false;
 
+    public Transform posicioInicial;
+
     [Header("Grab Ability")]
     public bool canGrab = true;
     public bool grabSwitch = false;
@@ -124,6 +126,16 @@ public class PlayerController : MonoBehaviour
 
         currentStamina = maxStamina;
         originalStaminaRegenTime = timeBeforeStaminaRegenStarts;
+
+        
+    }
+    private void OnEnable()
+    {
+        if (FindAnyObjectByType<GameManager>().checkPointSave == true && FindAnyObjectByType<GameManager>().continuar == true)
+        {
+            this.transform.position = FindAnyObjectByType<GameManager>().PointSpawn;
+
+        }
     }
 
     void Start()
@@ -133,6 +145,8 @@ public class PlayerController : MonoBehaviour
 
         // Set Stamina
         OnStaminaChange?.Invoke(currentStamina);
+
+        
     }
 
     void Update()
