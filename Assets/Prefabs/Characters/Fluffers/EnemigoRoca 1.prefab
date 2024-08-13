@@ -387,7 +387,7 @@ MonoBehaviour:
   patrolRangeMax: 40
   patrolWaitTimeMin: 5
   patrolWaitTimeMax: 6
-  centrePoint: {fileID: 0}
+  centrePoint: {fileID: 6415999880013069031}
   animator: {fileID: 0}
   patrolAnimation: Patrolling
   alertAnimation: Alert
@@ -436,7 +436,7 @@ MonoBehaviour:
   Arrojado: 0
   enMano: 0
   Golpea: 0
-  efectofuego: 0
+  efectoFuego: 0
   efectoHielo: 0
   efectoNormal: 0
   efectoRoca: 1

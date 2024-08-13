@@ -131,7 +131,7 @@ public class GrabMechanic : MonoBehaviour
                 grabbableLocal.GetComponent<Efect>().Arrojado = true;
             }
 
-            grabbableLocal.particles.Play();
+            //grabbableLocal.particles.Play();
 
             grabbableRb.isKinematic = false;
             grabbableRb.AddForce((grabPoint.forward + new Vector3(0, 1, 0)) * throwForce * chargeTime, ForceMode.Impulse);

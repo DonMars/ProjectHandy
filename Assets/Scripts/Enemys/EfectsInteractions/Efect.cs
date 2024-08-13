@@ -141,12 +141,12 @@ public class Efect : MonoBehaviour
             if (GetComponent<ActionAtack>() != null)
             {
                 GetComponent<ActionAtack>().enabled = true;
-                GetComponent<ActionAtack>().ReAsignarAgent();
+                //GetComponent<ActionAtack>().ReAsignarAgent();
             }
             if (GetComponent<ActionEsconder>() != null)
             {
                 GetComponent<ActionEsconder>().enabled = true;
-                GetComponent<ActionAtack>().ReAsignarAgent();
+                //GetComponent<ActionAtack>().ReAsignarAgent();
             }
             //this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
