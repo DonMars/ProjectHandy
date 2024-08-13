@@ -129,14 +129,13 @@ public class PlayerController : MonoBehaviour
 
         
     }
-    private void OnEnable()
-    {
-        if (FindAnyObjectByType<GameManager>().checkPointSave == true && FindAnyObjectByType<GameManager>().continuar == true)
-        {
-            this.transform.position = FindAnyObjectByType<GameManager>().PointSpawn;
-
-        }
-    }
+    //private void OnEnable()
+    //{
+    //    if (FindAnyObjectByType<GameManager>().checkPointSave == true && FindAnyObjectByType<GameManager>().continuar == true)
+    //    {
+    //        this.transform.position = FindAnyObjectByType<GameManager>().PointSpawn;
+    //    }
+    //}
 
     void Start()
     {
@@ -145,8 +144,6 @@ public class PlayerController : MonoBehaviour
 
         // Set Stamina
         OnStaminaChange?.Invoke(currentStamina);
-
-        
     }
 
     void Update()
@@ -192,8 +189,6 @@ public class PlayerController : MonoBehaviour
 
         SceneManager.LoadScene("GameOver");
     }
-
-
 
     void AnimationHandler()
     {

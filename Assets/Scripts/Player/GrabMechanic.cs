@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrabMechanic : MonoBehaviour
 {
     [Header("Throw Mechanic")]
-    float throwForce = 5f;
+    public float throwForce = 5f;
     public float chargeTime = 0f;
     public float maxChargeTime = 3f;
     bool isCharging;
