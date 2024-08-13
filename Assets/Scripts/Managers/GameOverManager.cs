@@ -16,6 +16,8 @@ public class GameOverManager : MonoBehaviour
     }
     public void Continue()
     {
+        //FindAnyObjectByType<GameManager>().continuar = true;
+        //FindAnyObjectByType<GameManager>().checkPointSave = true;
         SceneManager.LoadScene(nivel);
     }
 
