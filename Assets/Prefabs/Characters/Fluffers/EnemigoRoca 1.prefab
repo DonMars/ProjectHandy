@@ -168,6 +168,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 6702539542729221590, guid: 5b2028a5e3fb4c344a355d530ec3dd3d,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7251635d43ef7cd4fa81a0116205a5b9, type: 2}
     - target: {fileID: 7157180249983405695, guid: 5b2028a5e3fb4c344a355d530ec3dd3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -188,6 +193,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b2028a5e3fb4c344a355d530ec3dd3d, type: 3}
+--- !u!95 &2012451657434131101 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6702539542729221590, guid: 5b2028a5e3fb4c344a355d530ec3dd3d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5109789169956392779}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6415999880013069031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2297869114116617644, guid: 5b2028a5e3fb4c344a355d530ec3dd3d,
@@ -388,7 +399,7 @@ MonoBehaviour:
   patrolWaitTimeMin: 5
   patrolWaitTimeMax: 6
   centrePoint: {fileID: 6415999880013069031}
-  animator: {fileID: 0}
+  animator: {fileID: 2012451657434131101}
   patrolAnimation: Patrolling
   alertAnimation: Alert
 --- !u!114 &3089586923234013834

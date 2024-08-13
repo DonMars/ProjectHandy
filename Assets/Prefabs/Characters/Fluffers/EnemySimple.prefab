@@ -194,7 +194,7 @@ MonoBehaviour:
   Arrojado: 0
   enMano: 0
   Golpea: 0
-  efectofuego: 0
+  efectoFuego: 0
   efectoHielo: 0
   efectoNormal: 1
   efectoRoca: 1
@@ -4952,7 +4952,7 @@ MonoBehaviour:
   patrolWaitTimeMin: 2
   patrolWaitTimeMax: 8
   centrePoint: {fileID: 160587526450885361}
-  animator: {fileID: 0}
+  animator: {fileID: 4177149563605227731}
   patrolAnimation: Patrolling
   alertAnimation: Alert
 --- !u!1001 &4340688190293747739
@@ -4993,6 +4993,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 415755637648994504, guid: 4906b86f8af78c14e99eca53ecb40a08,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8da1fffd2552f964092f20b538eb1643, type: 2}
     - target: {fileID: 718840061389207991, guid: 4906b86f8af78c14e99eca53ecb40a08,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5471,6 +5476,12 @@ PrefabInstance:
 --- !u!4 &160587526450885361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4469749410003655402, guid: 4906b86f8af78c14e99eca53ecb40a08,
+    type: 3}
+  m_PrefabInstance: {fileID: 4340688190293747739}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4177149563605227731 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 415755637648994504, guid: 4906b86f8af78c14e99eca53ecb40a08,
     type: 3}
   m_PrefabInstance: {fileID: 4340688190293747739}
   m_PrefabAsset: {fileID: 0}

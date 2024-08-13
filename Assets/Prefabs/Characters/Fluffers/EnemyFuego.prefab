@@ -5203,7 +5203,7 @@ MonoBehaviour:
   patrolWaitTimeMin: 2
   patrolWaitTimeMax: 8
   centrePoint: {fileID: 3375429988121904918}
-  animator: {fileID: 0}
+  animator: {fileID: 2859693631252326687}
   patrolAnimation: Patrolling
   alertAnimation: Alert
 --- !u!114 &8480602312744781220
@@ -15169,7 +15169,7 @@ Animator:
   m_GameObject: {fileID: 2710110465874550188}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f8d5a979bdf5f4b4ba3b036e95511ca8, type: 2}
+  m_Controller: {fileID: 9100000, guid: ba606082c6bac924d83ae1be44bac460, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
