@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.Services.Analytics;
 
 public class MainMenu : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame()
     {
+        AnalyticsService.Instance.RecordEvent("PlayGame");
         SceneManager.LoadSceneAsync("Nivel Final 4");
     }
 

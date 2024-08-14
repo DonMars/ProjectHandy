@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public float goldenPoop = 0;
+
     //public Vector3 PointSpawn;
     //public bool checkPointSave = false;
     //public bool continuar = false;

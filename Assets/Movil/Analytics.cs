@@ -2,7 +2,7 @@ using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Analytics;
 
-public class InitWithDefault : MonoBehaviour
+public class Analytics : MonoBehaviour
 {
     async void Start()
     {

@@ -147,8 +147,6 @@ public class PlayerController : MonoBehaviour
         OnStaminaChange?.Invoke(currentStamina);
 
         StartCoroutine(voyalserver());
-
-
     }
 
     private IEnumerator voyalserver()
@@ -156,6 +154,7 @@ public class PlayerController : MonoBehaviour
         yield return VRG_Remote.IsValid();
 
         this.maxStamina = VRG_Remote.GetFloat("Float_Stamina");
+        this.walkSpeed = VRG_Remote.GetFloat("Float_WalkSpeed");
 
         yield return null;
     }
