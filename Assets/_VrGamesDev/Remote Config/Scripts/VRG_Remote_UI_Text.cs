@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Diagnostics;
+using TMPro;
 using UnityEngine;
 
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ namespace VrGamesDev
     /// </summary>
     public class VRG_Remote_UI_Text : VRG_Base
     {
-        [SerializeField] public Text m_Text = null;
+        [SerializeField] public TextMeshProUGUI m_Text = null;
 
         [SerializeField] public ENUM_DataType m_RemoteType = ENUM_DataType.NONE;
 
@@ -32,7 +33,7 @@ namespace VrGamesDev
 
             if (this.m_Text == null)
             {
-                this.m_Text = this.GetComponent<Text>();
+                this.m_Text = this.GetComponent<TextMeshProUGUI>();
             }
 
             if (this.m_Text == null)

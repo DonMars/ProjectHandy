@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VrGamesDev;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -24,6 +25,23 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject fluffIceCard;
     [SerializeField] GameObject handyCard;
 
+    public string m_texto;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartCoroutine(voyalserver());
+    }
+
+    private IEnumerator voyalserver()
+    {
+        yield return VRG_Remote.IsValid();
+
+        this.m_texto = VRG_Remote.GetString("m_texto");
+
+        yield return null;
+
+    }
 
     public void Pause()
     {
