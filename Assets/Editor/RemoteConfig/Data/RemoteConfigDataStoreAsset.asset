@@ -12,21 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a3d99451-6b9f-4290-a1a9-eeebdd638d7b\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"throwForce\",\r\n      \"value\": 0.0,\r\n     
-    \"type\": \"float\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"b83cdda3-ea12-44fc-8b0c-93efa60b277f\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"maxChargeTime\",\r\n      \"value\": 0.0,\r\n      \"type\": \"float\"\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"f5a06552-549b-4793-a5fe-0cc1cf2b610d\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"collectedPoops\",\r\n      \"value\":
-    0,\r\n      \"type\": \"int\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"dabe8900-cabd-410a-aeb6-5acc1fd3947b\"\r\n    },\r\n    \"rs\":
-    {\r\n      \"key\": \"timesFluffersThrown\",\r\n      \"value\": 0,\r\n     
-    \"type\": \"int\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"efb001f9-39e3-4d98-a3ef-e568321c7cdb\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"gameFinished\",\r\n      \"value\": false,\r\n      \"type\": \"bool\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"3e48c9e4-7b61-4048-a0c8-49c8d7ed4197\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"goldenPoopThreshold\",\r\n      \"type\":
+    \"float\",\r\n      \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
+    {\r\n      \"entityId\": \"3048c988-4ffb-46e8-9446-a043c8d0febe\"\r\n    },\r\n   
+    \"rs\": {\r\n      \"key\": \"UI_Text.string\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"Exito total \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"be380094-8716-4659-9630-ed543415ff76\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"Prueba\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"Cambia esto en el exe\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"7100886e-513f-448d-acd9-1d302e992704\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"UI_Text.float\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 56.19\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"7811ab05-41a6-4615-8dfc-90585f721cc7\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Holi\"\r\n   
     }\r\n  }\r\n]"
-  _rsLastCachedKeyList: '[]'
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"3e48c9e4-7b61-4048-a0c8-49c8d7ed4197\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"goldenPoopThreshold\",\r\n      \"type\":
+    \"float\",\r\n      \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
+    {\r\n      \"entityId\": \"3048c988-4ffb-46e8-9446-a043c8d0febe\"\r\n    },\r\n   
+    \"rs\": {\r\n      \"key\": \"UI_Text.string\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"Exito total \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"be380094-8716-4659-9630-ed543415ff76\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"Prueba\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"Cambia esto en el exe\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"7100886e-513f-448d-acd9-1d302e992704\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"UI_Text.float\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 56.19\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"7811ab05-41a6-4615-8dfc-90585f721cc7\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Holi\"\r\n   
+    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"6d19b092-feb8-4173-baa8-e55f3a09b022\",\r\n   
     \"name\": \"production\",\r\n    \"id\": \"663b1e3f-af66-48ab-b17d-7ff6aba44e17\",\r\n   
     \"isDefault\": true,\r\n    \"createdAt\": \"2024-08-13T23:02:58Z\",\r\n    \"updatedAt\":
