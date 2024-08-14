@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Juego Final/MainMenu Final Redux.unity
     guid: 9e2012bd9156ac746a4303180959ba56
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Juego Final/Nivel Final 4.unity
     guid: 168f54113f49b3c42899c433d108cd34
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Galeria.unity
     guid: a781b34d183ebfc4a87bb696bfe023ad
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Juego Final/GameOver.unity
     guid: 9500d8ccce7f190439505fc2571f33fa
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Juego Final/Victory.unity
     guid: f81a709aeb206164e9337eaa6b140be6
-  - enabled: 1
+  - enabled: 0
     path: Assets/_VrGamesDev/Remote Config/Examples/Scenes/01 UI Text.unity
     guid: b3fad850f08f346bd9a78360ae2158d1
   m_configObjects: {}

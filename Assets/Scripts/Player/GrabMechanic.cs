@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VrGamesDev;
 
 public class GrabMechanic : MonoBehaviour
 {
@@ -47,7 +48,19 @@ public class GrabMechanic : MonoBehaviour
 
     private void Start()
     {
+        // Remote
+        StartCoroutine(InitializeValuesFromServer());
+
         maxForceSignal.SetActive(false);
+    }
+
+    private IEnumerator InitializeValuesFromServer()
+    {
+        yield return VRG_Remote.IsValid();
+
+        this.throwForce = VRG_Remote.GetFloat("Float_FuerzaLanzamiento");
+
+        yield return null;
     }
 
     public struct ThrowableProperties

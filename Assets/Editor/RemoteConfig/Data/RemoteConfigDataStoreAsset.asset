@@ -12,36 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"9a5167a2-db6a-428f-928d-e60c06b34bf4\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"b8a232ab-3e48-44dc-9e77-3bd4eccb04c9\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"goldenPoopThreshold\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"403276c5-3c44-4035-969b-861713e62f34\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"68c8d65f-d070-46a8-a26c-b10065ea6c41\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"UI_Text.string\",\r\n      \"type\": \"string\",\r\n     
     \"value\": \"Exito total \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"08247b15-21b0-43ae-b9d4-baa6df7f5e72\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"a768318f-30b3-44d7-8652-de82bc031562\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"Prueba\",\r\n      \"type\": \"string\",\r\n      \"value\":
     \"Cambia esto en el exe\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"504ae93c-cbb8-456f-9d6f-40e9a51d4e90\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"c4fac16b-1f32-459d-934b-9abd95090d25\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"UI_Text.float\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 56.19\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"b4c528dc-4151-410e-bee5-91e5f9b803b5\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Holi
-    Awbo\"\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"9a5167a2-db6a-428f-928d-e60c06b34bf4\"\r\n   
+    \"30d1d774-7134-4885-adc6-002c9c2a3346\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Collect
+    10 fluffers \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"12b366f1-529d-4d29-a340-29a99ebf11af\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"Float_FuerzaLanzamiento\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 25.0\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"b8a232ab-3e48-44dc-9e77-3bd4eccb04c9\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"goldenPoopThreshold\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"403276c5-3c44-4035-969b-861713e62f34\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"68c8d65f-d070-46a8-a26c-b10065ea6c41\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"UI_Text.string\",\r\n      \"type\": \"string\",\r\n     
     \"value\": \"Exito total \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"08247b15-21b0-43ae-b9d4-baa6df7f5e72\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"a768318f-30b3-44d7-8652-de82bc031562\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"Prueba\",\r\n      \"type\": \"string\",\r\n      \"value\":
     \"Cambia esto en el exe\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"504ae93c-cbb8-456f-9d6f-40e9a51d4e90\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"c4fac16b-1f32-459d-934b-9abd95090d25\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"UI_Text.float\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 56.19\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"b4c528dc-4151-410e-bee5-91e5f9b803b5\"\r\n    },\r\n    \"rs\": {\r\n     
-    \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Holi
-    Awbo\"\r\n    }\r\n  }\r\n]"
+    \"30d1d774-7134-4885-adc6-002c9c2a3346\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Collect
+    10 fluffers \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"12b366f1-529d-4d29-a340-29a99ebf11af\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"Float_FuerzaLanzamiento\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 25.0\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"6d19b092-feb8-4173-baa8-e55f3a09b022\",\r\n   
     \"name\": \"production\",\r\n    \"id\": \"663b1e3f-af66-48ab-b17d-7ff6aba44e17\",\r\n   
     \"isDefault\": true,\r\n    \"createdAt\": \"2024-08-13T23:02:58Z\",\r\n    \"updatedAt\":
