@@ -7,7 +7,7 @@ using Unity.Services.Analytics;
 public class MainMenu : MonoBehaviour
 {
     public string menu = "main menu";
-    CacasRecogidas cacas;
+    CustomEvent_Hakari cacas;
     private void Awake()
     {
         //GameManager.Instance.ShowAndUnlockCursor();
@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
     public void Quit()
     {
-        AnalyticsService.Instance.RecordEvent(cacas);
+        cacas.ContarCacas();
         Application.Quit();
     }
 

@@ -12,50 +12,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"e3f12c76-c820-4353-baa5-d261147d8c7f\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"aa9b6874-3406-4bf5-bb0e-17ab30e95310\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"goldenPoopThreshold\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"3947e3a0-f596-4abf-aa46-9da91843468c\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"b6822e6b-89e7-44e5-870c-85e86377981c\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"UI_Text.string\",\r\n      \"type\": \"string\",\r\n     
     \"value\": \"Exito total \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"15d1153d-2d84-4a73-ac61-7e125fc28118\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"d5363241-3bf4-40de-8302-f5c5ebe0b7da\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"Prueba\",\r\n      \"type\": \"string\",\r\n      \"value\":
     \"Cambia esto en el exe\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"7162e8fc-4f2c-44e2-b171-2fb6e56a878a\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"6e3e3631-34fb-4380-82f2-6ef807991d96\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"UI_Text.float\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 56.19\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"40ac095d-8c74-4a6c-89b4-5f3f67295358\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"96ba96ab-cb76-4b76-95b1-983a7885af13\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Collect
     10 fluffers \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"8ea31807-13bf-4e1c-8145-b9044e9fd9bd\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"0d4e91d7-b859-4205-a3ec-bd414d9eb7e6\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"Float_FuerzaLanzamiento\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 25.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"4e7d2286-ee37-49be-a775-fe0b7de868ef\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"6f10bb7b-7657-4325-b669-4280c08a1c4e\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"Float_Stamina\",\r\n      \"type\": \"float\",\r\n      \"value\":
-    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a7f72c16-ddb9-40ca-be8c-0732ef7016cc\"\r\n   
+    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"4f97088c-70ba-462a-8f62-88364611cca9\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"Float_WalkSpeed\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 25.0\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"e3f12c76-c820-4353-baa5-d261147d8c7f\"\r\n   
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"aa9b6874-3406-4bf5-bb0e-17ab30e95310\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"goldenPoopThreshold\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"3947e3a0-f596-4abf-aa46-9da91843468c\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"b6822e6b-89e7-44e5-870c-85e86377981c\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"UI_Text.string\",\r\n      \"type\": \"string\",\r\n     
     \"value\": \"Exito total \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"15d1153d-2d84-4a73-ac61-7e125fc28118\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"d5363241-3bf4-40de-8302-f5c5ebe0b7da\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"Prueba\",\r\n      \"type\": \"string\",\r\n      \"value\":
     \"Cambia esto en el exe\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"7162e8fc-4f2c-44e2-b171-2fb6e56a878a\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"6e3e3631-34fb-4380-82f2-6ef807991d96\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"UI_Text.float\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 56.19\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"40ac095d-8c74-4a6c-89b4-5f3f67295358\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"96ba96ab-cb76-4b76-95b1-983a7885af13\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Collect
     10 fluffers \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"8ea31807-13bf-4e1c-8145-b9044e9fd9bd\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"0d4e91d7-b859-4205-a3ec-bd414d9eb7e6\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"Float_FuerzaLanzamiento\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 25.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"4e7d2286-ee37-49be-a775-fe0b7de868ef\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"6f10bb7b-7657-4325-b669-4280c08a1c4e\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"Float_Stamina\",\r\n      \"type\": \"float\",\r\n      \"value\":
-    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a7f72c16-ddb9-40ca-be8c-0732ef7016cc\"\r\n   
+    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"4f97088c-70ba-462a-8f62-88364611cca9\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"Float_WalkSpeed\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 25.0\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"6d19b092-feb8-4173-baa8-e55f3a09b022\",\r\n   

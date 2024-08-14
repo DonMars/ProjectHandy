@@ -7,7 +7,7 @@ namespace Unity.Services.Analytics
 {
     public class CacasRecogidas : Event
     {
-        public CacasRecogidas() : base("MyEventCustom")
+        public CacasRecogidas() : base("CacasRecogidas")
         {
         }
 
@@ -17,7 +17,7 @@ namespace Unity.Services.Analytics
     public class CustomEvent_Hakari : MonoBehaviour
     {
         // Start is called before the first frame update
-        private void Start()
+        public void ContarCacas()
         {
             CacasRecogidas CacasRecogidas = new CacasRecogidas
             {
