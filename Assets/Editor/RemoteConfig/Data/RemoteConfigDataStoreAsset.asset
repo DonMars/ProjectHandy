@@ -12,52 +12,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"aa9b6874-3406-4bf5-bb0e-17ab30e95310\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"d8c1d7d2-f1a6-4f49-915a-f7a14e851bd1\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"goldenPoopThreshold\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"b6822e6b-89e7-44e5-870c-85e86377981c\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"1f7d5544-d3ad-4541-a48d-ccacba409590\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"UI_Text.string\",\r\n      \"type\": \"string\",\r\n     
     \"value\": \"Exito total \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"d5363241-3bf4-40de-8302-f5c5ebe0b7da\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"d292857b-6668-462f-a35f-c535bf081e87\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"Prueba\",\r\n      \"type\": \"string\",\r\n      \"value\":
     \"Cambia esto en el exe\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"6e3e3631-34fb-4380-82f2-6ef807991d96\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"88f87dce-5527-4564-974e-ea737305d2ee\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"UI_Text.float\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 56.19\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"96ba96ab-cb76-4b76-95b1-983a7885af13\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"b74351f9-98b3-45b5-ab8d-8ffa7c7789de\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Collect
     10 fluffers \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"0d4e91d7-b859-4205-a3ec-bd414d9eb7e6\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"fb8e5048-4383-4ff6-8986-b22833b90469\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"Float_FuerzaLanzamiento\",\r\n      \"type\": \"float\",\r\n     
-    \"value\": 25.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"6f10bb7b-7657-4325-b669-4280c08a1c4e\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"value\": 5.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"79e48851-7787-4ff4-979e-c9f63d54e138\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"Float_Stamina\",\r\n      \"type\": \"float\",\r\n      \"value\":
-    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"4f97088c-70ba-462a-8f62-88364611cca9\"\r\n   
+    100.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"2f3b7b53-6d59-425b-8da0-1c46d538ca05\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"Float_WalkSpeed\",\r\n      \"type\":
-    \"float\",\r\n      \"value\": 25.0\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"aa9b6874-3406-4bf5-bb0e-17ab30e95310\"\r\n   
+    \"float\",\r\n      \"value\": 5.0\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"d8c1d7d2-f1a6-4f49-915a-f7a14e851bd1\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"goldenPoopThreshold\",\r\n      \"type\":
     \"float\",\r\n      \"value\": 10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"b6822e6b-89e7-44e5-870c-85e86377981c\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"1f7d5544-d3ad-4541-a48d-ccacba409590\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"UI_Text.string\",\r\n      \"type\": \"string\",\r\n     
     \"value\": \"Exito total \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"d5363241-3bf4-40de-8302-f5c5ebe0b7da\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"d292857b-6668-462f-a35f-c535bf081e87\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"Prueba\",\r\n      \"type\": \"string\",\r\n      \"value\":
     \"Cambia esto en el exe\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
-    \"entityId\": \"6e3e3631-34fb-4380-82f2-6ef807991d96\"\r\n    },\r\n    \"rs\":
+    \"entityId\": \"88f87dce-5527-4564-974e-ea737305d2ee\"\r\n    },\r\n    \"rs\":
     {\r\n      \"key\": \"UI_Text.float\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 56.19\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"96ba96ab-cb76-4b76-95b1-983a7885af13\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"b74351f9-98b3-45b5-ab8d-8ffa7c7789de\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"m_texto\",\r\n      \"type\": \"string\",\r\n      \"value\": \"Collect
     10 fluffers \"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"0d4e91d7-b859-4205-a3ec-bd414d9eb7e6\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"fb8e5048-4383-4ff6-8986-b22833b90469\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"Float_FuerzaLanzamiento\",\r\n      \"type\": \"float\",\r\n     
-    \"value\": 25.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"6f10bb7b-7657-4325-b669-4280c08a1c4e\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"value\": 5.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"79e48851-7787-4ff4-979e-c9f63d54e138\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"Float_Stamina\",\r\n      \"type\": \"float\",\r\n      \"value\":
-    10.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"4f97088c-70ba-462a-8f62-88364611cca9\"\r\n   
+    100.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"2f3b7b53-6d59-425b-8da0-1c46d538ca05\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"Float_WalkSpeed\",\r\n      \"type\":
-    \"float\",\r\n      \"value\": 25.0\r\n    }\r\n  }\r\n]"
+    \"float\",\r\n      \"value\": 5.0\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"6d19b092-feb8-4173-baa8-e55f3a09b022\",\r\n   
     \"name\": \"production\",\r\n    \"id\": \"663b1e3f-af66-48ab-b17d-7ff6aba44e17\",\r\n   
     \"isDefault\": true,\r\n    \"createdAt\": \"2024-08-13T23:02:58Z\",\r\n    \"updatedAt\":

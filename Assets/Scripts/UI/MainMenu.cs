@@ -7,7 +7,7 @@ using Unity.Services.Analytics;
 public class MainMenu : MonoBehaviour
 {
     public string menu = "main menu";
-    CustomEvent_Hakari cacas;
+
     private void Awake()
     {
         //GameManager.Instance.ShowAndUnlockCursor();
@@ -33,7 +33,35 @@ public class MainMenu : MonoBehaviour
 
     public void Quit()
     {
-        cacas.ContarCacas();
+        // Cacas Recogidas
+        CacasRecogidas CacasRecogidas = new CacasRecogidas
+        {
+            myFloat = GameManager.Instance.goldenPoop
+        };
+
+        Debug.Log(CacasRecogidas.ToString());
+        AnalyticsService.Instance.RecordEvent(CacasRecogidas);
+
+        // Cacas Lanzadas
+        CacasArrojadas CacasArrojadas = new CacasArrojadas
+
+        {
+            myFloat2 = GameManager.Instance.cacasLanzadas
+        };
+
+        Debug.Log(CacasArrojadas.ToString());
+        AnalyticsService.Instance.RecordEvent(CacasArrojadas);
+
+        // Tarjetas Desbloqueadas
+        TarjetasDesbloqueadas TarjetasDesbloqueadas = new TarjetasDesbloqueadas
+
+        {
+            myFloat3 = GameManager.Instance.goldenPoop
+        };
+
+        Debug.Log(CacasArrojadas.ToString());
+        AnalyticsService.Instance.RecordEvent(CacasArrojadas);
+
         Application.Quit();
     }
 

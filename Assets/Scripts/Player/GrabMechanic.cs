@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics;
 using UnityEngine;
 using VrGamesDev;
 
@@ -39,6 +40,8 @@ public class GrabMechanic : MonoBehaviour
     public Animator playerAnimator;
 
     //public Animator playerAnimator;
+
+    public int cacasLanzadas = 0;
 
     void Awake()
     {
@@ -114,11 +117,11 @@ public class GrabMechanic : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing && !player.isRunning || isLeaping)
-        {
-            grabbing = true;
-            
-        }
+        //if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing && !player.isRunning || isLeaping)
+        //{
+        //    grabbing = true;
+        //}
+
         // Leap Ability
         if (Input.GetKeyDown(player.grabKey) && player.canGrab && player.isRunning && !player.isGrabbing && (player.movementSpeed == player.runSpeed))
         {
@@ -136,7 +139,10 @@ public class GrabMechanic : MonoBehaviour
         // Throw
         if (Input.GetKeyUp(player.grabKey) && isCharging)
             {
+
             Debug.Log("THROWING");
+
+            GameManager.Instance.cacasLanzadas++;
 
             if (grabbableLocal.GetComponent<Efect>() != null)
             {

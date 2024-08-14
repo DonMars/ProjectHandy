@@ -105,6 +105,7 @@ public class PauseMenu : MonoBehaviour
         {
             DeactivateAllCards();
             fluffCard.SetActive(true); // Desbloquea la primera tarjeta
+            GameManager.Instance.tarjetas++;
         }
         Time.timeScale = 0;
     }
@@ -117,6 +118,7 @@ public class PauseMenu : MonoBehaviour
         {
             DeactivateAllCards();
             fluffRockCard.SetActive(true); // Desbloquea la segunda tarjeta
+            GameManager.Instance.tarjetas++;
         }
         Time.timeScale = 0;
     }
@@ -130,6 +132,7 @@ public class PauseMenu : MonoBehaviour
         {
             DeactivateAllCards();
             fluffFireCard.SetActive(true); // Desbloquea la segunda tarjeta
+            GameManager.Instance.tarjetas++;
         }
         Time.timeScale = 0;
     }
@@ -141,6 +144,7 @@ public class PauseMenu : MonoBehaviour
         {
             DeactivateAllCards();
             fluffIceCard.SetActive(true); // Desbloquea la segunda tarjeta
+            GameManager.Instance.tarjetas++;
         }
 
         Time.timeScale = 0;
@@ -155,6 +159,7 @@ public class PauseMenu : MonoBehaviour
         {
             DeactivateAllCards();
             handyCard.SetActive(true); // Desbloquea la segunda tarjeta
+            GameManager.Instance.tarjetas++;
         }
 
         Time.timeScale = 0;
