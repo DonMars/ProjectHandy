@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using VrGamesDev;
 
 
 public class PlayerController : MonoBehaviour
@@ -144,6 +145,19 @@ public class PlayerController : MonoBehaviour
 
         // Set Stamina
         OnStaminaChange?.Invoke(currentStamina);
+
+        StartCoroutine(voyalserver());
+
+
+    }
+
+    private IEnumerator voyalserver()
+    {
+        yield return VRG_Remote.IsValid();
+
+        this.maxStamina = VRG_Remote.GetFloat("Float_Stamina");
+
+        yield return null;
     }
 
     void Update()
