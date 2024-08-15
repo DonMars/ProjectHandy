@@ -9,6 +9,10 @@ public class CkeckPoint : MonoBehaviour
     public Transform pointSpawnCheck;
     public Transform newPointSpawnCheck;
 
+    public Animator checkpointAnimation;
+    public AudioSource checkpointSFX;
+    public ParticleSystem checkpointParticle;
+
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -20,6 +24,11 @@ public class CkeckPoint : MonoBehaviour
         {
             gameManager.pointSpawn = newPointSpawnCheck.transform.position;
             gameManager.checkPointSave = true;
+
+            checkpointAnimation.ResetTrigger("checkpoint");
+            checkpointAnimation.SetTrigger("checkpoint");
+            checkpointSFX.Play();
+            checkpointParticle.Play();
         }
     }
 }

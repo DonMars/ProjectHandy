@@ -27,31 +27,7 @@ public class Grabbable : MonoBehaviour
         this.grabPoint = grabPoint;
         rb.isKinematic = true;
         transform.parent = grabPoint.transform;
-
-        //rb.useGravity = false;
-        //objectCollider.enabled = false;
     }
-
-    //public void Drop()
-    //{
-    //    this.grabPoint = null;
-    //    rb.isKinematic = false;
-    //    transform.parent = null;
-    //    rb.AddForce(player.playerRb.velocity * 5f, ForceMode.VelocityChange);
-
-    //    //rb.useGravity = true;
-    //    //objectCollider.enabled = true;
-    //}
-
-    //public void Throw()
-    //{
-    //    this.grabPoint = null;
-    //    rb.isKinematic = false;
-    //    transform.parent = null;
-
-    //    rb.AddForce(player.playerRb.velocity * 5f, ForceMode.VelocityChange);
-    //    rb.AddForce(grabPoint.forward, ForceMode.VelocityChange);
-    //}
 
     private void FixedUpdate()
     {

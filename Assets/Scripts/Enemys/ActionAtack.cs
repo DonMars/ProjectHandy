@@ -6,6 +6,10 @@ using UnityEngine.VFX;
 
 public class ActionAtack : MonoBehaviour
 {
+    public AudioSource attackSFX;
+    public ParticleSystem attackParticles;
+    public ParticleSystem attackParticles2;
+
     private Patrullaje patrullaje;
     private Transform player;
     public NavMeshAgent agent;
@@ -74,26 +78,19 @@ public class ActionAtack : MonoBehaviour
             {
                 Contt = 0;
                 animacionAtack = true;
-                GetComponent<Rigidbody>().AddForce(transform.forward * forcePush,ForceMode.Impulse);
+                
+                GetComponent<Rigidbody>().AddForce(transform.forward * forcePush, ForceMode.Impulse);
+                
                 Atack = true;
                 attackSwitch = true;
+
+                attackSFX.Play();
+                attackParticles.Play();
+                attackParticles2.Play();
+
                 StartCoroutine(AttackReset());      
             }
         }
-
-        //else if ((detectPlayer == false && Vector3.Distance(transform.position, ultimatePosition) <= 3) || (detectPlayer == false && Cont >= 5f))
-        //{
-        //    //SFXManaguer.instance.PlayStop("SountTerror");
-        //    Entra = true;
-        //    Atacando = false;
-        //    patrullaje.playerDetect = false;
-        //    animacionAtack= false;
-        //    if (patrullaje.patrullando == false)
-        //    {
-        //        patrullaje.StartPatroll();
-        //    }
-        //}
-
     }
 
     public void ReAsignarAgent()
@@ -113,7 +110,7 @@ public class ActionAtack : MonoBehaviour
             if (damageSwitch && playerController.canBeDamaged)
             {
                 damageSwitch = false;
-                FindAnyObjectByType<PlayerController>().ApplyDamage();
+                FindObjectOfType<PlayerController>().ApplyDamage();
             }
 
             StartCoroutine(AttackRestart());

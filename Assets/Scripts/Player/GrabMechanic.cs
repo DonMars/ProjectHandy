@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Services.Analytics;
 using UnityEngine;
 using VrGamesDev;
 
@@ -12,7 +10,7 @@ public class GrabMechanic : MonoBehaviour
     public float chargeTime = 0f;
     public float maxChargeTime = 3f;
     bool isCharging;
-    Vector3 throwDirection = new Vector3(0,1,0);
+    Vector3 throwDirection = new Vector3(0, 1, 0);
 
     [Header("Leap Mechanic")]
     public bool isLeaping = false;
@@ -100,8 +98,6 @@ public class GrabMechanic : MonoBehaviour
                     player.isGrabbing = true;
                     holdStartTime = Time.time;
 
-                    Debug.Log("GRABBING");
-
                     if (grabbable.GetComponent<Efect>() != null)
                     {
                         grabbable.GetComponent<Efect>().enMano = true;
@@ -146,12 +142,9 @@ public class GrabMechanic : MonoBehaviour
 
         // Throw
         if (Input.GetKeyUp(player.grabKey) && isCharging)
-            {
-
-            Debug.Log("THROWING");
-
+        {
             GameManager.Instance.cacasLanzadas++;
-         
+
             if (grabbable.GetComponent<Efect>() != null)
             {
                 grabbable.GetComponent<Efect>().enMano = false;
@@ -181,8 +174,6 @@ public class GrabMechanic : MonoBehaviour
             grabbable.grabPoint = null;
             grabbable.transform.parent = null;
 
-            Debug.Log("THREW");
-
             chargingThrowSFX.Stop();
             chargeTime = 0;
             isCharging = false;
@@ -192,7 +183,7 @@ public class GrabMechanic : MonoBehaviour
             trajectoryProjection.enabled = false;
 
             float holdDownTime = Time.time - holdStartTime;
-            
+
             grabbable = null;
             player.isGrabbing = false;
             canThrow = false;
@@ -225,6 +216,19 @@ public class GrabMechanic : MonoBehaviour
             // TrajectoryProjection
             trajectoryProjection.enabled = true;
         }
+    }
+
+    public void DropGrabbable()
+    {
+        grabbableRb.isKinematic = false;
+        grabbableRb.AddForce((grabPoint.forward + new Vector3(0, 1, 0)) * 2, ForceMode.Impulse);
+
+        grabbable.grabPoint = null;
+        grabbable.transform.parent = null;
+
+        grabbable = null;
+        player.isGrabbing = false;
+        canThrow = false;
     }
 
     void ChargeThrow()

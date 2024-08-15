@@ -479,6 +479,9 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyDamage()
     {
+        if (isGrabbing)
+            grabMechanic.DropGrabbable();
+
         if (canBeDamaged && healthPoints > 1)
         {
             healthPoints--;

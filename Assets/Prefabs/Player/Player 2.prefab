@@ -5341,10 +5341,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460bf3d1d1526a8418f9f8a89a7d11aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabbingStateResetTime: 0.02
+  throwForce: 5
   chargeTime: 0
   maxChargeTime: 3
   isLeaping: 0
+  leapForce: 45
   grabPoint: {fileID: 6042294646125613834}
+  grabbable: {fileID: 0}
   grabbing: 0
   trajectoryProjection: {fileID: 7596463051607359369}
   maxForceSignal: {fileID: 0}
@@ -5353,6 +5357,7 @@ MonoBehaviour:
   throwSFX2: {fileID: 5975225289686925375}
   throwSFX3: {fileID: 3174921379613153241}
   playerAnimator: {fileID: 0}
+  cacasLanzadas: 0
 --- !u!82 &4972369634309294959
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17416,7 +17421,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.30529118
+  m_Radius: 0.42
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: -0.09, z: 0}
@@ -17458,6 +17463,7 @@ MonoBehaviour:
   isIdle: 1
   isRunning: 0
   isWalking: 0
+  posicionInicial: {fileID: 0}
   canGrab: 1
   grabSwitch: 0
   isGrabbing: 0

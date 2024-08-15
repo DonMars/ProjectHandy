@@ -6,14 +6,23 @@ using UnityEngine;
 public class Quemar : MonoBehaviour
 {
 
-    //private Animator animator;
-    public ParticleSystem particles;
     public Animator animator;
+    public AudioSource burningSFX;
+    public ParticleSystem particles;
 
     public void efectoCillision()
     {
         animator.SetTrigger("isBurning");
+
+        burningSFX.Play();
         particles.Play();
-        Destroy(this.gameObject, 5.2f);
+
+        StartCoroutine(ObjectDestroy());
+    }
+
+    private IEnumerator ObjectDestroy()
+    {
+        yield return new WaitForSeconds(5.2f);
+        Destroy(this.gameObject);
     }
 }
