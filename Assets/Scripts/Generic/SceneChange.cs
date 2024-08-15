@@ -16,5 +16,6 @@ public class SceneChange : MonoBehaviour
     private IEnumerator Change()
     {
         yield return new WaitForSeconds(timeToChange);
+        SceneManager.LoadScene(sceneName);
     }
 }

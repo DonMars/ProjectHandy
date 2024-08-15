@@ -718,7 +718,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 2.24, z: 1.49}
+    m_Scale: {x: 1, y: 0.85, z: 1.49}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -786,7 +786,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
+    m_Texture: {fileID: 0}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
@@ -916,7 +916,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 51.8
+      scalar: 26.8
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1091,9 +1091,18 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.13414633
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.18372355
+          value: 0.883587
+          inSlope: -1.1659993
+          outSlope: -1.1659993
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
