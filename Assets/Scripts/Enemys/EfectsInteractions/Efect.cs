@@ -127,14 +127,13 @@ public class Efect : MonoBehaviour
         //animator.SetBool(animacionEnManoName, animacionEnMano);
         //animator.SetBool(animacionArrojadoName, animacionArrojado);
 
-        if(Arrojado)
+        if (Arrojado)
         {
             animacionArrojado = true;
             animacionEnMano= false;
-            
-
         }
-        if(choco && enMano == false)
+
+        if (choco && enMano == false)
         {
             GetComponent<NavMeshAgent>().enabled = true;
             //this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
@@ -143,6 +142,7 @@ public class Efect : MonoBehaviour
                 GetComponent<ActionAtack>().enabled = true;
                 //GetComponent<ActionAtack>().ReAsignarAgent();
             }
+
             if (GetComponent<ActionEsconder>() != null)
             {
                 GetComponent<ActionEsconder>().enabled = true;
@@ -152,6 +152,7 @@ public class Efect : MonoBehaviour
 
             GetComponent<EnemyBehavior>().enabled = true; 
         }
+
         if (Arrojado == false)
         {
             animacionArrojado= false;
