@@ -145,7 +145,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4965695933590004506}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 1.35
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3305730ffd4a3c4c8bb0cf7c9ecdf37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 25
+  lerpSpeed: 10
   particles: {fileID: 6072610627525517031}
   grabPoint: {fileID: 0}
 --- !u!114 &7871029008392753640
@@ -5161,7 +5161,7 @@ PrefabInstance:
     - target: {fileID: 4469749410003655402, guid: 4906b86f8af78c14e99eca53ecb40a08,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.171
       objectReference: {fileID: 0}
     - target: {fileID: 4469749410003655402, guid: 4906b86f8af78c14e99eca53ecb40a08,
         type: 3}
@@ -5501,7 +5501,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 62e242d74bf917d46b1510d1835e66d9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.033
+      value: -0.20400006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62e242d74bf917d46b1510d1835e66d9,
         type: 3}

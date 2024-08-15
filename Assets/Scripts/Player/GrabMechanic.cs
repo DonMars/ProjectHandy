@@ -15,6 +15,7 @@ public class GrabMechanic : MonoBehaviour
 
     [Header("Leap Mechanic")]
     public bool isLeaping = false;
+    public float leapForce = 45f;
 
     public Transform grabPoint;
     bool canThrow = false;
@@ -91,7 +92,7 @@ public class GrabMechanic : MonoBehaviour
 
                 if (other.TryGetComponent(out grabbable))
                 {
-                    grabbableLocal = other.GetComponent<Grabbable>();
+                    //grabbableLocal = other.GetComponent<Grabbable>();
                     grabbableRb = grabbable.GetComponent<Rigidbody>();
                     grabbable.Grab(grabPoint);
                     player.isGrabbing = true;
@@ -117,22 +118,26 @@ public class GrabMechanic : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing && !player.isRunning || isLeaping)
-        //{
-        //    grabbing = true;
-        //}
+        if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing && (!player.isRunning || isLeaping))
+        {
+            grabbing = true;
+        }
 
         // Leap Ability
         if (Input.GetKeyDown(player.grabKey) && player.canGrab && player.isRunning && !player.isGrabbing && (player.movementSpeed == player.runSpeed))
         {
-            playerRb.AddForce((transform.forward + new Vector3(0, 0.2f, 0)) * 35f, ForceMode.Impulse);
+            playerRb.AddForce((transform.forward + new Vector3(0, 0.1f, 0)) * leapForce, ForceMode.Impulse);
             player.currentStamina -= 20;
 
             playerAnimator.SetTrigger("grabAttempt");
             playerAnimator.ResetTrigger("grabAttempt");
 
             isLeaping = true;
-            player.enabled = false;
+
+            player.canMove = false;
+            player.canJump = false;
+            player.canRun = false;
+
             StartCoroutine(LeapRecover());
         }
 
@@ -144,10 +149,16 @@ public class GrabMechanic : MonoBehaviour
 
             GameManager.Instance.cacasLanzadas++;
 
-            if (grabbableLocal.GetComponent<Efect>() != null)
+            //if (grabbable.GetComponent<Efect>() != null)
+            //{
+            //    grabbableLocal.GetComponent<Efect>().enMano = false;
+            //    grabbableLocal.GetComponent<Efect>().Arrojado = true;
+            //}
+            
+            if (grabbable.GetComponent<Efect>() != null)
             {
-                grabbableLocal.GetComponent<Efect>().enMano = false;
-                grabbableLocal.GetComponent<Efect>().Arrojado = true;
+                grabbable.GetComponent<Efect>().enMano = false;
+                grabbable.GetComponent<Efect>().Arrojado = true;
             }
 
             //grabbableLocal.particles.Play();
@@ -170,8 +181,11 @@ public class GrabMechanic : MonoBehaviour
                 throwSFX3.Play();
             }
 
-            grabbableLocal.grabPoint = null;
-            grabbableLocal.transform.parent = null;
+            //grabbableLocal.grabPoint = null;
+            //grabbableLocal.transform.parent = null;
+
+            grabbable.grabPoint = null;
+            grabbable.transform.parent = null;
 
             Debug.Log("THREW");
 
@@ -184,7 +198,7 @@ public class GrabMechanic : MonoBehaviour
             trajectoryProjection.enabled = false;
 
             float holdDownTime = Time.time - holdStartTime;
-            grabbableLocal = null;
+            //grabbableLocal = null;
             grabbable = null;
             player.isGrabbing = false;
             canThrow = false;
@@ -261,6 +275,8 @@ public class GrabMechanic : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         isLeaping = false;
-        player.enabled = true;
+        player.canMove = true;
+        player.canJump = true;
+        player.canRun = true;
     }
 }
