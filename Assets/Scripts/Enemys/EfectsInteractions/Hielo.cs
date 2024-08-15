@@ -10,16 +10,22 @@ public class Hielo : MonoBehaviour
     [SerializeField] private GameObject hieloObject;
 
     private bool respawnActivate;
+    public float respawnTime = 5f; // Tiempo en segundos antes de respawnear
     public float floatHeight = 2.0f; // Altura a la que el objeto flotará
     public float bounceDamp = 0.05f; // Amortiguación para reducir el rebote
     public float underwaterDrag = 3f; // Resistencia al movimiento cuando está bajo el agua
     public float underwaterAngularDrag = 1f; // Resistencia a la rotación cuando está bajo el agua
-    public Transform respawnPoint; // Punto de respawn específico
-    public float respawnTime = 5f; // Tiempo en segundos antes de respawnear
-    public float alturaY = 5f; // Tiempo en segundos antes de respawnear
-    public int Daño;
+    public float alturaY = 5f;
 
     private Transform player;
+    public Transform respawnPoint; // Punto de respawn específico
+
+    PlayerController playerController;
+
+    private void Awake()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
 
     public void efectoCillision(Vector3 positionContact)
     {
@@ -28,7 +34,6 @@ public class Hielo : MonoBehaviour
         Vector3 PositionInstance = pointCollision + new Vector3(0, alturaY, 0);
 
         Instantiate(hieloObject, PositionInstance, Quaternion.identity);
-        //Destroy(gameObject);
     }
 
     void OnTriggerEnter(Collider other)
@@ -45,9 +50,7 @@ public class Hielo : MonoBehaviour
             }
         }
         else if (other.CompareTag("Enemy") && other.GetComponent<Efect>().efectoHielo != true)
-        {
             Destroy(other.gameObject);
-        }
     }
 
     IEnumerator HandleObjectInWater(Rigidbody rb, Transform player)
@@ -58,9 +61,7 @@ public class Hielo : MonoBehaviour
         // Desactivar los scripts del objeto que toca el agua
         MonoBehaviour[] scriptsToDisable = player.GetComponents<MonoBehaviour>();
         foreach (var script in scriptsToDisable)
-        {
             script.enabled = false;
-        }
 
         // Aplicar resistencia cuando está bajo el agua
         rb.drag = underwaterDrag;
@@ -84,14 +85,45 @@ public class Hielo : MonoBehaviour
         // Player Respawn
 
         // Esperar antes de respawnear
-        yield return new WaitForSeconds(respawnTime);
-        player.transform.position = respawnPoint.position;
-        player.transform.rotation = respawnPoint.rotation;
-        respawnActivate = true;
+        if (GameManager.Instance.checkPointSave && playerController.healthPoints <= 1)
+        {
+            // Nuthin' happuns ¯\_(._.)_/¯
+        }
+        else
+            yield return new WaitForSeconds(respawnTime);
+
+        // Respawnear el objeto en el punto específico
+        if (GameManager.Instance.checkPointSave && playerController.healthPoints <= 1)
+        {
+            // Nuthin' happuns ¯\_(._.)_/¯
+        }
+        else if (GameManager.Instance.checkPointSave)
+        {
+            rb.position = GameManager.Instance.pointSpawn;
+            rb.rotation = Quaternion.identity;
+            respawnActivate = true;
+        }
+        else if (playerController.healthPoints <= 1)
+        {
+            // Nuthin' happuns ¯\_(._.)_/¯
+        }
+        else
+        {
+            rb.position = respawnPoint.position;
+            rb.rotation = respawnPoint.rotation;
+            respawnActivate = true;
+        }
+
+        if (playerController.healthPoints <= 1)
+        {
+            player.GetComponent<PlayerController>().healthPoints--;
+            playerController.GameOver();
+        }
+        else
+            player.GetComponent<PlayerController>().healthPoints--;
 
         player.GetComponent<CapsuleCollider>().enabled = false;
 
-        // Respawnear el objeto en el punto específico
         rb.velocity = Vector3.zero; // Detener la velocidad del objeto
         rb.angularVelocity = Vector3.zero; // Detener la rotación del objeto
 
@@ -103,11 +135,8 @@ public class Hielo : MonoBehaviour
 
         // Reactivar los scripts
         foreach (var script in scriptsToDisable)
-        {
             script.enabled = true;
-        }
         
-        player.GetComponent<PlayerController>().healthPoints-=Daño;
     }
 
     

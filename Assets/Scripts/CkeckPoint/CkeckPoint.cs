@@ -6,18 +6,19 @@ public class CkeckPoint : MonoBehaviour
 {
     GameManager gameManager;
 
-    [SerializeField] private Transform pointSpawnCheck;
-    [SerializeField] private Transform newPointSpawnCheck;
+    public Transform pointSpawnCheck;
+    public Transform newPointSpawnCheck;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.tag == "Player")
         {
-            gameManager.PointSpawn = this.transform.position;
+            gameManager.pointSpawn = newPointSpawnCheck.transform.position;
             gameManager.checkPointSave = true;
         }
     }

@@ -12,7 +12,7 @@ using VrGamesDev;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float delayBeforeLoading = 3f;
+    public float delayBeforeLoading = 3f;
 
     [Header("Life")]
     public int healthPoints;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     public bool isRunning = false;
     public bool isWalking = false;
 
-    public Transform posicioInicial;
+    public Transform posicionInicial;
 
     [Header("Grab Ability")]
     public bool canGrab = true;
@@ -187,18 +187,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void GameOver()
     {
         playerDies = true;
         this.enabled = false;
-        Debug.Log("Mr. Handy is DEAD! Game Over");
 
         StartCoroutine(LoadGameOverScene());
     }
 
     private IEnumerator LoadGameOverScene()
     {
-        yield return new WaitForSeconds(delayBeforeLoading); // Espera el tiempo especificado en el inspector
+        yield return new WaitForSeconds(delayBeforeLoading);
 
         SceneManager.LoadScene("GameOver");
     }

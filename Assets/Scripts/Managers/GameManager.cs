@@ -7,12 +7,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public float goldenPoop = 0;
-
     public int cacasLanzadas = 0;
-
     public int tarjetas = 0;
 
-    public Vector3 PointSpawn;
+    public Vector3 pointSpawn;
     public bool checkPointSave = false;
     public bool continuar = false;
 

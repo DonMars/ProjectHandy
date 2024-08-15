@@ -121,6 +121,7 @@ public class HUDManager : MonoBehaviour
         }
         else if (grabMechanicScript.chargeTime <= 0)
         {
+            grabMechanicScript.chargeTime = 0;
             forceGaugeSlider.value = 0;
         }
 

@@ -22,7 +22,7 @@ public class GrabMechanic : MonoBehaviour
     bool canThrow = false;
     PlayerController player;
     Rigidbody playerRb;
-    Grabbable grabbable;
+    public Grabbable grabbable;
     Rigidbody grabbableRb;
     public bool grabbing = false;
 
@@ -56,6 +56,7 @@ public class GrabMechanic : MonoBehaviour
         // Remote
         StartCoroutine(InitializeValuesFromServer());
 
+        trajectoryProjection.enabled = false;
         maxForceSignal.SetActive(false);
     }
 
@@ -110,15 +111,15 @@ public class GrabMechanic : MonoBehaviour
                 }
             }
         }
-
-        if (isCharging)
-        {
-            ChargeThrow();
-        }
     }
 
     private void Update()
     {
+        if (isCharging)
+        {
+            ChargeThrow();
+        }
+
         if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing && (!player.isRunning || isLeaping))
         {
             grabbing = true;
@@ -150,20 +151,14 @@ public class GrabMechanic : MonoBehaviour
             Debug.Log("THROWING");
 
             GameManager.Instance.cacasLanzadas++;
-
-            //if (grabbable.GetComponent<Efect>() != null)
-            //{
-            //    grabbableLocal.GetComponent<Efect>().enMano = false;
-            //    grabbableLocal.GetComponent<Efect>().Arrojado = true;
-            //}
-            
+         
             if (grabbable.GetComponent<Efect>() != null)
             {
                 grabbable.GetComponent<Efect>().enMano = false;
                 grabbable.GetComponent<Efect>().Arrojado = true;
             }
 
-            //grabbableLocal.particles.Play();
+            grabbable.particles.Play();
 
             grabbableRb.isKinematic = false;
             grabbableRb.AddForce((grabPoint.forward + new Vector3(0, 1, 0)) * throwForce * chargeTime, ForceMode.Impulse);
@@ -183,9 +178,6 @@ public class GrabMechanic : MonoBehaviour
                 throwSFX3.Play();
             }
 
-            //grabbableLocal.grabPoint = null;
-            //grabbableLocal.transform.parent = null;
-
             grabbable.grabPoint = null;
             grabbable.transform.parent = null;
 
@@ -200,7 +192,7 @@ public class GrabMechanic : MonoBehaviour
             trajectoryProjection.enabled = false;
 
             float holdDownTime = Time.time - holdStartTime;
-            //grabbableLocal = null;
+            
             grabbable = null;
             player.isGrabbing = false;
             canThrow = false;
@@ -227,9 +219,8 @@ public class GrabMechanic : MonoBehaviour
 
             isCharging = true;
             chargeTime = 0;
-            chargeTime += Time.deltaTime;
-            Debug.Log(chargeTime);
-            Debug.Log("CHARGING");
+
+            //chargeTime += Time.deltaTime;
 
             // TrajectoryProjection
             trajectoryProjection.enabled = true;
@@ -245,8 +236,6 @@ public class GrabMechanic : MonoBehaviour
             chargeTime = maxChargeTime;
             maxForceSignal.SetActive(true);
         }
-
-        Debug.Log(chargeTime);
 
         // TrajectoryProjection line velocity
         Vector3 lineVelocity = (grabPoint.forward + throwDirection).normalized * Mathf.Min(chargeTime * throwForce, maxChargeTime * 100f);
