@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6d8f19998d8ba0f478c9f6eb96d4106b,
         type: 3}
       propertyPath: m_Name
-      value: EnemigoRoca2 (1)
+      value: EnemigoRoca2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6d8f19998d8ba0f478c9f6eb96d4106b,
         type: 3}
@@ -189,10 +189,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   aware: 0
-  patrolRangeMin: 20
-  patrolRangeMax: 40
-  patrolWaitTimeMin: 5
-  patrolWaitTimeMax: 6
+  patrolRangeMin: 10
+  patrolRangeMax: 25
+  patrolWaitTimeMin: 12
+  patrolWaitTimeMax: 23
   centrePoint: {fileID: 6222462368448520247}
   animator: {fileID: 1494420424673292365}
   patrolAnimation: Patrolling
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3305730ffd4a3c4c8bb0cf7c9ecdf37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 0.91
+  lerpSpeed: 7
   particles: {fileID: 0}
   grabPoint: {fileID: 0}
 --- !u!114 &8635223707507228118

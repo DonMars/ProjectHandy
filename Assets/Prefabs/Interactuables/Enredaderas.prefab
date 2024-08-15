@@ -5054,8 +5054,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d31ef179144b645a413c5b7ab458aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameAnim: Enredaderas
   particles: {fileID: 5994297395459045136}
+  animator: {fileID: 5145479845303028539}
 --- !u!65 &8855577661860145474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5075,7 +5075,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.376354, y: 4.1528673, z: 3.5036058}
+  m_Size: {x: 1.100584, y: 4.1528673, z: 3.5036058}
   m_Center: {x: 3.4312224, y: 2.007298, z: -3.1902828}
 --- !u!1001 &33588584792531342
 PrefabInstance:

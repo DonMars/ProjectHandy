@@ -9,7 +9,7 @@ public class Hielo : MonoBehaviour
 {
     [SerializeField] private GameObject hieloObject;
 
-
+    private bool respawnActivate;
     public float floatHeight = 2.0f; // Altura a la que el objeto flotará
     public float bounceDamp = 0.05f; // Amortiguación para reducir el rebote
     public float underwaterDrag = 3f; // Resistencia al movimiento cuando está bajo el agua
@@ -20,9 +20,9 @@ public class Hielo : MonoBehaviour
     public int Daño;
 
     private Transform player;
+
     public void efectoCillision(Vector3 positionContact)
     {
-
         Vector3 pointCollision = positionContact;
 
         Vector3 PositionInstance = pointCollision + new Vector3(0, alturaY, 0);
@@ -50,13 +50,13 @@ public class Hielo : MonoBehaviour
         }
     }
 
-    IEnumerator HandleObjectInWater(Rigidbody rb, Transform playe)
+    IEnumerator HandleObjectInWater(Rigidbody rb, Transform player)
     {
         float originalDrag = rb.drag;
         float originalAngularDrag = rb.angularDrag;
 
         // Desactivar los scripts del objeto que toca el agua
-        MonoBehaviour[] scriptsToDisable = playe.GetComponents<MonoBehaviour>();
+        MonoBehaviour[] scriptsToDisable = player.GetComponents<MonoBehaviour>();
         foreach (var script in scriptsToDisable)
         {
             script.enabled = false;
@@ -68,9 +68,9 @@ public class Hielo : MonoBehaviour
 
         // Simulación de flotación
         float waterLevel = transform.position.y;
-        while (playe.transform.position.y < waterLevel)
+        while (player.transform.position.y < waterLevel)
         {
-            float displacementMultiplier = Mathf.Clamp01((waterLevel - playe.transform.position.y) / floatHeight);
+            float displacementMultiplier = Mathf.Clamp01((waterLevel - player.transform.position.y) / floatHeight);
             Vector3 floatForce = new Vector3(0f, Mathf.Abs(Physics.gravity.y) * displacementMultiplier, 0f);
             rb.AddForce(floatForce, ForceMode.Acceleration);
 
@@ -81,20 +81,22 @@ public class Hielo : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        
-        
+        // Player Respawn
+
         // Esperar antes de respawnear
         yield return new WaitForSeconds(respawnTime);
-        //playe.transform.position = respawnPoint.position;
-        //playe.transform.rotation = respawnPoint.rotation;
-        //respaenActivate = true;
+        player.transform.position = respawnPoint.position;
+        player.transform.rotation = respawnPoint.rotation;
+        respawnActivate = true;
 
         player.GetComponent<CapsuleCollider>().enabled = false;
+
         // Respawnear el objeto en el punto específico
         rb.velocity = Vector3.zero; // Detener la velocidad del objeto
         rb.angularVelocity = Vector3.zero; // Detener la rotación del objeto
 
-        playe.GetComponent<CapsuleCollider>().enabled = true;
+        player.GetComponent<CapsuleCollider>().enabled = true;
+
         // Restaurar los valores originales de drag y angularDrag
         rb.drag = originalDrag;
         rb.angularDrag = originalAngularDrag;
@@ -104,13 +106,10 @@ public class Hielo : MonoBehaviour
         {
             script.enabled = true;
         }
-
-        // Verificar la posición final después del respawn
-        Debug.Log("Respawned at: " + playe.transform.position);
-        playe.GetComponent<PlayerController>().healthPoints-=Daño;
-
+        
+        player.GetComponent<PlayerController>().healthPoints-=Daño;
     }
-    private bool respaenActivate;
+
     
     
 

@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class CkeckPoint : MonoBehaviour
 {
+    GameManager gameManager;
+
     [SerializeField] private Transform pointSpawnCheck;
     [SerializeField] private Transform newPointSpawnCheck;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.tag == "Player")
         {
-            //FindAnyObjectByType<GameManager>().PointSpawn = this.transform.position;
-            //FindAnyObjectByType<GameManager>().checkPointSave = true;
+            gameManager.PointSpawn = this.transform.position;
+            gameManager.checkPointSave = true;
         }
     }
 }

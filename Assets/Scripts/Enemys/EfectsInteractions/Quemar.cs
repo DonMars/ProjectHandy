@@ -7,19 +7,13 @@ public class Quemar : MonoBehaviour
 {
 
     //private Animator animator;
-    [SerializeField] private string nameAnim;
-    [SerializeField] private ParticleSystem particles;
-    Animator animator;
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    public ParticleSystem particles;
+    public Animator animator;
 
     public void efectoCillision()
     {
-        animator.Play(nameAnim);
+        animator.SetTrigger("isBurning");
         particles.Play();
-        Debug.Log("Partículas activadas");
         Destroy(this.gameObject, 5.2f);
     }
 }

@@ -7,6 +7,7 @@ using VrGamesDev;
 public class GrabMechanic : MonoBehaviour
 {
     [Header("Throw Mechanic")]
+    public float grabbingStateResetTime = 0.02f;
     public float throwForce = 5f;
     public float chargeTime = 0f;
     public float maxChargeTime = 3f;
@@ -121,6 +122,7 @@ public class GrabMechanic : MonoBehaviour
         if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing && (!player.isRunning || isLeaping))
         {
             grabbing = true;
+            StartCoroutine(GrabbingReset());
         }
 
         // Leap Ability
@@ -278,5 +280,11 @@ public class GrabMechanic : MonoBehaviour
         player.canMove = true;
         player.canJump = true;
         player.canRun = true;
+    }
+
+    private IEnumerator GrabbingReset()
+    {
+        yield return new WaitForSeconds(grabbingStateResetTime);
+        grabbing = false;
     }
 }

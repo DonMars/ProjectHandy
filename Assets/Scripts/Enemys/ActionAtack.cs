@@ -77,7 +77,7 @@ public class ActionAtack : MonoBehaviour
                 GetComponent<Rigidbody>().AddForce(transform.forward * forcePush,ForceMode.Impulse);
                 Atack = true;
                 attackSwitch = true;
-                StartCoroutine(AttackReset());
+                StartCoroutine(AttackReset());      
             }
         }
 

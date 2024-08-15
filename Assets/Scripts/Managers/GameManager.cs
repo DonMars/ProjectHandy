@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
 
     public int tarjetas = 0;
 
-    //public Vector3 PointSpawn;
-    //public bool checkPointSave = false;
-    //public bool continuar = false;
+    public Vector3 PointSpawn;
+    public bool checkPointSave = false;
+    public bool continuar = false;
 
     void Awake()
     {
