@@ -18,6 +18,7 @@ public class GameOverManager : MonoBehaviour
     {
         //FindAnyObjectByType<GameManager>().continuar = true;
         //FindAnyObjectByType<GameManager>().checkPointSave = true;
+        GameManager.Instance.goldenPoop = 0;
         SceneManager.LoadScene(nivel);
     }
 

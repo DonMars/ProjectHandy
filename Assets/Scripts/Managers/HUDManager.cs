@@ -30,6 +30,10 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI treasureCounter;
     public TextMeshProUGUI treasureCounterOutline;
 
+    public Image crystalPoopHUD;
+    public Image cosmicPoopHUD;
+    public Image rubyPoopHUD;
+
     //public TextMeshProUGUI staminaCounter;
 
     private void Awake()
@@ -131,6 +135,22 @@ public class HUDManager : MonoBehaviour
         // Treasure Counter Manager
         treasureCounter.text = GameManager.Instance.goldenPoop.ToString() + (" / ") + treasureMaxAmmount;
         treasureCounterOutline.text = GameManager.Instance.goldenPoop.ToString() + (" / ") + treasureMaxAmmount;
+
+        // Special Poop
+        if (GameManager.Instance.crystalPoop)
+            crystalPoopHUD.enabled = true;
+        else
+            crystalPoopHUD.enabled = false;
+
+        if (GameManager.Instance.cosmicPoop)
+            cosmicPoopHUD.enabled = true;
+        else
+            cosmicPoopHUD.enabled = false;
+
+        if (GameManager.Instance.rainbowPoop)
+            rubyPoopHUD.enabled = true;
+        else
+            rubyPoopHUD.enabled = false;
 
         CheckBestiaryUnlock();
     }

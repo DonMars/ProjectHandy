@@ -25,10 +25,15 @@ public class CkeckPoint : MonoBehaviour
             gameManager.pointSpawn = newPointSpawnCheck.transform.position;
             gameManager.checkPointSave = true;
 
-            checkpointAnimation.ResetTrigger("checkpoint");
-            checkpointAnimation.SetTrigger("checkpoint");
-            checkpointSFX.Play();
-            checkpointParticle.Play();
+            other.GetComponent<PlayerController>().healthPoints = other.GetComponent<PlayerController>().maxHealthPoints;
+
+            if (gameManager.pointSpawn != newPointSpawnCheck.transform.position)
+            {
+                checkpointAnimation.ResetTrigger("checkpoint");
+                checkpointAnimation.SetTrigger("checkpoint");
+                checkpointSFX.Play();
+                checkpointParticle.Play();
+            }
         }
     }
 }

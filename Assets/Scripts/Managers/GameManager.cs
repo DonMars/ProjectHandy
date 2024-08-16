@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     public bool checkPointSave = false;
     public bool continuar = false;
 
+    public bool crystalPoop = false;
+    public bool cosmicPoop = false;
+    public bool rainbowPoop = false;
+
     void Awake()
     {
         if (Instance == null)

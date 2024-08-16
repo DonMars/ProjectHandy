@@ -41,10 +41,13 @@ public class Hielo : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        splash.Play();
+
         if (other.CompareTag("Player"))
         {
             player = other.gameObject.transform;
             Rigidbody rb = player.GetComponent<Rigidbody>();
+
 
             if (rb != null)
             {
@@ -60,6 +63,8 @@ public class Hielo : MonoBehaviour
     {
         float originalDrag = rb.drag;
         float originalAngularDrag = rb.angularDrag;
+
+        handyDrown.Play();
 
         // Desactivar los scripts del objeto que toca el agua
         MonoBehaviour[] scriptsToDisable = player.GetComponents<MonoBehaviour>();
@@ -81,7 +86,7 @@ public class Hielo : MonoBehaviour
             // Aplicar amortiguación para reducir el rebote
             Vector3 dampForce = -rb.velocity * bounceDamp;
             rb.AddForce(dampForce, ForceMode.VelocityChange);
-
+            
             yield return new WaitForFixedUpdate();
         }
 

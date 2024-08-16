@@ -23,6 +23,16 @@ public class GoldenPoopCollectable : MonoBehaviour
         hudManager = FindObjectOfType<HUDManager>();
     }
 
+    private void Start()
+    {
+        if (GameManager.Instance.crystalPoop && isCrystalPoop)
+            Destroy(this.gameObject);
+        else if (GameManager.Instance.cosmicPoop && isCosmicPoop)
+            Destroy(this.gameObject);
+        else if (GameManager.Instance.rainbowPoop && isRainbowPoop)
+            Destroy(this.gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -50,7 +60,14 @@ public class GoldenPoopCollectable : MonoBehaviour
                 goldenPoopColl4.Play();
             }
 
-            GameManager.Instance.goldenPoop++;
+            if (isCrystalPoop)
+                GameManager.Instance.crystalPoop = true;
+            else if (isCosmicPoop)
+                GameManager.Instance.cosmicPoop = true;
+            else if (isRainbowPoop)
+                GameManager.Instance.rainbowPoop = true;
+            else
+                GameManager.Instance.goldenPoop++;
         
             collectableCollider.enabled = false;
             collectableMeshRenderer.enabled = false;

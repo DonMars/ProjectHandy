@@ -9905,6 +9905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597dc431d31157b4cba518f01dc70d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCrystalPoop: 1
+  isCosmicPoop: 0
+  isRainbowPoop: 0
   collectableCollider: {fileID: 1502567268500958890}
   collectableMeshRenderer: {fileID: 5222625917646985163}
   goldenPoopColl1: {fileID: 4840955557458358900}
