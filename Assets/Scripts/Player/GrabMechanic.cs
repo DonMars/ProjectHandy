@@ -76,7 +76,7 @@ public class GrabMechanic : MonoBehaviour
         public float drag;
     }
 
-    private void OnTriggerStay(Collider other)
+     private void OnTriggerStay(Collider other)
     {
         if (grabbing && player.canGrab && !player.isGrabbing && !player.isRunning || isLeaping)
         {
@@ -116,7 +116,7 @@ public class GrabMechanic : MonoBehaviour
             ChargeThrow();
         }
 
-        if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing && (!player.isRunning || isLeaping))
+        if (Input.GetKeyDown(player.grabKey) && player.canGrab && !player.isGrabbing) // && (!player.isRunning || isLeaping))
         {
             grabbing = true;
             StartCoroutine(GrabbingReset());

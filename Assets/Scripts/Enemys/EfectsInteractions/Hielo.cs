@@ -22,6 +22,9 @@ public class Hielo : MonoBehaviour
 
     PlayerController playerController;
 
+    public AudioSource handyDrown;
+    public AudioSource splash;
+
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();

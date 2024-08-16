@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GoldenPoopCollectable : MonoBehaviour
 {
+    public bool isCrystalPoop;
+    public bool isCosmicPoop;
+    public bool isRainbowPoop;
+
     public Collider collectableCollider;
     public MeshRenderer collectableMeshRenderer;
     public AudioSource goldenPoopColl1;
